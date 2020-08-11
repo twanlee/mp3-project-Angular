@@ -1,6 +1,6 @@
 import {Role} from '../role/role';
 
-export interface UserToken {
+export interface IUserToken {
     id?: number;
     email?: string;
     role?: Role[];

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {User} from '../../interfaces/user/user';
+import {IUser} from '../../interfaces/user/user';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 
@@ -7,9 +7,15 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
+  private API_URL = 'http://localhost:8080/';
 
   constructor(private http: HttpClient) { }
-  // findByUserName(): Observable<User> {
-  //     return this.http.get("")
+
+  getUserList():Observable<any>{
+    return this.http.get(this.API_URL+'users', {responseType: 'text'});
+  }
+
+  // createUser(data: IUser):Observable<any>{
+  //   return this.http.post(this.API_URL+'register',data,{responseType: 'text'})
   // }
 }
