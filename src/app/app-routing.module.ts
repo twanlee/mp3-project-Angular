@@ -21,8 +21,13 @@ const routes: Routes = [
   {
     path: 'user/song-list',
     component: ViewSongByUserComponent
-  },{path: "login", component: LoginComponent},
-  {path: 'song/create',component: CreateSongComponent},
+  },
+  {
+    path: "login", component: LoginComponent
+  },
+  {
+    path: 'song/create',component: CreateSongComponent
+  },
   {
     path: 'search',
     component: SongSearchingResultsComponent
