@@ -2,8 +2,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {RegisterService} from "../../services/register/register.service";
-import {User} from "../../interfaces/user/user";
 import {Router} from "@angular/router";
+import {IUser} from "../../interfaces/user/user";
 
 function comparePassword(c: AbstractControl) {
   const v = c.value;
@@ -30,6 +30,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.registerForm = this.fb.group({
       email: ['info@example.com', [Validators.required, Validators.email]],
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
       pwGroup: this.fb.group({
         password: ['',[Validators.minLength(6)]],
         confirmPassword: ''
@@ -41,10 +43,13 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     if (this.registerForm.valid) {
       const data = this.registerForm.value;
-      const user: User = {
+      const user: IUser = {
         email: data.email,
+        firstName: data.firstName,
+        lastName: data.lastName,
         password: data.pwGroup.password
       };
+      console.log(user)
       this.register.registerUser(user).subscribe(() => {
         this.registerForm.reset("");
         alert('Done!');

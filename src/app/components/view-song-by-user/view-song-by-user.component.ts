@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../services/user/user.service";
 import {ISong} from "../../interfaces/songs/song";
+import {IUser} from "../../interfaces/user/user";
+import {IUserToken} from "../../interfaces/user/user-token";
 
 @Component({
   selector: 'app-view-song-by-user',
@@ -8,7 +10,7 @@ import {ISong} from "../../interfaces/songs/song";
   styleUrls: ['./view-song-by-user.component.css']
 })
 export class ViewSongByUserComponent implements OnInit {
-  id = 1;
+  userId:number;
   page: number = 1;
 
 
@@ -20,7 +22,8 @@ export class ViewSongByUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllSongByUser(this.id);
+    this.userId = +localStorage.getItem("userId");
+    this.getAllSongByUser(this.userId);
   }
 
   getAllSongByUser(id) {
