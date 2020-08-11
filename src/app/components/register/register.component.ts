@@ -19,7 +19,6 @@ function comparePassword(c: AbstractControl) {
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  isActive: boolean = false;
 
   constructor(private fb: FormBuilder,
               private register: RegisterService,
@@ -50,8 +49,7 @@ export class RegisterComponent implements OnInit {
         this.registerForm.reset("");
         alert('Done!');
       }, error => {
-        // alert(error.error.msg);
-        this.isActive=true;
+        alert(error.error.msg);
       });
     }
   }
