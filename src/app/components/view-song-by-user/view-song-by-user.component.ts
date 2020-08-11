@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../services/user/user.service";
-import {ISong} from "../../interfaces/songs/song";
 import {IUser} from "../../interfaces/user/user";
 import {IUserToken} from "../../interfaces/user/user-token";
+import {SongService} from "../../services/songs/song.service";
+import {ISong} from "../../interfaces/isong";
 
 @Component({
   selector: 'app-view-song-by-user',
@@ -17,7 +18,8 @@ export class ViewSongByUserComponent implements OnInit {
   songList: ISong[];
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private songService: SongService
   ) {
   }
 
@@ -32,11 +34,11 @@ export class ViewSongByUserComponent implements OnInit {
     })
   }
   delete(id: number){
-    // if (confirm('Bạn chắc chưa?')) {
-    //   this.x.deleteBookById(id).subscribe(() => {
-    //     this.getAllSongByUser(this.id);
-    //   });
-    // }
+    if (confirm('Bạn chắc chưa?')) {
+      this.songService.deleteSongById(id).subscribe(() => {
+        this.getAllSongByUser(this.userId);
+      });
+    }
   }
 
 }
