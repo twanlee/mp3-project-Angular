@@ -25,13 +25,8 @@ export class TokenStorageService {
     return localStorage.getItem(this.TOKEN_KEY);
   }
 
-  public saveUser(user: string) {
+  public saveUser(user: IUserToken) {
     window.localStorage.removeItem(this.USER_KEY);
-    // let user1 : IUser = {
-    //   id: user.id,
-    //   email: user.email,
-    //   role: user.role
-    // };
     window.localStorage.setItem(this.USER_KEY, JSON.stringify(user));
   }
 
