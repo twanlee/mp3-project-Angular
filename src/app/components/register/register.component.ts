@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
         lastName: data.lastName,
         password: data.pwGroup.password
       };
-      console.log(user)
+      // console.log(user)
       this.register.registerUser(user).subscribe(() => {
         this.registerForm.reset("");
         alert('Done!');
