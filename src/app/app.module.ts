@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { TestComponent } from './components/test/test.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {authInterceptorProviders} from './helper/auth.interceptor';

@@ -34,6 +34,8 @@
     <div class="alert alert-success" *ngIf="isLoggedIn">
       Logged in as {{ email }}.
     </div>
+    <button *ngIf="isLoggedIn" class="btn btn-danger" (click)="logOut()">Log Out</button>
+
   </div>
 </div>
 
