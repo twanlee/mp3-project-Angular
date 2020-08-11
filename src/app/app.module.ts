@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 // @ts-ignore
 import { LoginComponent } from './components/login/login.components';
+import { SongDetailComponent } from './components/song/song-detail/song-detail.component';
 
 // @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    SongDetailComponent
   ],
   imports: [
     BrowserModule,
