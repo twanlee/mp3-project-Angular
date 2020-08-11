@@ -1,23 +1,28 @@
-// @ts-ignore
 import { BrowserModule } from '@angular/platform-browser';
-// @ts-ignore
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import { CreateSongComponent } from './components/songs/create-song/create-song.component';
+import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-// @ts-ignore
-import { LoginComponent } from './components/login/login.components';
 
-// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    CreateSongComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],
