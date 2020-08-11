@@ -19,6 +19,9 @@ import {environment} from '../environments/environment';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import { CreateSongComponent } from './components/songs/create-song/create-song.component';
+import {HeaderComponent} from './components/header/header.component';
+import {FooterComponent} from './components/footer/footer.component';
+import {HomePageComponent} from './components/home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { CreateSongComponent } from './components/songs/create-song/create-song.
     EditProfileComponent,
     RegisterComponent,
     ViewSongByUserComponent,
-    SongSearchingResultsComponent
+    SongSearchingResultsComponent,
+    HeaderComponent,
+    FooterComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

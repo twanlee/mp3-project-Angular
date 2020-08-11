@@ -2,9 +2,10 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {RegisterService} from "../../services/register/register.service";
-import {User} from "../../interfaces/user/user";
 import {Router} from "@angular/router";
-import {IUser} from "../../interfaces/user/user";
+// @ts-ignore
+import {IUser} from '../../interfaces/user/user';
+
 
 function comparePassword(c: AbstractControl) {
   const v = c.value;
