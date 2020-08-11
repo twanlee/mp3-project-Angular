@@ -8,6 +8,7 @@ import {ViewSongByUserComponent} from "./components/view-song-by-user/view-song-
 import { NgModule } from '@angular/core';
 // @ts-ignore
 import { Routes, RouterModule } from '@angular/router';
+import {CreateSongComponent} from './components/songs/create-song/create-song.component';
 import {LoginComponent} from './components/login/login.component';
 
 const routes: Routes = [
@@ -18,11 +19,10 @@ const routes: Routes = [
   {
     path: 'user/song-list',
     component: ViewSongByUserComponent
-  },{path: "login", component: LoginComponent}
+  },{path: "login", component: LoginComponent},
+  {path: 'song/create',component: CreateSongComponent}
 
-];
 
-// @ts-ignore
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

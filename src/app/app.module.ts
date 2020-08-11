@@ -13,9 +13,17 @@ import { RegisterComponent } from './components/register/register.component';
 import { ViewSongByUserComponent } from './components/view-song-by-user/view-song-by-user.component';
 import {NgxPaginationModule} from "ngx-pagination";
 import { SongSearchingResultsComponent } from './components/song-searching-results/song-searching-results.component';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import { CreateSongComponent } from './components/songs/create-song/create-song.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
+    AppComponent,
+    CreateSongComponent,
     AppComponent,
     LoginComponent,
     EditProfileComponent,
@@ -26,7 +34,12 @@ import { SongSearchingResultsComponent } from './components/song-searching-resul
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
+    ReactiveFormsModule,
     HttpClientModule,
+    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule
