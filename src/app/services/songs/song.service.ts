@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ISong} from '../../interfaces/isong';
 import {Observable} from 'rxjs';
@@ -8,17 +8,23 @@ import {Observable} from 'rxjs';
 })
 export class SongService {
   url_api = 'http://localhost:8080/api/song';
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient) {
+  }
+
   getAll(): Observable<ISong[]> {
-    return this.http.get<ISong[]>(this.url_api+'/list');
+    return this.http.get<ISong[]>(this.url_api + '/list');
   }
-  getSongById(id: number): Observable<any>{
-    return this.http.get<ISong>(this.url_api+'/'+id+'/detail');
+
+  getSongById(id: number): Observable<any> {
+    return this.http.get<ISong>(this.url_api + '/' + id + '/detail');
   }
-  createSong(data: ISong): Observable<ISong>{
-    return this.http.post<ISong>(this.url_api+'/save',data);
+
+  createSong(data: ISong): Observable<ISong> {
+    return this.http.post<ISong>(this.url_api + '/save', data);
   }
-  deleteSongById(id: number): Observable<any>{
-    return this.http.delete<any>(this.url_api+'/'+id+'/delete');
+
+  deleteSongById(id: number): Observable<any> {
+    return this.http.delete<any>(this.url_api + '/' + id + '/delete');
   }
 }
