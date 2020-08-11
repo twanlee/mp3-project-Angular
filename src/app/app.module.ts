@@ -22,6 +22,7 @@ import { CreateSongComponent } from './components/songs/create-song/create-song.
 import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {HomePageComponent} from './components/home-page/home-page.component';
+import { GreatestSongComponent } from './components/songs/greatest-song/greatest-song.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {HomePageComponent} from './components/home-page/home-page.component';
     SongSearchingResultsComponent,
     HeaderComponent,
     FooterComponent,
-    HomePageComponent
+    HomePageComponent,
+    GreatestSongComponent
   ],
   imports: [
     BrowserModule,

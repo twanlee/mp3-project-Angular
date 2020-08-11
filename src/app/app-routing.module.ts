@@ -12,21 +12,15 @@ import { Routes, RouterModule } from '@angular/router';
 import {CreateSongComponent} from './components/songs/create-song/create-song.component';
 import {LoginComponent} from './components/login/login.component';
 import {SongSearchingResultsComponent} from "./components/song-searching-results/song-searching-results.component";
+import {GreatestSongComponent} from './components/songs/greatest-song/greatest-song.component';
 
 const routes: Routes = [
-  {
-    path: 'register',
-    component: RegisterComponent
-  },
-  {
-    path: 'user/song-list',
-    component: ViewSongByUserComponent
-  },{path: "login", component: LoginComponent},
-  {path: 'song/create',component: CreateSongComponent},
-  {
-    path: 'search',
-    component: SongSearchingResultsComponent
-  }
+  {path: 'register', component: RegisterComponent},
+  {path: 'user/song-list', component: ViewSongByUserComponent},
+  {path: "login", component: LoginComponent},
+  {path: 'song/create', component: CreateSongComponent},
+  {path: 'search', component: SongSearchingResultsComponent},
+  {path: '', component: GreatestSongComponent}
   ];
 
 @NgModule({

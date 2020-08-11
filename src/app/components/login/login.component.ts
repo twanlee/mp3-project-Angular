@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Role} from '../../interfaces/role/role';
 import {AuthenticationService} from '../../services/auth/authentication.service';
 import {FormControl, FormGroup} from '@angular/forms';
-import {IUser} from '../../interfaces/user/user';
+// import {IUser} from '../../interfaces/user/user';
 import {Router} from '@angular/router';
 import {TokenStorageService} from '../../services/token-storage.service';
 
@@ -37,6 +37,8 @@ export class LoginComponent implements OnInit {
         console.log(data);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
+        // dòng này sẽ lấy ra user từ userService
+        //set vào storage Full Name của user "name"
         this.email = this.tokenStorage.getUser().email;
         this.reloadPage();
       },
