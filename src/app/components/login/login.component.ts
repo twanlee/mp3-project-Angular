@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.email = this.tokenStorage.getUser().email;
-        this.reloadPage();
       },
       err => {
         this.errorMessage = err.error.message;
@@ -47,7 +46,8 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  reloadPage() {
+  logOut() {
+    this.tokenStorage.singOut();
     window.location.reload();
   }
 

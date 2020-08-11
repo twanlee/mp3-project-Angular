@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -11,7 +12,6 @@ import {authInterceptorProviders} from './helper/auth.interceptor';
 import {APP_BASE_HREF} from '@angular/common';
 import { RegisterComponent } from './components/register/register.component';
 import { ViewSongByUserComponent } from './components/view-song-by-user/view-song-by-user.component';
-// @ts-ignore
 import {NgxPaginationModule} from "ngx-pagination";
 import { SongSearchingResultsComponent } from './components/song-searching-results/song-searching-results.component';
 import {AngularFireModule} from '@angular/fire';
@@ -23,11 +23,11 @@ import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {HomePageComponent} from './components/home-page/home-page.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     CreateSongComponent,
-    AppComponent,
     LoginComponent,
     EditProfileComponent,
     RegisterComponent,
@@ -49,6 +49,7 @@ import {HomePageComponent} from './components/home-page/home-page.component';
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule
+
   ],
   providers: [authInterceptorProviders,{
     provide: APP_BASE_HREF, useValue: "/"
