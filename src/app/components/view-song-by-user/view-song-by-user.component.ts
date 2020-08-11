@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../services/user/user.service";
 import {ISong} from "../../interfaces/songs/song";
 
@@ -9,19 +9,31 @@ import {ISong} from "../../interfaces/songs/song";
 })
 export class ViewSongByUserComponent implements OnInit {
   id = 1;
+  page: number = 1;
+
+
   songList: ISong[];
+
   constructor(
     private userService: UserService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.getAllSongByUser(this.id);
   }
 
-  getAllSongByUser(id){
-    this.userService.getAllSongByUser(id).subscribe((data)=>{
+  getAllSongByUser(id) {
+    this.userService.getAllSongByUser(id).subscribe((data) => {
       this.songList = data;
     })
+  }
+  delete(id: number){
+    if (confirm('Bạn chắc chưa?')) {
+      this.x.deleteBookById(id).subscribe(() => {
+        this.getAllSongByUser(this.id);
+      });
+    }
   }
 
 }
