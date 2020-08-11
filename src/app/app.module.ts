@@ -1,29 +1,35 @@
+// @ts-ignore
 import { BrowserModule } from '@angular/platform-browser';
+// @ts-ignore
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {AngularFireModule} from '@angular/fire';
-import {environment} from '../environments/environment';
-import {AngularFireStorageModule} from '@angular/fire/storage';
-import {AngularFireDatabaseModule} from '@angular/fire/database';
-import { CreateSongComponent } from './components/songs/create-song/create-song.component';
-import {ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import { RegisterComponent } from './components/register/register.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from "@angular/common/http";
+import {HeaderComponent} from './components/header/header.component';
+import {FooterComponent} from './components/footer/footer.component';
+import {SongDetailComponent} from './components/song/song-detail/song-detail.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
 
+// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
-    CreateSongComponent
+    RegisterComponent,
+    HeaderComponent,
+    FooterComponent,
+    SongDetailComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireStorageModule,
-    AngularFireDatabaseModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
