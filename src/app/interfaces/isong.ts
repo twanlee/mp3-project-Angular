@@ -9,7 +9,5 @@ export interface ISong {
   description: string;
   authors: IArtist[];
   singers: IArtist[];
-  fileSong: File;
-  fileImage: File;
 }
 
