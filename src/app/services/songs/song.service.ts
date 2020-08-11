@@ -27,4 +27,8 @@ export class SongService {
   deleteSongById(id: number): Observable<any> {
     return this.http.delete<any>(this.url_api + '/' + id + '/delete');
   }
+
+  getSongByName(nameSong: string):Observable<ISong[]>{
+    return this.http.get<ISong[]>(this.url_api+"/"+nameSong+"/search");
+  }
 }

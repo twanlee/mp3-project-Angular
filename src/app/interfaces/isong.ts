@@ -1,6 +1,7 @@
 import {IArtist} from './iartist';
 
 export interface ISong {
+  id?: number;
   name?: string;
   lyric?: string;
   fileUrl?: string;
@@ -8,5 +9,6 @@ export interface ISong {
   description?: string;
   authors?: IArtist[];
   singers?: IArtist[];
+  postTime?: Date
 }
 

@@ -1,4 +1,4 @@
-import {ISong} from './isong';
+import {ISong} from "../songs/song";
 
 export interface IArtist {
   id?: number;
@@ -6,4 +6,5 @@ export interface IArtist {
   information?: string;
   songSings?: ISong[];
   authSongs?: ISong[]
+
 }
