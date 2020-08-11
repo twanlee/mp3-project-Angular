@@ -29,11 +29,11 @@ export class ViewSongByUserComponent implements OnInit {
     })
   }
   delete(id: number){
-    if (confirm('Bạn chắc chưa?')) {
-      this.x.deleteBookById(id).subscribe(() => {
-        this.getAllSongByUser(this.id);
-      });
-    }
+    // if (confirm('Bạn chắc chưa?')) {
+    //   this.x.deleteBookById(id).subscribe(() => {
+    //     this.getAllSongByUser(this.id);
+    //   });
+    // }
   }
 
 }
