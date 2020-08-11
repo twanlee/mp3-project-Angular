@@ -1,17 +1,15 @@
-// @ts-ignore
 import { NgModule } from '@angular/core';
-// @ts-ignore
 import { Routes, RouterModule } from '@angular/router';
 import {LoginComponent} from './components/login/login.component';
-import {TestComponent} from './components/test/test.component';
 import {EditProfileComponent} from './components/edit-profile/edit-profile.component';
+import {CreateSongComponent} from './components/songs/create-song/create-song.component';
 
 const routes: Routes = [
   {path: "login", component: LoginComponent},
-  {path: "edit-profile", component: EditProfileComponent}
+  {path: "edit-profile", component: EditProfileComponent},
+  {path: 'song/create',component: CreateSongComponent}
 ];
 
-// @ts-ignore
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

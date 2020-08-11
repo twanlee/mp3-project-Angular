@@ -11,6 +11,12 @@ import { TestComponent } from './components/test/test.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {authInterceptorProviders} from './helper/auth.interceptor';
 import {APP_BASE_HREF} from '@angular/common';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import { CreateSongComponent } from './components/songs/create-song/create-song.component';
+
 
 @NgModule({
   declarations: [
@@ -18,14 +24,20 @@ import {APP_BASE_HREF} from '@angular/common';
     LoginComponent,
     AppComponent,
     EditProfileComponent,
-    TestComponent
+    TestComponent,
+    AppComponent,
+    CreateSongComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
+    AngularFireDatabaseModule
+
   ],
   providers: [authInterceptorProviders,{
     provide: APP_BASE_HREF, useValue: "/"

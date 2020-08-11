@@ -1,0 +1,77 @@
+<h1>Create Song </h1>
+<div>
+  <form action="" [formGroup]="createSongForm" (ngSubmit)="submit()">
+  <div>
+    <div>
+      <label>Name :</label>
+    </div>
+    <div>
+      <label>
+        <input type="text" formControlName="name"  >
+      </label>
+    </div>
+  </div>
+  <div>
+    <div>
+      <label>Lyric :</label>
+    </div>
+    <div>
+      <label>
+        <textarea cols="30" rows="10" formControlName="lyric"></textarea>
+      </label>
+    </div>
+  </div>
+  <div>
+    <div>
+      <label>Author :</label>
+    </div>
+    <div>
+      <label>
+        <input type="text" formControlName="authors"  >
+      </label>
+    </div>
+  </div>
+  <div>
+    <div>
+      <label>Singer :</label>
+    </div>
+    <div>
+      <label>
+        <input type="text" formControlName="singers"  >
+      </label>
+    </div>
+  </div>
+  <div>
+    <div>
+      <label >Upload File Audio :</label>
+    </div>
+    <div>
+      <input type="file" (change)="createSong($event)">
+    </div>
+  </div>
+  <div>
+    <div>
+      <label >Upload Image for Song :</label>
+    </div>
+    <div>
+      <input type="file" (change)="createImage($event)">
+    </div>
+  </div>
+    <div>
+      <div>
+        <label>Description :</label>
+      </div>
+      <div>
+        <label>
+          <textarea formControlName="description" cols="30" rows="10"></textarea>
+        </label>
+
+      </div>
+    </div>
+  <div>
+    <button>Create</button>
+  </div>
+  </form>
+</div>
+
+
