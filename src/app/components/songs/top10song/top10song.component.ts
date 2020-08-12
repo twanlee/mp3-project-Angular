@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ISong} from '../../../interfaces/isong';
 import {IArtist} from '../../../interfaces/iartist';
 import {SongService} from '../../../services/songs/song.service';
-
 @Component({
   selector: 'app-top10song',
   templateUrl: './top10song.component.html',
@@ -111,25 +110,17 @@ export class Top10songComponent implements OnInit {
       postTime: new Date()
     }
   ];
+  // songs: ISong[] = [];
   constructor(private songService: SongService) { }
-
   ngOnInit(): void {
-    console.log(this.songs);
-    let singleSong: any;
-    this.songService.getTop10Song().subscribe(data => {
-        singleSong = {
-          name: data.name,
-          fileUrl: data.fireUrl,
-          imageUrl: data.imageUrl,
-          singers: data.s_singers,
-          userCreate: data.user.profile.lastName,
-          postTime: data.postTime
-        };
-        this.songs.push(singleSong);
-    })
+    // this.songService.getTop10Song().subscribe(data => {
+    //   this.songs = data;
+    // });
+    // console.log(this.songs);
   }
-  getPostTimeToString(date): string{
+  getPostTimeToString(postTime): string{
     // @ts-ignore
+    let date = new Date(postTime);
     let string = date.toDateString();
     string = string.slice(4);
     return string;

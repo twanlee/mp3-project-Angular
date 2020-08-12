@@ -9,7 +9,7 @@ import {ISong} from '../../../interfaces/isong';
 export class GreatestSongComponent implements OnInit {
   song: ISong = {
     name: "em không sai chúng ta sai",
-    fileUrl: "https://firebasestorage.googleapis.com/v0/b/meomp3-5e362.appspot.com/o/mp3%2Ffeatured%2F5x1d6s1597142101591?alt=media&token=30ffde17-3abc-4f4e-80be-c0b93edbb455",
+    fileUrl: "https://firebasestorage.googleapis.com/v0/b/meomp3-5e362.appspot.com/o/mp3%2Ffeatured%2F1i8hap1597203476592?alt=media&token=5facb0dc-1cb9-4c91-b2cf-6e781362f6f8",
     imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRCHgWzdp42iGryC5Wkt6iFK5JC_mL8CXcyUA&usqp=CAU",
     singers: [{
       fullName: "erik"
