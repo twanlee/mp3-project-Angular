@@ -31,4 +31,8 @@ export class SongService {
   getSongByName(nameSong: string):Observable<ISong[]>{
     return this.http.get<ISong[]>(this.url_api+"/"+nameSong+"/search");
   }
+
+  getTop10Song(): Observable<any>{
+    return this.http.get<any>(this.url_api + "/topten")
+  }
 }

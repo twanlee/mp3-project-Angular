@@ -23,15 +23,11 @@ export class GreatestSongComponent implements OnInit {
     // @ts-ignore
     let string = this.song.postTime.toDateString();
     string = string.slice(4);
-    console.log(string);
     return string;
   }
   getSongDuration(): string {
-
-
     // @ts-ignore
     let duration = this.song.fileUrl.duration;
-    console.log(duration);
     let minute = Math.floor(duration/60);
     let seconds = duration - minute*60;
     let time = minute+ ":" + seconds;
@@ -42,7 +38,7 @@ export class GreatestSongComponent implements OnInit {
   ngOnInit(): void {
     this.postTime = this.getPostTimeToString();
     this.songDuration = this.getSongDuration();
-
+    console.log("Greatest Song Loaded")
   }
 
 

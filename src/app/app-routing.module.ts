@@ -13,6 +13,7 @@ import {CreateSongComponent} from './components/songs/create-song/create-song.co
 import {LoginComponent} from './components/login/login.component';
 import {SongSearchingResultsComponent} from "./components/song-searching-results/song-searching-results.component";
 import {GreatestSongComponent} from './components/songs/greatest-song/greatest-song.component';
+import {HomePageComponent} from './components/home-page/home-page.component';
 
 const routes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -20,7 +21,7 @@ const routes: Routes = [
   {path: "login", component: LoginComponent},
   {path: 'song/create', component: CreateSongComponent},
   {path: 'search', component: SongSearchingResultsComponent},
-  {path: '', component: GreatestSongComponent}
+  {path: '', component: HomePageComponent}
   ];
 
 @NgModule({
