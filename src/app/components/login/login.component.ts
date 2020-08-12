@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Role} from '../../interfaces/role/role';
 import {AuthenticationService} from '../../services/auth/authentication.service';
-import {FormControl, FormGroup} from '@angular/forms';
-// import {IUser} from '../../interfaces/user/user';
 import {Router} from '@angular/router';
 import {TokenStorageService} from '../../services/token-storage.service';
 
@@ -16,15 +13,17 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
-  email = this.tokenStorage.getUser();
+  firstName = this.tokenStorage.getUser();
+  lastName = this.tokenStorage.getUser();
+  currentBefore = '';
   constructor(private authenticationService: AuthenticationService,
-              private tokenStorage: TokenStorageService) {
+              private tokenStorage: TokenStorageService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
-      this.email = this.tokenStorage.getUser().email;
     }
   }
 
@@ -34,23 +33,18 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveToken(data.accessToken);
         console.log(data.accessToken);
         this.tokenStorage.saveUser(data);
-        console.log(data);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        // dòng này sẽ lấy ra user từ userService
-        //set vào storage Full Name của user "name"
-        this.email = this.tokenStorage.getUser().email;
+        this.firstName = this.tokenStorage.getUser().firstName;
+        this.lastName = this.tokenStorage.getUser().lastName;
+        this.currentBefore = this.tokenStorage.getUrl();
+        this.router.navigate(["/"]).then(result=>{window.location.href = this.currentBefore;});
       },
       err => {
-        this.errorMessage = err.error.message;
+        this.errorMessage = 'Vui lòng kiểm tra lại Email và Password';
         this.isLoginFailed = true;
       }
     );
-  }
-
-  logOut() {
-    this.tokenStorage.singOut();
-    window.location.reload();
   }
 
 }
