@@ -36,7 +36,9 @@ export class TokenStorageService {
   public saveUser(user: IUserToken) {
     window.localStorage.removeItem(this.USER_KEY);
     window.localStorage.setItem(this.USER_KEY, JSON.stringify(user));
-    window.localStorage.setItem("userId",user.id.toString())
+    window.localStorage.setItem("userId",user.id.toString());
+    window.localStorage.setItem("firstName",user.firstName.toString());
+    window.localStorage.setItem("lastName",user.lastName.toString());
   }
 
   public getUser() {
