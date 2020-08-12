@@ -37,6 +37,8 @@ export class SongEditComponent implements OnInit {
         singers: [this.song.singers],
         description : [this.song.description],
       })
+      this.songUrl = this.song.fileUrl;
+      this.imageUrl = this.song.imageUrl;
     });
 
   }
