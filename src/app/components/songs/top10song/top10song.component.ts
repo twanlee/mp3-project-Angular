@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import {ISong} from '../../../interfaces/isong';
 import {IArtist} from '../../../interfaces/iartist';
 import {SongService} from '../../../services/songs/song.service';
+
 @Component({
   selector: 'app-top10song',
   templateUrl: './top10song.component.html',
   styleUrls: ['./top10song.component.css']
 })
 export class Top10songComponent implements OnInit {
+
   songs: ISong[] = [
     {
       name: "em không sai chúng ta sai",
@@ -110,13 +112,18 @@ export class Top10songComponent implements OnInit {
       postTime: new Date()
     }
   ];
+
   // songs: ISong[] = [];
   constructor(private songService: SongService) { }
+
   ngOnInit(): void {
-    // this.songService.getTop10Song().subscribe(data => {
-    //   this.songs = data;
-    // });
-    // console.log(this.songs);
+    this.songService.getTop10Song().subscribe(data => {
+      console.log("data :")
+      console.log(data)
+      this.songs = data;
+      console.log("songs :")
+      console.log(this.songs)
+    })
   }
   getPostTimeToString(postTime): string{
     // @ts-ignore
