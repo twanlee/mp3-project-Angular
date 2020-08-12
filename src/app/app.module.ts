@@ -1,27 +1,26 @@
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HttpClientModule} from '@angular/common/http';
-import { LoginComponent } from './components/login/login.component';
-import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {authInterceptorProviders} from './helper/auth.interceptor';
-import {APP_BASE_HREF} from '@angular/common';
 import { RegisterComponent } from './components/register/register.component';
-import { ViewSongByUserComponent } from './components/view-song-by-user/view-song-by-user.component';
-import {NgxPaginationModule} from "ngx-pagination";
-import { SongSearchingResultsComponent } from './components/song-searching-results/song-searching-results.component';
-import {AngularFireModule} from '@angular/fire';
-import {environment} from '../environments/environment';
-import {AngularFireStorageModule} from '@angular/fire/storage';
-import {AngularFireDatabaseModule} from '@angular/fire/database';
-import { CreateSongComponent } from './components/songs/create-song/create-song.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from "@angular/common/http";
 import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
-import {HomePageComponent} from './components/home-page/home-page.component';
+import {SongDetailComponent} from "./components/song/song-detail/song-detail.component";
+import { HomePageComponent } from "./components/home-page/home-page.component";
+import {CreateSongComponent} from './components/songs/create-song/create-song.component';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {LoginComponent} from './components/login/login.component';
+import {ViewSongByUserComponent} from './components/view-song-by-user/view-song-by-user.component';
+import {SongSearchingResultsComponent} from './components/song-searching-results/song-searching-results.component';
+import {EditProfileComponent} from './components/edit-profile/edit-profile.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {authInterceptorProviders} from './helper/auth.interceptor';
+import {APP_BASE_HREF} from '@angular/common';
 import { GreatestSongComponent } from './components/songs/greatest-song/greatest-song.component';
 import { Top10songComponent } from './components/songs/top10song/top10song.component';
 
@@ -37,6 +36,8 @@ import { Top10songComponent } from './components/songs/top10song/top10song.compo
     SongSearchingResultsComponent,
     HeaderComponent,
     FooterComponent,
+    SongDetailComponent,
+    HomePageComponent,
     HomePageComponent,
     GreatestSongComponent,
     Top10songComponent
@@ -51,9 +52,7 @@ import { Top10songComponent } from './components/songs/top10song/top10song.compo
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
-    NgxPaginationModule
-
+    NgxPaginationModule,
   ],
   providers: [authInterceptorProviders,{
     provide: APP_BASE_HREF, useValue: "/"

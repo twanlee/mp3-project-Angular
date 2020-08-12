@@ -1,28 +1,25 @@
 
-// @ts-ignore
 import {NgModule} from "@angular/core";
-// @ts-ignore
 import {Routes, RouterModule} from "@angular/router";
 import {RegisterComponent} from "./components/register/register.component";
 import {ViewSongByUserComponent} from "./components/view-song-by-user/view-song-by-user.component";
-// @ts-ignore
-import { NgModule } from '@angular/core';
-// @ts-ignore
-import { Routes, RouterModule } from '@angular/router';
 import {CreateSongComponent} from './components/songs/create-song/create-song.component';
 import {LoginComponent} from './components/login/login.component';
+import {EditProfileComponent} from './components/edit-profile/edit-profile.component';
 import {SongSearchingResultsComponent} from "./components/song-searching-results/song-searching-results.component";
-import {GreatestSongComponent} from './components/songs/greatest-song/greatest-song.component';
-import {HomePageComponent} from './components/home-page/home-page.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
 
 const routes: Routes = [
+
   {path: 'register', component: RegisterComponent},
+  {path: 'song/create', component: CreateSongComponent},
   {path: 'user/song-list', component: ViewSongByUserComponent},
   {path: "login", component: LoginComponent},
-  {path: 'song/create', component: CreateSongComponent},
+  {path: "edit-profile", component: EditProfileComponent},
+  {path: 'song/create',component: CreateSongComponent},
   {path: 'search', component: SongSearchingResultsComponent},
   {path: '', component: HomePageComponent}
-  ];
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
