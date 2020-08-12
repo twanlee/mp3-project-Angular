@@ -34,7 +34,7 @@ export class CreateSongComponent implements OnInit {
     });
   }
 
-  async createSong(event) {
+  createSong(event) {
     const randomString = Math.random().toString(36).substring(7);
     const filePath = 'mp3/featured/' +randomString+new Date().getTime();
     this.fileSong = event.target.files[0];
@@ -68,7 +68,7 @@ export class CreateSongComponent implements OnInit {
     this.song.name = data.name;
     this.song.description = data.description;
     this.song.lyric = data.lyric;
-    this.songService.createSong(this.song).subscribe(() => {
+    this.songService.saveSong(this.song).subscribe(() => {
       console.log('Add song successful');
     });
     //Điều hướng sau khi post đi đâu tại đây

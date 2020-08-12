@@ -20,7 +20,7 @@ export class UserService {
   URL_GET_ALL_SONG = "http://localhost:8080/api/user/";
 
   getAllSongByUser(id: number): Observable<ISong[]> {
-    return this.http.get<ISong[]>(this.URL_GET_ALL_SONG + id + "/get-songs")
+    return this.http.get<ISong[]>(this.URL_GET_ALL_SONG+"user/" + id + "/songs")
   }
 
 }

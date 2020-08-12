@@ -1,0 +1,50 @@
+<div  style="text-align: left">
+  <div style="width: 700px; padding-top: 100px; padding-left: 200px; display: inline-block;font-size: 22px;font-family: 'Arial Black';">
+    <form (ngSubmit)="submit()" [formGroup]="editSongForm" >
+      <input type="hidden" formControlName="id" value="{{song.id}}">
+      <div class="form-group">
+        <label for="exampleInputSong1">Name of Song :</label>
+        <input type="text" class="form-control" id="exampleInputSong1" formControlName="name" >
+      </div>
+      <div>
+        <label for="exampleInputCategory1">Category :</label>
+        <input type="text" class="form-control" id="exampleInputCategory1" formControlName="category" >
+      </div>
+      <div class="form-group">
+        <div>
+          <label for="exampleInputLyric1">Lyric :</label>
+        </div>
+        <div>
+          <textarea class="form-control" id="exampleInputLyric1" cols="30" rows="10" formControlName="lyric"></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputAuthor1">Authors :</label>
+        <input type="text" class="form-control" id="exampleInputAuthor1" formControlName="authors" >
+      </div>
+      <div class="form-group">
+        <label for="exampleInputSinger1">Singers :</label>
+        <input type="text" class="form-control" id="exampleInputSinger1" formControlName="singers" >
+      </div>
+      <div class="form-group">
+        <div>
+          <label for="exampleInputDescription1">Description :</label>
+        </div>
+        <div>
+          <textarea class="form-control" id="exampleInputDescription1" cols="30" rows="10" formControlName="description"></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlFile1">Upload file Mp3</label>
+        <input type="file" class="form-control-file" id="exampleFormControlFile1" (change)="updateSong($event)">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlFile2">Upload file Image:</label>
+        <input type="file" class="form-control-file" id="exampleFormControlFile2" (change)="updateImage($event)">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+  </div>
+
+</div>
