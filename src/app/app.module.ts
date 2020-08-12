@@ -21,6 +21,10 @@ import {EditProfileComponent} from './components/edit-profile/edit-profile.compo
 import {NgxPaginationModule} from 'ngx-pagination';
 import {authInterceptorProviders} from './helper/auth.interceptor';
 import {APP_BASE_HREF} from '@angular/common';
+import { GreatestSongComponent } from './components/songs/greatest-song/greatest-song.component';
+import { Top10songComponent } from './components/songs/top10song/top10song.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +38,9 @@ import {APP_BASE_HREF} from '@angular/common';
     FooterComponent,
     SongDetailComponent,
     HomePageComponent,
+    HomePageComponent,
+    GreatestSongComponent,
+    Top10songComponent
   ],
   imports: [
     BrowserModule,
