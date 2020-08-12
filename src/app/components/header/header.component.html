@@ -48,7 +48,17 @@
               <i class="fa fa-user" style="color: white; cursor: pointer" routerLink="/login">Login</i>
             </div>
             <div *ngIf="showName">
-              <i style="color: white">Hello! {{ firstName }} {{ lastName }}</i>
+              <div class="container">
+                <div class="dropdown">
+                  <i class="dropbtn">Hello! {{firstName}} {{lastName}}</i>
+                  <div class="dropdown-content">
+                    <a href="/user/{id}/profile">Profile</a>
+                    <a href="/user/{id}/songs">Nhạc cá nhân</a>
+                    <a class="btn btn-danger" (click)="logOut()">Log Out</a>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
           <!-- Nav End -->
