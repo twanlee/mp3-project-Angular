@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {SongService} from "../../services/songs/song.service";
-import {ISong} from "../../interfaces/isong";
+import {SongService} from "../../../services/songs/song.service";
+import {ISong} from "../../../interfaces/isong";
 
 @Component({
   selector: 'app-song-searching-results',
