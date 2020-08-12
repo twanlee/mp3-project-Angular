@@ -23,6 +23,8 @@ import {authInterceptorProviders} from './helper/auth.interceptor';
 import {APP_BASE_HREF} from '@angular/common';
 import { GreatestSongComponent } from './components/songs/greatest-song/greatest-song.component';
 import { Top10songComponent } from './components/songs/top10song/top10song.component';
+import { SongPlayerComponent } from './components/songs/song-player/song-player.component';
+import { SongDescriptionComponent } from './components/songs/song-description/song-description.component';
 import {SongEditComponent} from './components/songs/song-edit/song-edit.component';
 
 
@@ -43,6 +45,8 @@ import {SongEditComponent} from './components/songs/song-edit/song-edit.componen
     HomePageComponent,
     GreatestSongComponent,
     Top10songComponent,
+    SongPlayerComponent,
+    SongDescriptionComponent,
     SongEditComponent
   ],
   imports: [

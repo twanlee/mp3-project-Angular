@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../../services/user/user.service";
-import {IUser} from "../../../interfaces/user/user";
-import {IUserToken} from "../../../interfaces/user/user-token";
 import {SongService} from "../../../services/songs/song.service";
 import {ISong} from "../../../interfaces/isong";
 
