@@ -1,3 +1,4 @@
+
 import {NgModule} from "@angular/core";
 import {Routes, RouterModule} from "@angular/router";
 import {RegisterComponent} from "./components/register/register.component";
@@ -8,6 +9,7 @@ import {EditProfileComponent} from './components/edit-profile/edit-profile.compo
 import {SongSearchingResultsComponent} from "./components/song-searching-results/song-searching-results.component";
 
 const routes: Routes = [
+
   {path: 'register', component: RegisterComponent},
   {path: 'song/create', component: CreateSongComponent},
   {path: 'register', component: RegisterComponent},
