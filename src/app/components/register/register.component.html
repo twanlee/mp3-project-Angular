@@ -1,64 +1,67 @@
-<h2 class="text-center">User registration</h2>
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="col-md-6 offset-md-3">
-  <div class="form-group row">
-    <label class="col">
-      Email
-      <input type="email" class="form-control" formControlName="email">
-    </label>
-  </div>
-<!--  <div class="alert alert-danger" role="alert" [hidden]="isActive" >-->
-<!--    Email have been existed!-->
-<!--  </div>-->
-  <div class="alert alert-danger" role="alert" *ngIf="registerForm.get('email').invalid && registerForm.get('email').touched">
-    Invalid email!
-  </div>
-
-  <div class="form-group row">
-    <label class="col">
-      First Name
-      <input type="email" class="form-control" formControlName="firstName">
-    </label>
-  </div>
-  <div class="alert alert-danger" role="alert" *ngIf="registerForm.get('firstName').invalid && registerForm.get('firstName').touched">
-    Invalid field!
-  </div>
-  <div class="form-group row">
-    <label class="col">
-      Last Name
-      <input type="email" class="form-control" formControlName="lastName">
-    </label>
-  </div>
-  <div class="alert alert-danger" role="alert" *ngIf="registerForm.get('lastName').invalid && registerForm.get('lastName').touched">
-    Invalid field!
-  </div>
-
-  <fieldset formGroupName="pwGroup">
+<div style="padding: 100px">
+  <h2 class="text-center">User registration</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="col-md-6 offset-md-3">
     <div class="form-group row">
       <label class="col">
-        Password
-        <input type="password" class="form-control" formControlName="password">
+        Email
+        <input type="email" class="form-control" formControlName="email">
       </label>
     </div>
-    <div class="alert alert-danger" role="alert" *ngIf="registerForm.get('pwGroup').get('password').invalid && registerForm.get('pwGroup').get('password').touched">
-      Password required at least 6 character!
+    <!--  <div class="alert alert-danger" role="alert" [hidden]="isActive" >-->
+    <!--    Email have been existed!-->
+    <!--  </div>-->
+    <div class="alert alert-danger" role="alert" *ngIf="registerForm.get('email').invalid && registerForm.get('email').touched">
+      Invalid email!
+    </div>
+
+    <div class="form-group row">
+      <label class="col">
+        First Name
+        <input type="email" class="form-control" formControlName="firstName">
+      </label>
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="registerForm.get('firstName').invalid && registerForm.get('firstName').touched">
+      Invalid field!
     </div>
     <div class="form-group row">
       <label class="col">
-        Confirm Password
-        <input type="password" class="form-control" formControlName="confirmPassword">
+        Last Name
+        <input type="email" class="form-control" formControlName="lastName">
       </label>
     </div>
-  </fieldset>
-  <div class="alert alert-danger" role="alert"
-       *ngIf="registerForm.hasError('passwordnotmatch', ['pwGroup']) &&
+    <div class="alert alert-danger" role="alert" *ngIf="registerForm.get('lastName').invalid && registerForm.get('lastName').touched">
+      Invalid field!
+    </div>
+
+    <fieldset formGroupName="pwGroup">
+      <div class="form-group row">
+        <label class="col">
+          Password
+          <input type="password" class="form-control" formControlName="password">
+        </label>
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="registerForm.get('pwGroup').get('password').invalid && registerForm.get('pwGroup').get('password').touched">
+        Password required at least 6 character!
+      </div>
+      <div class="form-group row">
+        <label class="col">
+          Confirm Password
+          <input type="password" class="form-control" formControlName="confirmPassword">
+        </label>
+      </div>
+    </fieldset>
+    <div class="alert alert-danger" role="alert"
+         *ngIf="registerForm.hasError('passwordnotmatch', ['pwGroup']) &&
       registerForm.get('pwGroup').touched">
-    Password does not match!
-  </div>
-  <div class="form-group">
-    <button class="btn btn-info" type="submit">Submit</button>
-  </div>
-</form>
+      Password does not match!
+    </div>
+    <div class="form-group">
+      <button class="btn btn-info" type="submit">Submit</button>
+    </div>
+  </form>
 
-<!--<pre>-->
-<!--  {{ registerForm.value | json}}-->
-<!--</pre>-->
+  <!--<pre>-->
+  <!--  {{ registerForm.value | json}}-->
+  <!--</pre>-->
+
+</div>

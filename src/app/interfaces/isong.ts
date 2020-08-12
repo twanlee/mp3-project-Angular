@@ -9,6 +9,7 @@ export interface ISong {
   description?: string;
   authors?: IArtist[];
   singers?: IArtist[];
-  postTime?: Date
+  postTime?: Date;
+  userCreate?: string; // chỉ cần bắt tên của User tạo ra bài hát
 }
 
