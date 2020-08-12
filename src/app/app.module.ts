@@ -1,8 +1,6 @@
-// @ts-ignore
-import { BrowserModule } from '@angular/platform-browser';
-// @ts-ignore
-import { NgModule } from '@angular/core';
 
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -12,8 +10,12 @@ import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {SongDetailComponent} from './components/song/song-detail/song-detail.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import {CreateSongComponent} from './components/songs/create-song/create-song.component';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
 
-// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +23,8 @@ import { HomePageComponent } from './components/home-page/home-page.component';
     HeaderComponent,
     FooterComponent,
     SongDetailComponent,
-    HomePageComponent
+    HomePageComponent,
+    CreateSongComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,10 @@ import { HomePageComponent } from './components/home-page/home-page.component';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireDatabaseModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]

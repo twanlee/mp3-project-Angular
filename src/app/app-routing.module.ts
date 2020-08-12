@@ -1,14 +1,11 @@
-// @ts-ignore
 import {NgModule} from "@angular/core";
-// @ts-ignore
 import {Routes, RouterModule} from "@angular/router";
 import {RegisterComponent} from "./components/register/register.component";
+import {CreateSongComponent} from './components/songs/create-song/create-song.component';
 
 const routes: Routes = [
-  {
-    path: 'register',
-    component: RegisterComponent
-  }
+  {path: 'register', component: RegisterComponent},
+  {path: 'song/create', component: CreateSongComponent}
 ];
 
 @NgModule({
