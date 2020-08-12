@@ -53,7 +53,7 @@ export class CreateSongComponent implements OnInit {
       const filePath = 'image/featured/' +randomString+new Date().getTime();
       this.fileImage = event.target.files[0];
       const fileRef = this.storage.ref(filePath);
-      this.storage.upload(filePath,this.fileSong).snapshotChanges().pipe(
+      this.storage.upload(filePath,this.fileImage).snapshotChanges().pipe(
         finalize(() =>{
           fileRef.getDownloadURL().subscribe(url =>{
             this.song.imageUrl = url;
