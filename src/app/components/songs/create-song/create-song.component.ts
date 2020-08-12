@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {SongService} from '../../../services/songs/song.service';
 import {Router} from '@angular/router';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
 import {ISong} from '../../../interfaces/isong';
+import {async} from 'rxjs/internal/scheduler/async';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-create-song',
@@ -13,13 +15,14 @@ import {ISong} from '../../../interfaces/isong';
 })
 export class CreateSongComponent implements OnInit {
   createSongForm: FormGroup;
-  song: ISong ={
-
-  };
+  fileSong: File;
+  fileImage: File;
+  song: ISong = {};
   constructor(private storage: AngularFireStorage,
               private fb: FormBuilder,
               private songService: SongService,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit(): void {
     this.createSongForm = this.fb.group({
@@ -30,42 +33,46 @@ export class CreateSongComponent implements OnInit {
       description: ['']
     });
   }
-  createSong(event: any){
-    let randomString = Math.random().toString(36).substring(7);
-    let filePath: string = '/mp3/featured/'+randomString+new Date().getTime();
-    const file: File = event.target.files[0];
+
+  createSong(event) {
+    const randomString = Math.random().toString(36).substring(7);
+    const filePath = 'mp3/featured/' +randomString+new Date().getTime();
+    this.fileSong = event.target.files[0];
     const fileRef = this.storage.ref(filePath);
-    this.storage.upload(filePath,file).snapshotChanges().pipe(
-      finalize( ()=> {
-        fileRef.getDownloadURL().subscribe(url => {
-              this.song.fileUrl = url;
+    this.storage.upload(filePath,this.fileSong).snapshotChanges().pipe(
+      finalize(() =>{
+        fileRef.getDownloadURL().subscribe(url =>{
+          this.song.fileUrl = url;
+          console.log(url);
         })
       })
-    )
+    ).subscribe();
   }
-  createImage(event: any){
-    let randomString = Math.random().toString(36).substring(7);
-    let filePath: string = '/images/featured/'+randomString+new Date().getTime();
-    const file: File = event.target.files[0];
-    const fileRef = this.storage.ref(filePath)
-    this.storage.upload(filePath,file).snapshotChanges().pipe(
-      finalize( ()=> {
-        fileRef.getDownloadURL().subscribe(url => {
-          this.song.imageUrl = url;
+  createImage(event) {
+      const randomString = Math.random().toString(36).substring(7);
+      const filePath = 'image/featured/' +randomString+new Date().getTime();
+      this.fileImage = event.target.files[0];
+      const fileRef = this.storage.ref(filePath);
+      this.storage.upload(filePath,this.fileImage).snapshotChanges().pipe(
+        finalize(() =>{
+          fileRef.getDownloadURL().subscribe(url =>{
+            this.song.imageUrl = url;
+            console.log(url);
+          })
         })
-      })
-    )
+      ).subscribe();
   }
-  submit(){
-      let data = this.createSongForm.value;
-      this.song.name = data.name;
-      this.song.description = data.description;
-      this.song.lyric = data.lyric;
-      this.songService.createSong(this.song).subscribe(()=>{
-        console.log("Add song successful");
-      });
-      //Điều hướng sau khi post đi đâu tại đây
-      // this.router.navigate("")
+
+  submit() {
+    let data = this.createSongForm.value;
+    this.song.name = data.name;
+    this.song.description = data.description;
+    this.song.lyric = data.lyric;
+    this.songService.saveSong(this.song).subscribe(() => {
+      console.log('Add song successful');
+    });
+    //Điều hướng sau khi post đi đâu tại đây
+    // this.router.navigate("")
 
   }
 }

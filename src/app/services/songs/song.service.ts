@@ -20,7 +20,7 @@ export class SongService {
     return this.http.get<ISong>(this.url_api + '/' + id + '/detail');
   }
 
-  createSong(data: ISong): Observable<ISong> {
+  saveSong(data: ISong): Observable<ISong> {
     return this.http.post<ISong>(this.url_api + '/save', data);
   }
 
@@ -30,5 +30,9 @@ export class SongService {
 
   getSongByName(nameSong: string):Observable<ISong[]>{
     return this.http.get<ISong[]>(this.url_api+"/"+nameSong+"/search");
+  }
+
+  getTop10Song(): Observable<ISong[]>{
+    return this.http.get<ISong[]>(this.url_api + "/topten")
   }
 }
