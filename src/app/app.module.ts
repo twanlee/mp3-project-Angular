@@ -7,7 +7,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from "@angular/common/http";
 import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
-import {SongDetailComponent} from "./components/song/song-detail/song-detail.component";
+import {SongDetailComponent} from "./components/songs/song-detail/song-detail.component";
 import { HomePageComponent } from "./components/home-page/home-page.component";
 import {CreateSongComponent} from './components/songs/create-song/create-song.component';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
@@ -23,6 +23,8 @@ import {authInterceptorProviders} from './helper/auth.interceptor';
 import {APP_BASE_HREF} from '@angular/common';
 import { GreatestSongComponent } from './components/songs/greatest-song/greatest-song.component';
 import { Top10songComponent } from './components/songs/top10song/top10song.component';
+import { SongPlayerComponent } from './components/songs/song-player/song-player.component';
+import { SongDescriptionComponent } from './components/songs/song-description/song-description.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { Top10songComponent } from './components/songs/top10song/top10song.compo
     HomePageComponent,
     HomePageComponent,
     GreatestSongComponent,
-    Top10songComponent
+    Top10songComponent,
+    SongPlayerComponent,
+    SongDescriptionComponent
   ],
   imports: [
     BrowserModule,

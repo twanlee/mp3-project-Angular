@@ -8,6 +8,7 @@ import {LoginComponent} from './components/login/login.component';
 import {EditProfileComponent} from './components/edit-profile/edit-profile.component';
 import {SongSearchingResultsComponent} from "./components/song-searching-results/song-searching-results.component";
 import { HomePageComponent } from './components/home-page/home-page.component';
+import {SongDetailComponent} from './components/songs/song-detail/song-detail.component';
 
 const routes: Routes = [
 
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path: "edit-profile", component: EditProfileComponent},
   {path: 'song/create',component: CreateSongComponent},
   {path: 'search', component: SongSearchingResultsComponent},
-  {path: '', component: HomePageComponent}
+  {path: '', component: HomePageComponent},
+  {path: 'song/:id/detail', component: SongDetailComponent}
 ];
 
 @NgModule({
