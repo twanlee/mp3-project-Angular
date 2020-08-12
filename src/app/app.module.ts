@@ -1,6 +1,8 @@
 
 import { BrowserModule } from '@angular/platform-browser';
+
 import { NgModule } from '@angular/core';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -15,13 +17,25 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
+import {LoginComponent} from './components/login/login.component';
+import {ViewSongByUserComponent} from './components/view-song-by-user/view-song-by-user.component';
+import {SongSearchingResultsComponent} from './components/song-searching-results/song-searching-results.component';
+import {EditProfileComponent} from './components/edit-profile/edit-profile.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    CreateSongComponent,
+    LoginComponent,
+    EditProfileComponent,
     RegisterComponent,
+    ViewSongByUserComponent,
+    SongSearchingResultsComponent,
     HeaderComponent,
     FooterComponent,
+    HomePageComponent,
     SongDetailComponent,
     HomePageComponent,
     CreateSongComponent
@@ -29,13 +43,16 @@ import {environment} from '../environments/environment';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
     ReactiveFormsModule,
     HttpClientModule,
+    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFireDatabaseModule,
-    AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    NgxPaginationModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

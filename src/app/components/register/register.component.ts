@@ -2,8 +2,10 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {RegisterService} from "../../services/register/register.service";
-import {User} from "../../interfaces/user/user";
 import {Router} from "@angular/router";
+// @ts-ignore
+import {IUser} from '../../interfaces/user/user';
+
 
 function comparePassword(c: AbstractControl) {
   const v = c.value;
@@ -19,7 +21,6 @@ function comparePassword(c: AbstractControl) {
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  isActive: boolean = false;
 
   constructor(private fb: FormBuilder,
               private register: RegisterService,
@@ -30,7 +31,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
-      email: ['example@gmail.com', [Validators.required, Validators.email]],
+      email: ['info@example.com', [Validators.required, Validators.email]],
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
       pwGroup: this.fb.group({
         password: ['',[Validators.minLength(6)]],
         confirmPassword: ''
@@ -42,16 +45,18 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     if (this.registerForm.valid) {
       const data = this.registerForm.value;
-      const user: User = {
+      const user: IUser = {
         email: data.email,
+        firstName: data.firstName,
+        lastName: data.lastName,
         password: data.pwGroup.password
       };
+      // console.log(user)
       this.register.registerUser(user).subscribe(() => {
         this.registerForm.reset("");
         alert('Done!');
       }, error => {
-        // alert(error.error.msg);
-        this.isActive = true;
+        alert(error.error.msg);
       });
     }
   }

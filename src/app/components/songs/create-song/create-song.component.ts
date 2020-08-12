@@ -15,10 +15,9 @@ import {Observable} from 'rxjs';
 })
 export class CreateSongComponent implements OnInit {
   createSongForm: FormGroup;
-  songUrl: string = '';
-  imgUrl: string = '';
+  fileSong: File;
+  fileImage: File;
   song: ISong = {};
-
   constructor(private storage: AngularFireStorage,
               private fb: FormBuilder,
               private songService: SongService,
@@ -35,54 +34,38 @@ export class CreateSongComponent implements OnInit {
     });
   }
 
-  async createSong(event: any) {
-    let randomString = Math.random().toString(36).substring(7);
-    let filePath: string = '/mp3/featured/' + randomString + new Date().getTime();
-    const file: File = event.target.files[0];
-    // const fileRef = this.storage.ref(filePath);
-    // this.storage.upload(filePath, file).snapshotChanges().pipe(
-    //   finalize(() => {
-    //     fileRef.getDownloadURL().subscribe(url => {
-    //       this.songUrl = url;
-    //     });
-    //   })
-    // );
-    this.getUrl(file, filePath).subscribe( url =>{
-      this.songUrl = url;
-    });
-
-  }
-  getUrl(file: File,filePath: string): Observable<string>{
+  async createSong(event) {
+    const randomString = Math.random().toString(36).substring(7);
+    const filePath = 'mp3/featured/' +randomString+new Date().getTime();
+    this.fileSong = event.target.files[0];
     const fileRef = this.storage.ref(filePath);
-    this.storage.upload(filePath, file).snapshotChanges().pipe(
-      finalize(() => {
-        fileRef.getDownloadURL().subscribe(url => {
-          return  url;
-        });
+    this.storage.upload(filePath,this.fileSong).snapshotChanges().pipe(
+      finalize(() =>{
+        fileRef.getDownloadURL().subscribe(url =>{
+          this.song.fileUrl = url;
+          console.log(url);
+        })
       })
-    );
-    return null;
+    ).subscribe();
   }
-
- async createImage(event: any) {
-    let randomString = Math.random().toString(36).substring(7);
-    let filePath: string = '/images/featured/' + randomString + new Date().getTime();
-    const file: File = event.target.files[0];
-    const fileRef = this.storage.ref(filePath);
-    this.storage.upload(filePath, file).snapshotChanges().pipe(
-      finalize(() => {
-        fileRef.getDownloadURL().subscribe(url => {
-          this.imgUrl = url;
-        });
-      })
-    );
+  createImage(event) {
+      const randomString = Math.random().toString(36).substring(7);
+      const filePath = 'image/featured/' +randomString+new Date().getTime();
+      this.fileImage = event.target.files[0];
+      const fileRef = this.storage.ref(filePath);
+      this.storage.upload(filePath,this.fileSong).snapshotChanges().pipe(
+        finalize(() =>{
+          fileRef.getDownloadURL().subscribe(url =>{
+            this.song.imageUrl = url;
+            console.log(url);
+          })
+        })
+      ).subscribe();
   }
 
   submit() {
     let data = this.createSongForm.value;
     this.song.name = data.name;
-    this.song.fileUrl = this.songUrl;
-    this.song.imageUrl = this.imgUrl;
     this.song.description = data.description;
     this.song.lyric = data.lyric;
     this.songService.createSong(this.song).subscribe(() => {
