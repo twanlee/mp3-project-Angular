@@ -16,15 +16,19 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
-  email = this.tokenStorage.getUser();
+  firstName = this.tokenStorage.getUser();
+  lastName = this.tokenStorage.getUser();
+  currentBefore = '';
   constructor(private authenticationService: AuthenticationService,
-              private tokenStorage: TokenStorageService) {
+              private tokenStorage: TokenStorageService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
-      this.email = this.tokenStorage.getUser().email;
+      this.firstName = this.tokenStorage.getUser().firstName;
+      this.lastName = this.tokenStorage.getUser().lastName;
     }
   }
 
@@ -37,10 +41,13 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveUser(data);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.email = this.tokenStorage.getUser().email;
+        this.firstName = this.tokenStorage.getUser().firstName;
+        this.lastName = this.tokenStorage.getUser().lastName;
+        this.currentBefore = this.tokenStorage.getUrl();
+        this.router.navigate(["/"]).then(result=>{window.location.href = this.currentBefore;});
       },
       err => {
-        this.errorMessage = err.error.message;
+        this.errorMessage = 'Vui lòng kiểm tra lại Email và Password';
         this.isLoginFailed = true;
       }
     );

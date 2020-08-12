@@ -1,41 +1,110 @@
-<div class="col-md-12">
-  <div class="card card-container">
-    <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card"/>
-    <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-      <div class="form-group">
-        <label for="username">Email</label>
-        <input type="text" class="form-control" id="username" name="username" [(ngModel)]="userForm.email" required #email="ngModel"/>
-        <div class="alert alert-danger" role="alert" *ngIf="f.submitted && email.invalid">
-          Email is required!
+<!--<div class="col-md-12">-->
+<!--  <div class="card card-container">-->
+<!--    <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card"/>-->
+<!--    <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>-->
+<!--      <div class="form-group">-->
+<!--        <label for="username">Email</label>-->
+<!--        <input type="text" class="form-control" id="username" name="username" [(ngModel)]="userForm.email" required #email="ngModel"/>-->
+<!--        <div class="alert alert-danger" role="alert" *ngIf="f.submitted && email.invalid">-->
+<!--          Email is required!-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="password">Password</label>-->
+<!--        <input type="password" class="form-control" id="password" name="password" [(ngModel)]="userForm.password" required minlength="6" #password="ngModel"/>-->
+<!--        <div class="alert alert-danger" role="alert" *ngIf="f.submitted && password.invalid">-->
+<!--          <div *ngIf="password.errors.required">Password is required</div>-->
+<!--          <div *ngIf="password.errors.minlength">-->
+<!--            Password must be at least 6 characters-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <button class="btn btn-primary btn-block">-->
+<!--          Login-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">-->
+<!--          Login failed: {{ errorMessage }}-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </form>-->
+
+<!--    <div class="alert alert-success" *ngIf="isLoggedIn">-->
+<!--      Logged in as {{firstName}} {{lastName}}.-->
+<!--    </div>-->
+<!--    <button *ngIf="isLoggedIn" class="btn btn-danger" (click)="logOut()">Log Out</button>-->
+
+<!--  </div>-->
+<!--</div>-->
+
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
+      <form class="login100-form validate-form" *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+					<span class="login100-form-title p-b-55">
+						Login
+					</span>
+        <div class="wrap-input100 validate-input m-b-16">
+          <input type="text" name="username" [(ngModel)]="userForm.email" class="input100" placeholder="Email">
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+							<span class="lnr lnr-envelope"></span>
+          </span>
         </div>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" name="password" [(ngModel)]="userForm.password" required minlength="6" #password="ngModel"/>
-        <div class="alert alert-danger" role="alert" *ngIf="f.submitted && password.invalid">
-          <div *ngIf="password.errors.required">Password is required</div>
-          <div *ngIf="password.errors.minlength">
-            Password must be at least 6 characters
+
+        <div class="wrap-input100 validate-input m-b-16">
+          <input class="input100" type="password" name="pass" placeholder="Password" [(ngModel)]="userForm.password">
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+							<span class="lnr lnr-lock"></span>
+          </span>
+        </div>
+
+        <div class="contact100-form-checkbox m-l-4">
+          <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+          <label class="label-checkbox100" for="ckb1">
+            Remember me
+          </label>
+        </div>
+
+        <div class="container-login100-form-btn p-t-25">
+          <button class="login100-form-btn">
+            Login
+          </button>
+        </div>
+        <div class="form-group">
+          <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
+            {{ errorMessage }}
           </div>
         </div>
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary btn-block">
-          Login
-        </button>
-      </div>
-      <div class="form-group">
-        <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
-          Login failed: {{ errorMessage }}
+        <div class="text-center w-full p-t-42 p-b-22">
+						<span class="txt1">
+							Or login with
+						</span>
         </div>
-      </div>
-    </form>
 
-    <div class="alert alert-success" *ngIf="isLoggedIn">
-      Logged in as {{ email }}.
+        <a href="#" class="btn-face m-b-10">
+          <i class="fa fa-facebook-official"></i>
+          Facebook
+        </a>
+
+        <a href="#" class="btn-google m-b-10">
+          <img src="assets/static/images/icons/icon-google.png" alt="GOOGLE">
+          Google
+        </a>
+
+        <div class="text-center w-full p-t-115">
+						<span class="txt1">
+							Not a member?
+						</span>
+          <a class="txt1 bo1 hov1" href="/register">
+            Sign up now
+          </a>
+        </div>
+      </form>
+      <button *ngIf="isLoggedIn" class="btn btn-danger" (click)="logOut()">Log Out</button>
     </div>
-    <button *ngIf="isLoggedIn" class="btn btn-danger" (click)="logOut()">Log Out</button>
-
   </div>
 </div>
-
