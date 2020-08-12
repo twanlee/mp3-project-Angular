@@ -11,6 +11,7 @@ import {authInterceptorProviders} from './helper/auth.interceptor';
 import {APP_BASE_HREF} from '@angular/common';
 import { RegisterComponent } from './components/register/register.component';
 import { ViewSongByUserComponent } from './components/view-song-by-user/view-song-by-user.component';
+// @ts-ignore
 import {NgxPaginationModule} from "ngx-pagination";
 import { SongSearchingResultsComponent } from './components/song-searching-results/song-searching-results.component';
 import {AngularFireModule} from '@angular/fire';
@@ -18,6 +19,11 @@ import {environment} from '../environments/environment';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import { CreateSongComponent } from './components/songs/create-song/create-song.component';
+import {HeaderComponent} from './components/header/header.component';
+import {FooterComponent} from './components/footer/footer.component';
+import {HomePageComponent} from './components/home-page/home-page.component';
+import { GreatestSongComponent } from './components/songs/greatest-song/greatest-song.component';
+import { Top10songComponent } from './components/songs/top10song/top10song.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +34,12 @@ import { CreateSongComponent } from './components/songs/create-song/create-song.
     EditProfileComponent,
     RegisterComponent,
     ViewSongByUserComponent,
-    SongSearchingResultsComponent
+    SongSearchingResultsComponent,
+    HeaderComponent,
+    FooterComponent,
+    HomePageComponent,
+    GreatestSongComponent,
+    Top10songComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,59 @@
+<header class="header-area" style="background: black">
+  <!-- Main Header Start -->
+  <div class="main-header-area">
+    <div class="classy-nav-container breakpoint-off">
+      <!-- Classy Menu -->
+      <nav class="classy-navbar justify-content-between" id="pocaNav">
+
+        <!-- Logo -->
+        <a class="nav-brand" href="index.html"><img src="./src/assets/static/img/core-img/logo.png" alt=""></a>
+
+        <!-- Navbar Toggler -->
+        <div class="classy-navbar-toggler">
+          <span class="navbarToggler"><span></span><span></span><span></span></span>
+        </div>
+
+        <!-- Menu -->
+        <div class="classy-menu">
+
+          <!-- Menu Close Button -->
+          <div class="classycloseIcon">
+            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+          </div>
+
+          <!-- Nav Start -->
+          <div class="classynav">
+            <ul id="nav">
+              <li class="current-item"><a href="./index.html">Home</a></li>
+              <li><a href="#">Bài Hát Mới Nhất</a>
+              </li>
+              <li><a href="./podcast.html">Nghệ sĩ</a></li>
+              <li><a href="#">Bảng Xếp Hạng Bài Hát</a>
+              </li>
+              <li><a href="">Playlist</a></li>
+            </ul>
+
+            <!-- Top Search Area -->
+            <div class="top-search-area">
+              <form formGroup="search">
+                <input type="search" name="top-search-bar" class="form-control" placeholder="Search and hit enter...">
+                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+              </form>
+            </div>
+
+            <!-- Top Social Area -->
+            <div class="top-social-area" *ngIf="showName == false">
+              <button routerLink="/login">Login</button>
+            </div>
+            <div *ngIf="showName">
+                <p>Hello {{name}}</p>
+            </div>
+
+          </div>
+          <!-- Nav End -->
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
