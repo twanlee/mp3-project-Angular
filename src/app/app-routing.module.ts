@@ -5,10 +5,12 @@ import {RegisterComponent} from "./components/register/register.component";
 import {CreateSongComponent} from './components/songs/create-song/create-song.component';
 import {LoginComponent} from './components/login/login.component';
 import {EditProfileComponent} from './components/edit-profile/edit-profile.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import {SongDetailComponent} from './components/songs/song-detail/song-detail.component';
 import {ViewSongByUserComponent} from './components/songs/songs-get-by-user/view-song-by-user.component';
 import {SongSearchingResultsComponent} from './components/songs/song-searching-results/song-searching-results.component';
 import {SongEditComponent} from './components/songs/song-edit/song-edit.component';
-import {SongDeleteComponent} from './components/songs/song-delete/song-delete.component';
+
 
 const routes: Routes = [
 
@@ -20,7 +22,9 @@ const routes: Routes = [
   {path: ":id/profile/edit", component: EditProfileComponent},
   {path: 'search', component: SongSearchingResultsComponent},
   {path: 'song/:id/edit', component: SongEditComponent},
-  {path: 'song/:id/delete', component: SongDeleteComponent}
+  {path: 'song/:id/edit', component: SongEditComponent},
+  {path: '', component: HomePageComponent},
+  {path: 'song/:id/detail', component: SongDetailComponent}
 ];
 
 @NgModule({
