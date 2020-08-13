@@ -28,11 +28,7 @@ export class HeaderComponent implements OnInit {
       this.lastName = localStorage.getItem("lastName");
       this.userId = localStorage.getItem("userId");
     }
-    if (this.userId == null) {
-      this.showName = false;
-    } else {
-      this.showName = true;
-    }
+    this.showName = this.userId != null;
   }
   logOut() {
     this.tokenStorage.singOut();

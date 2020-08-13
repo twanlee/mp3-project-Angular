@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   firstName = this.tokenStorage.getUser();
   lastName = this.tokenStorage.getUser();
   currentBefore = '';
-  logged: boolean;
+  isSuccessful: string;
   mess = 'Bạn đã đăng nhập';
   constructor(private authenticationService: AuthenticationService,
               private tokenStorage: TokenStorageService,
@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
     }
+    this.isSuccessful = this.tokenStorage.getRegistered();
   }
 
   onSubmit() {
@@ -40,7 +41,8 @@ export class LoginComponent implements OnInit {
         this.firstName = this.tokenStorage.getUser().firstName;
         this.lastName = this.tokenStorage.getUser().lastName;
         this.currentBefore = this.tokenStorage.getUrl();
-        this.router.navigate(["/"]).then(result=>{window.location.href = this.currentBefore;});
+        // this.router.navigate(["/"]).then(result=>{window.location.href = this.currentBefore;});
+        this.router.navigate(["/"]);
       },
       err => {
         this.errorMessage = 'Vui lòng kiểm tra lại Email hoặc Password';

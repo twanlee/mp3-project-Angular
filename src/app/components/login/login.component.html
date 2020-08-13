@@ -9,6 +9,9 @@
 					<span class="login100-form-title p-b-55">
 						Login
 					</span>
+        <div *ngIf="isSuccessful">
+          <i style="color: green; text-align: center; font-size: 20px; padding-bottom: 30px">Đăng ký tài khoản thành công</i>
+        </div>
         <div class="wrap-input100 validate-input m-b-16">
           <input type="text" name="username" [(ngModel)]="userForm.email" class="input100" placeholder="Email">
           <span class="focus-input100"></span>

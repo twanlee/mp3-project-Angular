@@ -10,6 +10,7 @@ export class TokenStorageService {
   private TOKEN_KEY = 'auth-token';
   private USER_KEY = 'user';
   private URL_KEY = 'url';
+  private REGISTERED_KEY = 'registered';
 
   constructor() { }
 
@@ -32,7 +33,13 @@ export class TokenStorageService {
   public getToken(): string {
     return localStorage.getItem(this.TOKEN_KEY);
   }
-
+  public saveRegistered(isSuccessful: boolean) {
+    window.localStorage.removeItem(this.REGISTERED_KEY);
+    window.localStorage.setItem(this.REGISTERED_KEY, String(isSuccessful));
+  }
+  public getRegistered() {
+    return localStorage.getItem(this.REGISTERED_KEY);
+  }
   public saveUser(user: IUserToken) {
     window.localStorage.removeItem(this.USER_KEY);
     window.localStorage.setItem(this.USER_KEY, JSON.stringify(user));
