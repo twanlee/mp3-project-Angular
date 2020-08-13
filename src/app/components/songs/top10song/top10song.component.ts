@@ -18,7 +18,6 @@ export class Top10songComponent implements OnInit {
       singers: [{
         fullName: "erik"
       }],
-      userCreate: "danpq14",
       postTime: new Date()
     },
     {
@@ -28,7 +27,6 @@ export class Top10songComponent implements OnInit {
       singers: [{
         fullName: "Da Lab"
       }],
-      userCreate: "danpq14",
       postTime: new Date()
     },
     {
@@ -38,7 +36,6 @@ export class Top10songComponent implements OnInit {
       singers: [{
         fullName: "Lê Hiếu"
       }],
-      userCreate: "danpq14",
       postTime: new Date()
     },
     {
@@ -48,7 +45,6 @@ export class Top10songComponent implements OnInit {
       singers: [{
         fullName: "Black Pink"
       }],
-      userCreate: "danpq14",
       postTime: new Date()
     },
     {
@@ -58,7 +54,6 @@ export class Top10songComponent implements OnInit {
       singers: [{
         fullName: "Dân"
       }],
-      userCreate: "danpq14",
       postTime: new Date()
     },
     {
@@ -68,7 +63,6 @@ export class Top10songComponent implements OnInit {
       singers: [{
         fullName: "Various Artist"
       }],
-      userCreate: "danpq14",
       postTime: new Date()
     },
     {
@@ -78,7 +72,6 @@ export class Top10songComponent implements OnInit {
       singers: [{
         fullName: "Da Lab"
       }],
-      userCreate: "danpq14",
       postTime: new Date()
     },
     {
@@ -88,7 +81,6 @@ export class Top10songComponent implements OnInit {
       singers: [{
         fullName: "Da Lab"
       }],
-      userCreate: "danpq14",
       postTime: new Date()
     },
     {
@@ -98,7 +90,6 @@ export class Top10songComponent implements OnInit {
       singers: [{
         fullName: "Lê Bảo Bình"
       }],
-      userCreate: "danpq14",
       postTime: new Date()
     },
     {
@@ -108,7 +99,6 @@ export class Top10songComponent implements OnInit {
       singers: [{
         fullName: "Đạt G"
       }],
-      userCreate: "danpq14",
       postTime: new Date()
     }
   ];

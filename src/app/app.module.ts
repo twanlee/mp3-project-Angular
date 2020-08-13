@@ -27,6 +27,8 @@ import { SongPlayerComponent } from './components/songs/song-player/song-player.
 import { SongDescriptionComponent } from './components/songs/song-description/song-description.component';
 import {SongEditComponent} from './components/songs/song-edit/song-edit.component';
 import { SongDeleteComponent } from './components/songs/song-delete/song-delete.component';
+import { CreateArtistComponent } from './components/artists/create-artist/create-artist.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -50,7 +52,8 @@ import { SongDeleteComponent } from './components/songs/song-delete/song-delete.
     SongDeleteComponent,
     SongPlayerComponent,
     SongDescriptionComponent,
-    SongEditComponent
+    SongEditComponent,
+    CreateArtistComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +66,7 @@ import { SongDeleteComponent } from './components/songs/song-delete/song-delete.
     AppRoutingModule,
     FormsModule,
     NgxPaginationModule,
+    BrowserAnimationsModule,
   ],
   providers: [authInterceptorProviders,{
     provide: APP_BASE_HREF, useValue: "/"
