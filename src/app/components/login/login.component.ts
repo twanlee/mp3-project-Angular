@@ -40,9 +40,9 @@ export class LoginComponent implements OnInit {
         this.isLoggedIn = true;
         this.firstName = this.tokenStorage.getUser().firstName;
         this.lastName = this.tokenStorage.getUser().lastName;
-        // this.currentBefore = this.tokenStorage.getUrl();
-        // this.router.navigate(["/"]).then(result=>{window.location.href = this.currentBefore;});
-        this.router.navigate(["/"]);
+        this.currentBefore = this.tokenStorage.getUrl();
+        this.router.navigate(["/"]).then(result=>{window.location.href = this.currentBefore;});
+        // this.router.navigate(["/"]);
       },
       err => {
         this.errorMessage = 'Vui lòng kiểm tra lại Email hoặc Password';
