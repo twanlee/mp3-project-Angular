@@ -29,8 +29,15 @@ import {SongEditComponent} from './components/songs/song-edit/song-edit.componen
 import { SongDeleteComponent } from './components/songs/song-delete/song-delete.component';
 import { AllPlaylistComponent } from './components/playlists/all-playlist/all-playlist.component';
 import { PlaylistDetailComponent } from './components/playlists/playlist-detail/playlist-detail.component';
+import { SearchSongFormComponent } from './components/songs/search-song-form/search-song-form.component';
 
-
+export function getPostTimeToString(postTime):string {
+    // @ts-ignore
+    let date = new Date(postTime);
+    let string = date.toDateString();
+    string = string.slice(4);
+    return string;
+}
 
 @NgModule({
   declarations: [
@@ -54,7 +61,8 @@ import { PlaylistDetailComponent } from './components/playlists/playlist-detail/
     SongDescriptionComponent,
     SongEditComponent,
     AllPlaylistComponent,
-    PlaylistDetailComponent
+    PlaylistDetailComponent,
+    SearchSongFormComponent
   ],
   imports: [
     BrowserModule,

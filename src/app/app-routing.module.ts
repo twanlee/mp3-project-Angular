@@ -22,7 +22,7 @@ const routes: Routes = [
   {path: 'user/songs', component: ViewSongByUserComponent},
   {path: "login", component: LoginComponent},
   {path: ":id/profile/edit", component: EditProfileComponent},
-  {path: 'search', component: SongSearchingResultsComponent},
+  {path: ':keyword/search', component: SongSearchingResultsComponent},
   {path: 'song/:id/edit', component: SongEditComponent},
   {path: 'song/:id/edit', component: SongEditComponent},
   {path: '', component: HomePageComponent},

@@ -1,0 +1,8 @@
+<div class="top-search-area">
+  <form (ngSubmit)="search()">
+    <input type="search" name="top-search-bar" [(ngModel)]="keyword" class="form-control" placeholder="Tìm kiếm bài hát...">
+    <button type="button" (click)="search()"><i class="fa fa-search" aria-hidden="true"></i></button>
+  </form>
+  <i class="fa fa-upload" aria-hidden="true"></i>
+</div>
+
