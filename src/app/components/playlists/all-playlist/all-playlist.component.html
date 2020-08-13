@@ -1,0 +1,58 @@
+<section class="poca-latest-epiosodes section-padding-80" style="padding-top: 150px">
+  <div class="container">
+    <div class="row">
+      <!-- Section Heading -->
+      <div class="col-12">
+        <div class="section-heading text-center">
+          <h2>Playlist hàng đầu</h2>
+          <div class="line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Projects Menu -->
+<!--  <div class="container">-->
+<!--    <div class="poca-projects-menu mb-30 wow fadeInUp" data-wow-delay="0.3s">-->
+<!--      <div class="text-center portfolio-menu">-->
+<!--        <button class="btn active" data-filter="*">All</button>-->
+<!--        <button class="btn" data-filter=".entre">Entrepreneurship</button>-->
+<!--        <button class="btn" data-filter=".media">Media</button>-->
+<!--        <button class="btn" data-filter=".tech">Tech</button>-->
+<!--        <button class="btn" data-filter=".tutor">Tutorials</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+  <div class="container">
+    <div class="row poca-portfolio">
+
+      <!-- Single gallery Item -->
+        <div class="col-4 cols-md-6 single_gallery_item entre wow fadeInUp" data-wow-delay="0.2s" *ngFor="let pl of playlists">
+          <!-- Welcome Music Area -->
+          <div class="poca-music-area style-2 d-flex align-items-center flex-wrap" *ngIf="pl != null">
+            <div class="poca-music-thumbnail">
+              <img [src]="pl.imgUrl" alt="">
+            </div>
+            <div class="poca-music-content text-center">
+              <h2><a routerLink="playlist/{{pl.id}}">{{pl.title}}</a></h2>
+              <div class="music-meta-data">
+                <p>By <a href="#" class="music-author">Create by {{pl.userCreate}}</a> | <a href="#" class="music-catagory">Thể loại</a>
+              </div>
+              <!-- Music Player -->
+
+              <!-- Likes, Share & Download -->
+              <div class="likes-share-download d-flex align-items-center justify-content-between">
+                <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> Like (99)</a>
+                <div>
+                  <a href="#" class="mr-4"><i class="fa fa-share-alt" aria-hidden="true"></i> Share(66)</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+</section>
+

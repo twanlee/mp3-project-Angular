@@ -27,8 +27,13 @@ import { SongPlayerComponent } from './components/songs/song-player/song-player.
 import { SongDescriptionComponent } from './components/songs/song-description/song-description.component';
 import {SongEditComponent} from './components/songs/song-edit/song-edit.component';
 import { SongDeleteComponent } from './components/songs/song-delete/song-delete.component';
+<<<<<<< HEAD
 import { CreateArtistComponent } from './components/artists/create-artist/create-artist.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+=======
+import { AllPlaylistComponent } from './components/playlists/all-playlist/all-playlist.component';
+import { PlaylistDetailComponent } from './components/playlists/playlist-detail/playlist-detail.component';
+>>>>>>> 7193000cdf1819bc60e9daa86601eea6b174fa71
 
 
 
@@ -53,7 +58,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SongPlayerComponent,
     SongDescriptionComponent,
     SongEditComponent,
+<<<<<<< HEAD
     CreateArtistComponent,
+=======
+    AllPlaylistComponent,
+    PlaylistDetailComponent
+>>>>>>> 7193000cdf1819bc60e9daa86601eea6b174fa71
   ],
   imports: [
     BrowserModule,
