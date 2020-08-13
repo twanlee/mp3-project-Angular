@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {ISong} from '../../../interfaces/isong';
-import {IArtist} from '../../../interfaces/iartist';
 import {SongService} from '../../../services/songs/song.service';
 
 @Component({
