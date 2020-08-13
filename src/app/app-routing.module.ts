@@ -10,6 +10,8 @@ import {SongDetailComponent} from './components/songs/song-detail/song-detail.co
 import {ViewSongByUserComponent} from './components/songs/songs-get-by-user/view-song-by-user.component';
 import {SongSearchingResultsComponent} from './components/songs/song-searching-results/song-searching-results.component';
 import {SongEditComponent} from './components/songs/song-edit/song-edit.component';
+import {AllPlaylistComponent} from './components/playlists/all-playlist/all-playlist.component';
+import {PlaylistDetailComponent} from './components/playlists/playlist-detail/playlist-detail.component';
 
 
 const routes: Routes = [
@@ -24,7 +26,11 @@ const routes: Routes = [
   {path: 'song/:id/edit', component: SongEditComponent},
   {path: 'song/:id/edit', component: SongEditComponent},
   {path: '', component: HomePageComponent},
-  {path: 'song/:id/detail', component: SongDetailComponent}
+  {path: 'song/:id/detail', component: SongDetailComponent},
+  {path: 'playlist/all', component: AllPlaylistComponent},
+  {path: 'playlist/:id', component: PlaylistDetailComponent},
+  {path: 'playlist/all/playlist/:id', component: PlaylistDetailComponent}
+
 ];
 
 @NgModule({

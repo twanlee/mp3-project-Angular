@@ -27,6 +27,8 @@ import { SongPlayerComponent } from './components/songs/song-player/song-player.
 import { SongDescriptionComponent } from './components/songs/song-description/song-description.component';
 import {SongEditComponent} from './components/songs/song-edit/song-edit.component';
 import { SongDeleteComponent } from './components/songs/song-delete/song-delete.component';
+import { AllPlaylistComponent } from './components/playlists/all-playlist/all-playlist.component';
+import { PlaylistDetailComponent } from './components/playlists/playlist-detail/playlist-detail.component';
 
 
 
@@ -50,7 +52,9 @@ import { SongDeleteComponent } from './components/songs/song-delete/song-delete.
     SongDeleteComponent,
     SongPlayerComponent,
     SongDescriptionComponent,
-    SongEditComponent
+    SongEditComponent,
+    AllPlaylistComponent,
+    PlaylistDetailComponent
   ],
   imports: [
     BrowserModule,
