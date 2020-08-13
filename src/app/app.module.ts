@@ -29,6 +29,8 @@ import {SongEditComponent} from './components/songs/song-edit/song-edit.componen
 import { SongDeleteComponent } from './components/songs/song-delete/song-delete.component';
 import { AllPlaylistComponent } from './components/playlists/all-playlist/all-playlist.component';
 import { PlaylistDetailComponent } from './components/playlists/playlist-detail/playlist-detail.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NgxAudioPlayerModule} from 'ngx-audio-player';
 
 
 
@@ -56,18 +58,20 @@ import { PlaylistDetailComponent } from './components/playlists/playlist-detail/
     AllPlaylistComponent,
     PlaylistDetailComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireStorageModule,
-    AngularFireDatabaseModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    AppRoutingModule,
-    FormsModule,
-    NgxPaginationModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireStorageModule,
+        AngularFireDatabaseModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        AppRoutingModule,
+        FormsModule,
+        NgxPaginationModule,
+        BrowserAnimationsModule,
+        NgxAudioPlayerModule,
+    ],
   providers: [authInterceptorProviders,{
     provide: APP_BASE_HREF, useValue: "/"
   }],

@@ -24,12 +24,11 @@ const routes: Routes = [
   {path: ":id/profile/edit", component: EditProfileComponent},
   {path: 'search', component: SongSearchingResultsComponent},
   {path: 'song/:id/edit', component: SongEditComponent},
-  {path: 'song/:id/edit', component: SongEditComponent},
   {path: '', component: HomePageComponent},
   {path: 'song/:id/detail', component: SongDetailComponent},
   {path: 'playlist/all', component: AllPlaylistComponent},
   {path: 'playlist/:id', component: PlaylistDetailComponent},
-  {path: 'playlist/all/playlist/:id', component: PlaylistDetailComponent}
+
 
 ];
 
