@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   firstName = this.tokenStorage.getUser();
   lastName = this.tokenStorage.getUser();
   currentBefore = '';
+  logged: boolean;
   mess = 'Bạn đã đăng nhập';
   constructor(private authenticationService: AuthenticationService,
               private tokenStorage: TokenStorageService,

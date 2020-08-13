@@ -29,6 +29,7 @@ import {SongEditComponent} from './components/songs/song-edit/song-edit.componen
 import { SongDeleteComponent } from './components/songs/song-delete/song-delete.component';
 import { AllPlaylistComponent } from './components/playlists/all-playlist/all-playlist.component';
 import { PlaylistDetailComponent } from './components/playlists/playlist-detail/playlist-detail.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -67,6 +68,7 @@ import { PlaylistDetailComponent } from './components/playlists/playlist-detail/
     AppRoutingModule,
     FormsModule,
     NgxPaginationModule,
+    BrowserAnimationsModule,
   ],
   providers: [authInterceptorProviders,{
     provide: APP_BASE_HREF, useValue: "/"
