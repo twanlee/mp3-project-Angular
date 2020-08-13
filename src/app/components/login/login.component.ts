@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   firstName = this.tokenStorage.getUser();
   lastName = this.tokenStorage.getUser();
   currentBefore = '';
+  mess = 'Bạn đã đăng nhập';
   constructor(private authenticationService: AuthenticationService,
               private tokenStorage: TokenStorageService,
               private router: Router) {
@@ -42,7 +43,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(["/"]).then(result=>{window.location.href = this.currentBefore;});
       },
       err => {
-        this.errorMessage = 'Vui lòng kiểm tra lại Email và Password';
+        this.errorMessage = 'Vui lòng kiểm tra lại Email hoặc Password';
         this.isLoginFailed = true;
       }
     );

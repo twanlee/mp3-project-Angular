@@ -1,6 +1,10 @@
 <div class="limiter" style="padding-top: 80px; margin-bottom: 50px">
   <div class="container-login100">
     <div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
+      <div *ngIf="isLoggedIn" style="text-align: center">
+        <i style="color: green; font-size: 26px">{{mess}}</i><br/>
+        <a routerLink="/"><-Trở về trang chủ</a>
+      </div>
       <form class="login100-form validate-form" *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
 					<span class="login100-form-title p-b-55">
 						Login

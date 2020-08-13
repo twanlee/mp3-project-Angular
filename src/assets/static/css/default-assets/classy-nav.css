@@ -9,7 +9,7 @@
 ---------------------------------------------------------- */
 /* Base CSS */
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Times New Roman", sans-serif;
 }
 ul {
   margin: 0;
@@ -212,7 +212,7 @@ img {
 .classycloseIcon {
   position: absolute;
   top: 20px;
-  right: 20px;
+  right: 10px;
   z-index: 12;
   display: none;
 }
