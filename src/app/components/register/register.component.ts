@@ -55,17 +55,14 @@ export class RegisterComponent implements OnInit {
       // console.log(user)
       this.register.registerUser(user).subscribe(() => {
         this.registerForm.reset("");
-        this.isSuccessful = true;
+        // this.isSuccessful = true;
+        this.tokenStorage.saveRegistered(this.isSuccessful = true);
+        this.router.navigate(['/login']);
       }, error => {
         this.isSuccessful = false;
-        alert(error.error.msg);
+        alert('Email đã tồn tại');
       });
     }
-    if (this.isSuccessful == true) {
-      this.tokenStorage.saveRegistered(this.isSuccessful);
-      this.router.navigate(['/login']);
-    }
-
   }
 
 }

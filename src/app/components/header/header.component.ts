@@ -10,7 +10,6 @@ import {TokenStorageService} from '../../services/token-storage.service';
 })
 export class HeaderComponent implements OnInit {
   search: FormGroup;
-  url = "";
   showName = false;
   firstName: string;
   lastName: string;
@@ -20,8 +19,6 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.url = window.location.href;
-    this.tokenStorage.saveUrl(this.url);
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.firstName = localStorage.getItem("firstName");
