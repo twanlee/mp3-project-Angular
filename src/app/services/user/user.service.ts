@@ -23,6 +23,6 @@ export class UserService {
     return this.http.get<ISong[]>(this.URL_GET_ALL_SONG+ id + "/songs")
   }
   getUserById(id: number): Observable<IUser>{
-    return this.http.get<IUser>(this.URL_GET_ALL_SONG+id+"/detail");
+    return this.http.get<IUser>(this.URL_GET_ALL_SONG + id + "/detail");
   }
 }

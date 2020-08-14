@@ -32,6 +32,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AllPlaylistComponent } from './components/playlists/all-playlist/all-playlist.component';
 import { PlaylistDetailComponent } from './components/playlists/playlist-detail/playlist-detail.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
