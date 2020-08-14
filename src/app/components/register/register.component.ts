@@ -5,6 +5,7 @@ import {RegisterService} from "../../services/register/register.service";
 import {Router} from "@angular/router";
 // @ts-ignore
 import {IUser} from '../../interfaces/user/user';
+import {TokenStorageService} from '../../services/token-storage.service';
 
 
 function comparePassword(c: AbstractControl) {
@@ -21,16 +22,17 @@ function comparePassword(c: AbstractControl) {
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-
+  isSuccessful = false;
   constructor(private fb: FormBuilder,
               private register: RegisterService,
-              private router: Router
+              private router: Router,
+              private tokenStorage: TokenStorageService
   ) {
   }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
-      email: ['info@example.com', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
       pwGroup: this.fb.group({
@@ -53,9 +55,12 @@ export class RegisterComponent implements OnInit {
       // console.log(user)
       this.register.registerUser(user).subscribe(() => {
         this.registerForm.reset("");
-        alert('Done!');
+        // this.isSuccessful = true;
+        this.tokenStorage.saveRegistered(this.isSuccessful = true);
+        this.router.navigate(['/login']);
       }, error => {
-        alert(error.error.msg);
+        this.isSuccessful = false;
+        alert('Email đã tồn tại');
       });
     }
   }

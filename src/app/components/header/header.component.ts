@@ -10,7 +10,7 @@ import {TokenStorageService} from '../../services/token-storage.service';
 })
 export class HeaderComponent implements OnInit {
   search: FormGroup;
-  url = "";
+  urlPrevious = "";
   showName = false;
   firstName: string;
   lastName: string;
@@ -20,19 +20,15 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.url = window.location.href;
-    this.tokenStorage.saveUrl(this.url);
+    this.urlPrevious = window.location.href;
+    this.tokenStorage.saveUrl(this.urlPrevious);
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.firstName = localStorage.getItem("firstName");
       this.lastName = localStorage.getItem("lastName");
       this.userId = localStorage.getItem("userId");
     }
-    if (this.firstName == null) {
-      this.showName = false;
-    } else {
-      this.showName = true;
-    }
+    this.showName = this.userId != null;
   }
   logOut() {
     this.tokenStorage.singOut();
