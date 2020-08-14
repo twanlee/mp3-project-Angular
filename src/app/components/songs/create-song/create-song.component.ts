@@ -28,6 +28,9 @@ export class CreateSongComponent implements OnInit {
 
   ngOnInit(): void {
     this.id_user = +localStorage.getItem('userId');
+    this.songService.sendUserID(this.id_user).subscribe(()=>{
+        console.log("send user_id : OKKK!!")
+    })
     this.createSongForm = this.fb.group({
       name: [''],
       lyric: [''],

@@ -23,6 +23,9 @@ export class SongService {
   saveSong(data: ISong): Observable<ISong> {
     return this.http.post<ISong>(this.url_api + '/save', data);
   }
+  sendUserID(user_id: number): Observable<string>{
+    return this.http.post<string>(this.url_api + '/user_id', user_id);
+  }
 
   deleteSongById(id: number): Observable<any> {
     return this.http.delete<any>(this.url_api + '/' + id + '/delete');
