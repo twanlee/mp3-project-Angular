@@ -28,8 +28,6 @@ import { SongDescriptionComponent } from './components/songs/song-description/so
 import {SongEditComponent} from './components/songs/song-edit/song-edit.component';
 import { SongDeleteComponent } from './components/songs/song-delete/song-delete.component';
 import { CreateArtistComponent } from './components/artists/create-artist/create-artist.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AllPlaylistComponent } from './components/playlists/all-playlist/all-playlist.component';
 import { PlaylistDetailComponent } from './components/playlists/playlist-detail/playlist-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
