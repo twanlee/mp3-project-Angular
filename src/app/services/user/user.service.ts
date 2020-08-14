@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {IUser} from '../../interfaces/user/user';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
-import {ISong} from "../../interfaces/isong";
+import {ISong} from '../../interfaces/isong';
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +17,7 @@ export class UserService {
     return this.http.get(this.API_URL + 'users', {responseType: 'text'});
   }
 
-  URL_GET_ALL_SONG = "http://localhost:8080/api/user/";
-
-  getAllSongByUser(id: number): Observable<ISong[]> {
-    return this.http.get<ISong[]>(this.URL_GET_ALL_SONG+ id + "/songs")
-  }
-  getUserById(id: number): Observable<IUser>{
-    return this.http.get<IUser>(this.URL_GET_ALL_SONG + id + "/detail");
+  getUserById(id: number): Observable<IUser> {
+    return this.http.get<IUser>(this.API_URL + id + '/detail');
   }
 }

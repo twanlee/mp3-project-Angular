@@ -4,11 +4,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from '@angular/common/http';
 import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
-import {SongDetailComponent} from "./components/songs/song-detail/song-detail.component";
-import { HomePageComponent } from "./components/home-page/home-page.component";
+import {SongDetailComponent} from './components/songs/song-detail/song-detail.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
 import {CreateSongComponent} from './components/songs/create-song/create-song.component';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireStorageModule} from '@angular/fire/storage';
@@ -32,8 +32,8 @@ import { PlaylistDetailComponent } from './components/playlists/playlist-detail/
 import { SearchSongFormComponent } from './components/songs/search-song-form/search-song-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
-import {MatInputModule} from "@angular/material/input";
-import {CreateArtistComponent} from "./components/artists/create-artist/create-artist.component";
+import {MatInputModule} from '@angular/material/input';
+import {CreateArtistComponent} from './components/artists/create-artist/create-artist.component';
 export function getPostTimeToString(postTime):string {
     // @ts-ignore
     let date = new Date(postTime);
