@@ -30,7 +30,9 @@ import { SongDeleteComponent } from './components/songs/song-delete/song-delete.
 import { AllPlaylistComponent } from './components/playlists/all-playlist/all-playlist.component';
 import { PlaylistDetailComponent } from './components/playlists/playlist-detail/playlist-detail.component';
 import { SearchSongFormComponent } from './components/songs/search-song-form/search-song-form.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
+import {MatInputModule} from "@angular/material/input";
 export function getPostTimeToString(postTime):string {
     // @ts-ignore
     let date = new Date(postTime);
@@ -75,6 +77,9 @@ export function getPostTimeToString(postTime):string {
     AppRoutingModule,
     FormsModule,
     NgxPaginationModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    MatInputModule
   ],
   providers: [authInterceptorProviders,{
     provide: APP_BASE_HREF, useValue: "/"
