@@ -15,8 +15,7 @@ export class UserProfileComponent implements OnInit {
   profile: IProfile;
   userId: number;
   constructor(private activatedRoute: ActivatedRoute,
-              private userService: UserService,
-              private fb: FormBuilder) {
+              private userService: UserService) {
   }
 
 
