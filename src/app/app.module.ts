@@ -31,6 +31,9 @@ import { CreateArtistComponent } from './components/artists/create-artist/create
 import { AllPlaylistComponent } from './components/playlists/all-playlist/all-playlist.component';
 import { PlaylistDetailComponent } from './components/playlists/playlist-detail/playlist-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddSingerComponent } from './components/songs/create-song/add-singer/add-singer.component';
+import { AddAuthorComponent } from './components/songs/create-song/add-author/add-author.component';
+
 
 
 
@@ -58,7 +61,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SongEditComponent,
     CreateArtistComponent,
     AllPlaylistComponent,
-    PlaylistDetailComponent
+    PlaylistDetailComponent,
+    AddSingerComponent,
+    AddAuthorComponent,
   ],
   imports: [
     BrowserModule,

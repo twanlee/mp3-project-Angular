@@ -18,12 +18,22 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="exampleInputAuthor1">Authors :</label>
-        <input type="text" class="form-control" id="exampleInputAuthor1" formControlName="authors" >
+        <app-add-author (singer)="findArtist($event)"></app-add-author>
+        <div class="form-group">
+          <label for="exampleFormControlSelect2">Chọn nhạc sỹ :</label>
+          <select multiple class="form-control" id="exampleFormControlSelect3"   [ngModelOptions]="{standalone: true}" [(ngModel)]="authors" >
+            <option *ngFor="let author of artistsFilter" value="{{author.id}}">{{author.fullName}}</option>
+          </select>
+        </div>
       </div>
       <div class="form-group">
-        <label for="exampleInputSinger1">Singers :</label>
-        <input type="text" class="form-control" id="exampleInputSinger1" formControlName="singers" >
+        <app-add-singer (singer)="findArtist($event)"></app-add-singer>
+        <div class="form-group">
+        <label for="exampleFormControlSelect2">Chọn ca sỹ thể hiện bài hát</label>
+            <select multiple class="form-control" id="exampleFormControlSelect2"   [ngModelOptions]="{standalone: true}" [(ngModel)]="singers" >
+              <option *ngFor="let singer of artistsFilter" value="{{singer.id}}">{{singer.fullName}}</option>
+            </select>
+        </div>
       </div>
       <div class="form-group">
         <div>

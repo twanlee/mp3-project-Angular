@@ -8,8 +8,8 @@ export interface ISong {
   fileUrl?: string;
   imageUrl?: string;
   description?: string;
-  authors?: IArtist[];
-  singers?: IArtist[];
+  s_authors?: IArtist[];
+  s_singers?: IArtist[];
   postTime?: Date;
   userCreate?: string;
 }

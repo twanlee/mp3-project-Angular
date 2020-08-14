@@ -14,7 +14,7 @@ export class Top10songComponent implements OnInit {
       name: "em không sai chúng ta sai",
       fileUrl: "https://firebasestorage.googleapis.com/v0/b/meomp3-5e362.appspot.com/o/mp3%2Ffeatured%2F5x1d6s1597142101591?alt=media&token=30ffde17-3abc-4f4e-80be-c0b93edbb455",
       imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRCHgWzdp42iGryC5Wkt6iFK5JC_mL8CXcyUA&usqp=CAU",
-      singers: [{
+      s_singers: [{
         fullName: "erik"
       }],
       postTime: new Date()
@@ -23,7 +23,7 @@ export class Top10songComponent implements OnInit {
       name: "Gác lại âu lo",
       fileUrl: "https://firebasestorage.googleapis.com/v0/b/meomp3-5e362.appspot.com/o/mp3%2Ffeatured%2F5x1d6s1597142101591?alt=media&token=30ffde17-3abc-4f4e-80be-c0b93edbb455",
       imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRCHgWzdp42iGryC5Wkt6iFK5JC_mL8CXcyUA&usqp=CAU",
-      singers: [{
+      s_singers: [{
         fullName: "Da Lab"
       }],
       postTime: new Date()
@@ -32,7 +32,7 @@ export class Top10songComponent implements OnInit {
       name: "Ngày mai em đi",
       fileUrl: "https://firebasestorage.googleapis.com/v0/b/meomp3-5e362.appspot.com/o/mp3%2Ffeatured%2F5x1d6s1597142101591?alt=media&token=30ffde17-3abc-4f4e-80be-c0b93edbb455",
       imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRCHgWzdp42iGryC5Wkt6iFK5JC_mL8CXcyUA&usqp=CAU",
-      singers: [{
+      s_singers: [{
         fullName: "Lê Hiếu"
       }],
       postTime: new Date()
@@ -41,7 +41,7 @@ export class Top10songComponent implements OnInit {
       name: "How you like that",
       fileUrl: "https://firebasestorage.googleapis.com/v0/b/meomp3-5e362.appspot.com/o/mp3%2Ffeatured%2F5x1d6s1597142101591?alt=media&token=30ffde17-3abc-4f4e-80be-c0b93edbb455",
       imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRCHgWzdp42iGryC5Wkt6iFK5JC_mL8CXcyUA&usqp=CAU",
-      singers: [{
+      s_singers: [{
         fullName: "Black Pink"
       }],
       postTime: new Date()
@@ -50,7 +50,7 @@ export class Top10songComponent implements OnInit {
       name: "Em",
       fileUrl: "https://firebasestorage.googleapis.com/v0/b/meomp3-5e362.appspot.com/o/mp3%2Ffeatured%2F5x1d6s1597142101591?alt=media&token=30ffde17-3abc-4f4e-80be-c0b93edbb455",
       imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRCHgWzdp42iGryC5Wkt6iFK5JC_mL8CXcyUA&usqp=CAU",
-      singers: [{
+      s_singers: [{
         fullName: "Dân"
       }],
       postTime: new Date()
@@ -59,7 +59,7 @@ export class Top10songComponent implements OnInit {
       name: "Bài hát số 6",
       fileUrl: "https://firebasestorage.googleapis.com/v0/b/meomp3-5e362.appspot.com/o/mp3%2Ffeatured%2F5x1d6s1597142101591?alt=media&token=30ffde17-3abc-4f4e-80be-c0b93edbb455",
       imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRCHgWzdp42iGryC5Wkt6iFK5JC_mL8CXcyUA&usqp=CAU",
-      singers: [{
+      s_singers: [{
         fullName: "Various Artist"
       }],
       postTime: new Date()
@@ -68,7 +68,7 @@ export class Top10songComponent implements OnInit {
       name: "Thanh Xuân",
       fileUrl: "https://firebasestorage.googleapis.com/v0/b/meomp3-5e362.appspot.com/o/mp3%2Ffeatured%2F5x1d6s1597142101591?alt=media&token=30ffde17-3abc-4f4e-80be-c0b93edbb455",
       imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRCHgWzdp42iGryC5Wkt6iFK5JC_mL8CXcyUA&usqp=CAU",
-      singers: [{
+      s_singers: [{
         fullName: "Da Lab"
       }],
       postTime: new Date()
@@ -77,7 +77,7 @@ export class Top10songComponent implements OnInit {
       name: "Nước mắt em lau bằng tình yêu mới",
       fileUrl: "https://firebasestorage.googleapis.com/v0/b/meomp3-5e362.appspot.com/o/mp3%2Ffeatured%2F5x1d6s1597142101591?alt=media&token=30ffde17-3abc-4f4e-80be-c0b93edbb455",
       imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRCHgWzdp42iGryC5Wkt6iFK5JC_mL8CXcyUA&usqp=CAU",
-      singers: [{
+      s_singers: [{
         fullName: "Da Lab"
       }],
       postTime: new Date()
@@ -86,7 +86,7 @@ export class Top10songComponent implements OnInit {
       name: "Thích thì đến",
       fileUrl: "https://firebasestorage.googleapis.com/v0/b/meomp3-5e362.appspot.com/o/mp3%2Ffeatured%2F5x1d6s1597142101591?alt=media&token=30ffde17-3abc-4f4e-80be-c0b93edbb455",
       imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRCHgWzdp42iGryC5Wkt6iFK5JC_mL8CXcyUA&usqp=CAU",
-      singers: [{
+      s_singers: [{
         fullName: "Lê Bảo Bình"
       }],
       postTime: new Date()
@@ -95,7 +95,7 @@ export class Top10songComponent implements OnInit {
       name: "Buồn của anh",
       fileUrl: "https://firebasestorage.googleapis.com/v0/b/meomp3-5e362.appspot.com/o/mp3%2Ffeatured%2F5x1d6s1597142101591?alt=media&token=30ffde17-3abc-4f4e-80be-c0b93edbb455",
       imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRCHgWzdp42iGryC5Wkt6iFK5JC_mL8CXcyUA&usqp=CAU",
-      singers: [{
+      s_singers: [{
         fullName: "Đạt G"
       }],
       postTime: new Date()
