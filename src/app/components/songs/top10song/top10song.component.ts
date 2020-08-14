@@ -107,11 +107,7 @@ export class Top10songComponent implements OnInit {
 
   ngOnInit(): void {
     this.songService.getTop10Song().subscribe(data => {
-      console.log("data :");
-      console.log(data);
       this.songs = data;
-      console.log("songs :");
-      console.log(this.songs)
     })
   }
   getPostTimeToString(postTime): string{

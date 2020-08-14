@@ -1,17 +1,17 @@
 <div  style="text-align: left">
-  <div style="width: 700px; padding-top: 100px; padding-left: 200px; display: inline-block;font-size: 22px;font-family: 'Arial Black';">
+  <div style="width: 700px; padding-top: 100px; padding-left: 200px; display: inline-block;font-size: 16px">
     <form (ngSubmit)="submit()" [formGroup]="createSongForm" >
       <div class="form-group">
-        <label for="exampleInputSong1">Name of Song :</label>
+        <label for="exampleInputSong1">Tên bài hát</label>
         <input type="text" class="form-control" id="exampleInputSong1" formControlName="name" >
       </div>
       <div>
-        <label for="exampleInputCategory1">Category :</label>
+        <label for="exampleInputCategory1">Thể loại:</label>
         <input type="text" class="form-control" id="exampleInputCategory1" formControlName="category" >
       </div>
       <div class="form-group">
         <div>
-          <label for="exampleInputLyric1">Lyric :</label>
+          <label for="exampleInputLyric1">Lời ca khúc:</label>
         </div>
         <div>
           <textarea class="form-control" id="exampleInputLyric1" cols="30" rows="10" formControlName="lyric"></textarea>
@@ -37,18 +37,18 @@
       </div>
       <div class="form-group">
         <div>
-          <label for="exampleInputDescription1">Description :</label>
+          <label for="exampleInputDescription1">Mô tả :</label>
         </div>
         <div>
           <textarea class="form-control" id="exampleInputDescription1" cols="30" rows="10" formControlName="description"></textarea>
         </div>
       </div>
       <div class="form-group">
-        <label for="exampleFormControlFile1">Upload file Mp3</label>
+        <label for="exampleFormControlFile1">Tải file Mp3</label>
         <input type="file" class="form-control-file" id="exampleFormControlFile1" (change)="createSong($event)">
       </div>
       <div class="form-group">
-        <label for="exampleFormControlFile2">Upload file Image:</label>
+        <label for="exampleFormControlFile2">Tải ảnh đại diện ca khúc:</label>
         <input type="file" class="form-control-file" id="exampleFormControlFile2" (change)="createImage($event)">
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
