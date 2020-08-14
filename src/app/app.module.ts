@@ -82,7 +82,8 @@ export function getPostTimeToString(postTime):string {
     NgxPaginationModule,
     BrowserAnimationsModule,
     MaterialModule,
-    MatInputModule
+    MatInputModule,
+    NgxAudioPlayerModule
   ],
   providers: [authInterceptorProviders,{
     provide: APP_BASE_HREF, useValue: "/"

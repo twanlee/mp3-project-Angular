@@ -4,6 +4,7 @@ import {IPlaylist} from '../../../interfaces/iplaylist';
 import {ActivatedRoute} from '@angular/router';
 import {ISong} from '../../../interfaces/isong';
 import {Track} from 'ngx-audio-player';
+import {ActiveService} from '../../../services/interactive/active.service';
 
 @Component({
   selector: 'app-playlist-detail',
@@ -23,7 +24,8 @@ export class PlaylistDetailComponent implements OnInit {
     }
   ];
   constructor(private playlistService: PlaylistService,
-              private activeRoute: ActivatedRoute) { }
+              private activeRoute: ActivatedRoute,
+              private activeService: ActiveService) { }
 
   ngOnInit(): void {
     let id = +this.activeRoute.snapshot.paramMap.get('id');
@@ -54,5 +56,12 @@ export class PlaylistDetailComponent implements OnInit {
   }
   onEnded(event) {
     console.log(event.value);
+  }
+  likeSong(songId: number) {
+    console.log("song id là : " + songId);
+    let userId = +localStorage.getItem("userId");
+    this.activeService.likeSong(songId, userId).subscribe(data => {
+      document.getElementById('like'+songId).innerHTML = 'Like ('+data.likes+')';
+    })
   }
 }
