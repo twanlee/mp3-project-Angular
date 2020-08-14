@@ -27,13 +27,20 @@ import { SongPlayerComponent } from './components/songs/song-player/song-player.
 import { SongDescriptionComponent } from './components/songs/song-description/song-description.component';
 import {SongEditComponent} from './components/songs/song-edit/song-edit.component';
 import { SongDeleteComponent } from './components/songs/song-delete/song-delete.component';
-import { CreateArtistComponent } from './components/artists/create-artist/create-artist.component';
 import { AllPlaylistComponent } from './components/playlists/all-playlist/all-playlist.component';
 import { PlaylistDetailComponent } from './components/playlists/playlist-detail/playlist-detail.component';
+import { SearchSongFormComponent } from './components/songs/search-song-form/search-song-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
-
+import { MaterialModule } from './material.module';
+import {MatInputModule} from "@angular/material/input";
+import {CreateArtistComponent} from "./components/artists/create-artist/create-artist.component";
+export function getPostTimeToString(postTime):string {
+    // @ts-ignore
+    let date = new Date(postTime);
+    let string = date.toDateString();
+    string = string.slice(4);
+    return string;
+}
 
 @NgModule({
   declarations: [
@@ -56,9 +63,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SongPlayerComponent,
     SongDescriptionComponent,
     SongEditComponent,
-    CreateArtistComponent,
     AllPlaylistComponent,
-    PlaylistDetailComponent
+    PlaylistDetailComponent,
+    SearchSongFormComponent,
+    CreateArtistComponent
   ],
   imports: [
     BrowserModule,
@@ -72,6 +80,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     NgxPaginationModule,
     BrowserAnimationsModule,
+    MaterialModule,
+    MatInputModule
   ],
   providers: [authInterceptorProviders,{
     provide: APP_BASE_HREF, useValue: "/"
