@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegisterComponent } from './components/register/register.component';
+import { RegisterComponent } from './components/user/register/register.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from "@angular/common/http";
 import {HeaderComponent} from './components/header/header.component';
@@ -14,10 +14,10 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
-import {LoginComponent} from './components/login/login.component';
+import {LoginComponent} from './components/user/login/login.component';
 import {ViewSongByUserComponent} from './components/songs/songs-get-by-user/view-song-by-user.component';
 import {SongSearchingResultsComponent} from './components/songs/song-searching-results/song-searching-results.component';
-import {EditProfileComponent} from './components/edit-profile/edit-profile.component';
+import {EditProfileComponent} from './components/user/edit-profile/edit-profile.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {authInterceptorProviders} from './helper/auth.interceptor';
 import {APP_BASE_HREF} from '@angular/common';
@@ -30,6 +30,7 @@ import { SongDeleteComponent } from './components/songs/song-delete/song-delete.
 import { AllPlaylistComponent } from './components/playlists/all-playlist/all-playlist.component';
 import { PlaylistDetailComponent } from './components/playlists/playlist-detail/playlist-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 
 
 
@@ -55,7 +56,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SongDescriptionComponent,
     SongEditComponent,
     AllPlaylistComponent,
-    PlaylistDetailComponent
+    PlaylistDetailComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

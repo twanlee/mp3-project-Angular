@@ -1,5 +1,8 @@
 export interface IProfile {
+  avatarUrl?: string;
   firstName?: string;
   lastName?: string;
-  avatarUrl?: string;
+  birthday?: Date;
+  phoneNumber?: string;
+  gender?: string;
 }
