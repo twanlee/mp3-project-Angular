@@ -13,6 +13,8 @@ export class SongSearchingResultsComponent implements OnInit {
   songList: ISong[];
   page: number = 1;
   keyword: string;
+  topSixSongs: ISong[];
+
   constructor(
     private songService: SongService,
     private activatedRoute: ActivatedRoute
@@ -23,7 +25,13 @@ export class SongSearchingResultsComponent implements OnInit {
       this.keyword = data.keyword;
       this.search(this.keyword);
     });
+    this.getTopSix();
+  }
 
+  getTopSix(){
+    this.songService.getTop10Song().subscribe(data => {
+      this.topSixSongs = data;
+    })
   }
 
   search(keyword){

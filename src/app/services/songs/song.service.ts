@@ -35,4 +35,8 @@ export class SongService {
   getTop10Song(): Observable<ISong[]>{
     return this.http.get<ISong[]>(this.url_api + "/topten")
   }
+
+  getTop6Song(): Observable<ISong[]>{
+    return this.http.get<ISong[]>(this.url_api + "/topsix")
+  }
 }
