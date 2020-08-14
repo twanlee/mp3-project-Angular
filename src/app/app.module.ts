@@ -29,10 +29,19 @@ import {SongEditComponent} from './components/songs/song-edit/song-edit.componen
 import { SongDeleteComponent } from './components/songs/song-delete/song-delete.component';
 import { AllPlaylistComponent } from './components/playlists/all-playlist/all-playlist.component';
 import { PlaylistDetailComponent } from './components/playlists/playlist-detail/playlist-detail.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NgxAudioPlayerModule} from 'ngx-audio-player';
-
-
+import { SearchSongFormComponent } from './components/songs/search-song-form/search-song-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
+import {MatInputModule} from "@angular/material/input";
+import {CreateArtistComponent} from "./components/artists/create-artist/create-artist.component";
+export function getPostTimeToString(postTime):string {
+    // @ts-ignore
+    let date = new Date(postTime);
+    let string = date.toDateString();
+    string = string.slice(4);
+    return string;
+}
 
 @NgModule({
   declarations: [
@@ -56,22 +65,25 @@ import {NgxAudioPlayerModule} from 'ngx-audio-player';
     SongDescriptionComponent,
     SongEditComponent,
     AllPlaylistComponent,
-    PlaylistDetailComponent
+    PlaylistDetailComponent,
+    SearchSongFormComponent,
+    CreateArtistComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig),
-        AngularFireStorageModule,
-        AngularFireDatabaseModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        AppRoutingModule,
-        FormsModule,
-        NgxPaginationModule,
-        BrowserAnimationsModule,
-        NgxAudioPlayerModule,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    AppRoutingModule,
+    FormsModule,
+    NgxPaginationModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    MatInputModule
+  ],
   providers: [authInterceptorProviders,{
     provide: APP_BASE_HREF, useValue: "/"
   }],

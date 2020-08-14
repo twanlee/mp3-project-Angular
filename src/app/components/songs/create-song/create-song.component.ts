@@ -5,8 +5,8 @@ import {Router} from '@angular/router';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
 import {ISong} from '../../../interfaces/isong';
-import {async} from 'rxjs/internal/scheduler/async';
-import {Observable} from 'rxjs';
+import {UserService} from '../../../services/user/user.service';
+
 
 @Component({
   selector: 'app-create-song',
@@ -18,13 +18,19 @@ export class CreateSongComponent implements OnInit {
   fileSong: File;
   fileImage: File;
   song: ISong = {};
+  id_user: number;
   constructor(private storage: AngularFireStorage,
               private fb: FormBuilder,
               private songService: SongService,
-              private router: Router) {
-  }
+              private router: Router,
+              private userService: UserService){}
+
 
   ngOnInit(): void {
+    this.id_user = +localStorage.getItem('userId');
+    this.songService.sendUserID(this.id_user).subscribe(()=>{
+        console.log("send user_id : OKKK!!")
+    })
     this.createSongForm = this.fb.group({
       name: [''],
       lyric: [''],
@@ -68,6 +74,7 @@ export class CreateSongComponent implements OnInit {
     this.song.name = data.name;
     this.song.description = data.description;
     this.song.lyric = data.lyric;
+    this.song.postTime = new Date();
     this.songService.saveSong(this.song).subscribe(() => {
       console.log('Add song successful');
     });

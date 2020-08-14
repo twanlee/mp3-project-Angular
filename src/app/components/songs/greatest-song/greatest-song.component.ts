@@ -14,7 +14,6 @@ export class GreatestSongComponent implements OnInit {
     singers: [{
       fullName: "erik"
     }],
-    userCreate: "danpq14",
     postTime: new Date()
   };
   postTime: string;
