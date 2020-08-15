@@ -64,4 +64,11 @@ export class PlaylistDetailComponent implements OnInit {
       document.getElementById('like'+songId).innerHTML = 'Like ('+data.likes+')';
     })
   }
+  likePlaylist() {
+    let userId = +localStorage.getItem("userId");
+    this.activeService.likePlaylist(this.playlist.id, userId).subscribe(data => {
+      document.getElementById('playlistLike').innerHTML = 'Like ('+data.likes+')';
+
+    })
+  }
 }

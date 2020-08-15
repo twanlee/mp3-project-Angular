@@ -121,7 +121,6 @@ export class Top10songComponent implements OnInit {
     return string;
   }
   likeSong(songId: number) {
-      console.log("song id là : " + songId);
       let userId = +localStorage.getItem("userId");
       this.activeService.likeSong(songId, userId).subscribe(data => {
           document.getElementById('like'+songId).innerHTML = 'Like ('+data.likes+')';
