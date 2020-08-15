@@ -25,9 +25,13 @@ export class UserProfileComponent implements OnInit {
     });
     this.userService.getUserById(this.userId).subscribe(data => {
       this.user = data;
+      console.log("user is :");
+      console.log(this.user)
     });
     this.userService.getProfileByUserId(this.userId).subscribe(resp => {
       this.profile = resp;
+      console.log("profile is: ");
+      console.log(this.profile)
     })
   }
 

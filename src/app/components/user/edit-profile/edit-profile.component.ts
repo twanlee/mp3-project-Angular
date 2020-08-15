@@ -6,6 +6,8 @@ import {UserService} from '../../../services/user/user.service';
 import {IUser} from '../../../interfaces/user/user';
 import {IGender} from '../../../interfaces/user/gender';
 import {GenderService} from '../../../services/user/gender.service';
+import {finalize} from 'rxjs/operators';
+import {AngularFireStorage} from '@angular/fire/storage';
 
 @Component({
   selector: 'app-edit-profile',
@@ -18,12 +20,13 @@ export class EditProfileComponent implements OnInit {
   user: IUser;
   firstName: string;
   lastName: string;
-
+  fileImage: File;
   constructor(private activatedRoute: ActivatedRoute,
               private userService: UserService,
               private fb: FormBuilder,
               private router: Router,
-              private genderService: GenderService) {
+              private genderService: GenderService,
+              private storage: AngularFireStorage) {
   }
   groupGender: IGender[] = this.genderService.getGenderList();
   ngOnInit(): void {
@@ -69,4 +72,18 @@ export class EditProfileComponent implements OnInit {
         alert('Vui lòng nhập lại')
       }
     }
+  editImage (event) {
+    const randomString = Math.random().toString(36).substring(7);
+    const filePath = 'image/featured/' +randomString + new Date().getTime();
+    this.fileImage = event.target.files[0];
+    const fileRef = this.storage.ref(filePath);
+    this.storage.upload(filePath,this.fileImage).snapshotChanges().pipe(
+      finalize(() =>{
+        fileRef.getDownloadURL().subscribe(url =>{
+          this.editProfileForm.value.avatarUrl = url;
+          console.log(url);
+        })
+      })
+    ).subscribe();
+  }
 }

@@ -26,7 +26,7 @@ export class UserService {
     return this.http.get<IProfile>(this.API_USER_URL + id + '/profile')
   }
   getUserById(id: number): Observable<IUser> {
-    return this.http.get<IUser>(this.API_USER_URL + id)
+    return this.http.get<IUser>(this.API_USER_URL + id +'/detail')
   }
   editProfileByUserId(id: number, profile: IProfile): Observable<IProfile> {
     return this.http.put<IProfile>(this.API_USER_URL + id + '/edit', profile)
