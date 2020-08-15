@@ -24,7 +24,7 @@
           <!-- Nav Start -->
           <div class="classynav">
             <ul id="nav">
-              <li class="current-item"><a routerLink="">Home</a></li>
+              <li class="current-item"><a routerLink="/">Home</a></li>
               <li><a routerLink="">Bài Hát Mới Nhất</a>
               </li>
               <li><a href="./podcast.html">Nghệ sĩ</a></li>
@@ -41,6 +41,9 @@
 <!--              <i class="fa fa-upload" aria-hidden="true"></i>-->
 <!--            </div>-->
             <app-search-song-form></app-search-song-form>
+            <div class="top-input-area">
+              <i class="fa fa-upload" style="font-size: 18px" aria-hidden="true" routerLink="/song/create"></i>
+            </div>
             <!-- Top Social Area -->
             <div class="top-social-area" *ngIf="!showName">
               <input type="hidden" />
@@ -51,8 +54,8 @@
                 <div class="dropdown">
                   <i class="dropbtn">Hello! {{firstName}} {{lastName}}</i>
                   <div class="dropdown-content">
-                    <a href="/user/{{userId}}/profile">Profile</a>
-                    <a routerLink="/user/songs">Nhạc cá nhân</a>
+                    <a routerLink="/user/{{userId}}/profile">Profile</a>
+                    <a routerLink="/user/{{userId}}/songs">Nhạc cá nhân</a>
                     <a class="btn btn-danger" (click)="logOut()">Log Out</a>
                   </div>
                 </div>

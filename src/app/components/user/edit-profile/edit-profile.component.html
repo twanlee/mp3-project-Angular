@@ -1,0 +1,99 @@
+<div class="container emp-profile" *ngIf="profile!=null && user!=null">
+  <div>
+    <div class="row">
+      <div class="col-md-4">
+        <div>
+          <div class="profile-img">
+            <img src="{{imageSrc}}" alt=""/>
+            <div class="file btn btn-lg btn-primary">
+              Change Photo
+              <input type="file" name="file" formControlName="avatarUrl" (change)="editImage($event)"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="profile-head">
+          <h2>
+            {{profile.firstName}} {{profile.lastName}}
+          </h2>
+          <h4 style="padding-bottom: 60px">
+            {{user.email}}
+          </h4>
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Information</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+      <form class="col-md-8" [formGroup]="editProfileForm" (ngSubmit)="onSubmit()">
+        <div class="tab-content profile-tab" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="row">
+              <div class="col-md-3">
+              </div>
+              <div class="col-md-9">
+                <input disabled id="id" type="hidden" formControlName="id" class="form-control row-profile-input"/>
+                <div></div>
+              </div>
+            </div>
+            <div class="row row-profile">
+              <div class="col-md-3 row-profile-label">
+                <label for="firstName">First Name</label>
+              </div>
+              <div class="col-md-9">
+                <input id="firstName" type="text" formControlName="firstName" class="form-control row-profile-input"/>
+                <div></div>
+              </div>
+            </div>
+            <div class="row row-profile">
+              <div class="col-md-3 row-profile-label">
+                <label for="lastName">Last Name</label>
+              </div>
+              <div class="col-md-9">
+                <input id="lastName" type="text" formControlName="lastName" class="form-control row-profile-input"/>
+              </div>
+            </div>
+            <div class="row row-profile">
+              <div class="col-md-3 row-profile-label">
+                <label for="birthday">Birthday</label>
+              </div>
+              <div class="col-md-9">
+                <input id="birthday" type="date" class="form-control row-profile-input" formControlName="birthday"/>
+              </div>
+            </div>
+            <div class="row row-profile">
+              <div class="col-md-3 row-profile-label">
+                <label for="phoneNumber">Phone</label>
+              </div>
+              <div class="col-md-9">
+                <input type="text" class="form-control row-profile-input" id="phoneNumber" formControlName="phoneNumber"/>
+              </div>
+            </div>
+            <div class="alert alert-danger alert-edit-profile" role="alert" *ngIf="editProfileForm.get('phoneNumber').invalid && editProfileForm.get('phoneNumber').touched">
+              Invalid field!
+            </div>
+            <div class="row row-profile">
+              <div class="col-md-3 row-profile-label">
+                <label for="gender">Gender</label>
+              </div>
+              <div class="col-md-9">
+                <input type="text" class="form-control row-profile-input" id="gender" formControlName="gender"/>
+              </div>
+            </div>
+            <div class="row row-profile">
+              <div class="col-md-12 row-profile-submit">
+                <button class="btn btn-success">Lưu thay đổi</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
