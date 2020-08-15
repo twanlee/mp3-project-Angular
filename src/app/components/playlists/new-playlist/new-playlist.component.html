@@ -1,19 +1,13 @@
-<!--<div>-->
-<!--<form (ngSubmit)="submit()">-->
-<!--  <div class="form-group">-->
-<!--    <label for="exampleFormControlInput1">Chủ đề : </label>-->
-<!--    <input type="text" class="form-control" id="exampleFormControlInput1" >-->
-<!--  </div>-->
-<!--  <div class="form-group">-->
-<!--    <label for="exampleFormControlInput2">Tải ảnh đại diện cho danh sách bài hát :</label>-->
-<!--    <input type="file" id="exampleFormControlInput2" class="form-control" (change)="uploadImage($event)" >-->
-<!--  </div>-->
-<!--  <div class="form-group">-->
-<!--    <label for="exampleFormControlSelect1">Chọn bài hát :</label>-->
-<!--    <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="">-->
-<!--      <option >1</option>-->
-<!--    </select>-->
-<!--  </div>-->
-<!--  <button type="submit" class="btn btn-primary">Submit</button>-->
-<!--</form>-->
-<!--</div>-->
+<div style="padding-top: 150px; padding-left: 80px">
+<form (ngSubmit)="submit()" [formGroup]="createPlaylistForm">
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Chủ đề : </label>
+    <input type="text" class="form-control" id="exampleFormControlInput1"  formControlName="title">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput2">Tải ảnh đại diện cho danh sách bài hát :</label>
+    <input type="file" id="exampleFormControlInput2" class="form-control" (change)="uploadImage($event)" >
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>

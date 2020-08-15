@@ -13,6 +13,7 @@ import {SongEditComponent} from './components/songs/song-edit/song-edit.componen
 import {CreateArtistComponent} from './components/artists/create-artist/create-artist.component';
 import {AllPlaylistComponent} from './components/playlists/all-playlist/all-playlist.component';
 import {PlaylistDetailComponent} from './components/playlists/playlist-detail/playlist-detail.component';
+import {NewPlaylistComponent} from './components/playlists/new-playlist/new-playlist.component';
 
 
 const routes: Routes = [
@@ -29,8 +30,8 @@ const routes: Routes = [
   {path: 'song/:id/detail', component: SongDetailComponent},
   {path: 'artist/create', component: CreateArtistComponent},
   {path: 'playlist/all', component: AllPlaylistComponent},
-  {path: 'playlist/:id', component: PlaylistDetailComponent},
-  {path: 'playlist/all/playlist/:id', component: PlaylistDetailComponent}
+  {path: 'playlist/:id/detail', component: PlaylistDetailComponent},
+  {path: 'playlist/create', component: NewPlaylistComponent}
 ];
 
 @NgModule({

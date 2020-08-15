@@ -37,8 +37,9 @@ import {MatInputModule} from "@angular/material/input";
 import {CreateArtistComponent} from "./components/artists/create-artist/create-artist.component";
 import {AddAuthorComponent} from './components/songs/create-song/add-author/add-author.component';
 import {AddSingerComponent} from './components/songs/create-song/add-singer/add-singer.component';
+import {NewPlaylistComponent} from './components/playlists/new-playlist/new-playlist.component';
+
 export function getPostTimeToString(postTime):string {
-    // @ts-ignore
     let date = new Date(postTime);
     let string = date.toDateString();
     string = string.slice(4);
@@ -71,7 +72,8 @@ export function getPostTimeToString(postTime):string {
     SearchSongFormComponent,
     CreateArtistComponent,
     AddAuthorComponent,
-    AddSingerComponent
+    AddSingerComponent,
+    NewPlaylistComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +89,7 @@ export function getPostTimeToString(postTime):string {
     BrowserAnimationsModule,
     MaterialModule,
     MatInputModule,
-    NgxAudioPlayerModule
+    NgxAudioPlayerModule,
   ],
   providers: [authInterceptorProviders,{
     provide: APP_BASE_HREF, useValue: "/"
