@@ -51,7 +51,7 @@ export class SongEditComponent implements OnInit {
     });
     this.artistService.getAll().subscribe(resp =>{
       this.artistsFilter = resp;
-    })
+    });
   }
 
   submit(){
@@ -72,8 +72,9 @@ export class SongEditComponent implements OnInit {
      }
    }
    this.songService.saveSong(this.song).subscribe(()=>{
-     console.log("edit ok")
-   })
+     console.log("edit ok");
+   });
+   this.rt.navigate(["/user/songs"]);
   }
   updateSong(event){
     const randomString = Math.random().toString(36).substring(7);

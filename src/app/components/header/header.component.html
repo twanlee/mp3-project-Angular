@@ -52,7 +52,7 @@
                   <i class="dropbtn">Hello! {{firstName}} {{lastName}}</i>
                   <div class="dropdown-content">
                     <a href="/user/{{userId}}/profile">Profile</a>
-                    <a href="/user/{{userId}}/songs">Nhạc cá nhân</a>
+                    <a routerLink="/user/songs">Nhạc cá nhân</a>
                     <a class="btn btn-danger" (click)="logOut()">Log Out</a>
                   </div>
                 </div>
