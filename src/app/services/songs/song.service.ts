@@ -20,8 +20,8 @@ export class SongService {
     return this.http.get<ISong>(this.url_api + '/' + id + '/detail');
   }
 
-  saveSong(data: ISong): Observable<ISong> {
-    return this.http.post<ISong>(this.url_api + '/save', data);
+  saveSong(data: ISong,user_id: number): Observable<ISong> {
+    return this.http.post<ISong>(this.url_api+'/'+user_id + '/save', data);
   }
 
   sendUserID(user_id: number): Observable<string> {
