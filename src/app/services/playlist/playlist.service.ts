@@ -16,9 +16,9 @@ export class PlaylistService {
       return this.http.get<IPlaylist[]>(this.PLAYLIST_API + "all")
   }
   getPlayListById(id: number): Observable<IPlaylist> {
-      return this.http.get<IPlaylist>(this.PLAYLIST_API + id);
+      return this.http.get<IPlaylist>(this.PLAYLIST_API + id +"/detail");
   }
   getSongFromPlaylist(id: number): Observable<ISong[]> {
-    return this.http.get<ISong[]>(this.PLAYLIST_API + id + "/detail")
+    return this.http.get<ISong[]>(this.PLAYLIST_API + id + "/songs")
   }
 }
