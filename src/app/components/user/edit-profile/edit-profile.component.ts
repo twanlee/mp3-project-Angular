@@ -21,6 +21,7 @@ export class EditProfileComponent implements OnInit {
   firstName: string;
   lastName: string;
   fileImage: File;
+  imageSrc: any;
   constructor(private activatedRoute: ActivatedRoute,
               private userService: UserService,
               private fb: FormBuilder,
@@ -49,6 +50,9 @@ export class EditProfileComponent implements OnInit {
     this.userService.getProfileByUserId(id).subscribe(resp => {
       this.profile = resp;
       this.editProfileForm.patchValue(resp);
+      if (this.imageSrc == null) {
+        this.imageSrc = this.profile.avatarUrl;
+      }
     });
   }
 
@@ -70,6 +74,9 @@ export class EditProfileComponent implements OnInit {
     const randomString = Math.random().toString(36).substring(7);
     const filePath = 'image/featured/' +randomString + new Date().getTime();
     this.fileImage = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (e => this.imageSrc = e.target.result);
+    reader.readAsDataURL(event.target.files[0]);
     const fileRef = this.storage.ref(filePath);
     this.storage.upload(filePath,this.fileImage).snapshotChanges().pipe(
       finalize(() =>{
