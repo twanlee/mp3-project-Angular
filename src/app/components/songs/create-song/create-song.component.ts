@@ -5,8 +5,10 @@ import {Router} from '@angular/router';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
 import {ISong} from '../../../interfaces/isong';
-import {async} from 'rxjs/internal/scheduler/async';
-import {Observable} from 'rxjs';
+import {UserService} from '../../../services/user/user.service';
+import {ArtistService} from '../../../services/artist/artist.service';
+import {IArtist} from '../../../interfaces/iartist';
+
 
 @Component({
   selector: 'app-create-song',
@@ -18,13 +20,25 @@ export class CreateSongComponent implements OnInit {
   fileSong: File;
   fileImage: File;
   song: ISong = {};
+  id_user: number;
+  artists: IArtist[] = [];
+  artistsFilter = [];
+  singers: number[] = [];
+  authors: number[] = [];
   constructor(private storage: AngularFireStorage,
               private fb: FormBuilder,
               private songService: SongService,
-              private router: Router) {
+              private router: Router,
+              private userService: UserService,
+              private artistService: ArtistService) {
   }
 
+
   ngOnInit(): void {
+    this.id_user = +localStorage.getItem('userId');
+    // this.songService.sendUserID(this.id_user).subscribe(() => {
+    //   console.log('send user_id : OKKK!!');
+    // });
     this.createSongForm = this.fb.group({
       name: [''],
       lyric: [''],
@@ -32,35 +46,42 @@ export class CreateSongComponent implements OnInit {
       singers: [''],
       description: ['']
     });
+    this.artistService.getAll().subscribe(resp => {
+      this.artists = resp;
+    });
+    this.artistService.getAll().subscribe(resp => {
+      this.artistsFilter = resp;
+    });
   }
 
   createSong(event) {
     const randomString = Math.random().toString(36).substring(7);
-    const filePath = 'mp3/featured/' +randomString+new Date().getTime();
+    const filePath = 'mp3/featured/' + randomString + new Date().getTime();
     this.fileSong = event.target.files[0];
     const fileRef = this.storage.ref(filePath);
-    this.storage.upload(filePath,this.fileSong).snapshotChanges().pipe(
-      finalize(() =>{
-        fileRef.getDownloadURL().subscribe(url =>{
+    this.storage.upload(filePath, this.fileSong).snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe(url => {
           this.song.fileUrl = url;
           console.log(url);
-        })
+        });
       })
     ).subscribe();
   }
+
   createImage(event) {
-      const randomString = Math.random().toString(36).substring(7);
-      const filePath = 'image/featured/' +randomString+new Date().getTime();
-      this.fileImage = event.target.files[0];
-      const fileRef = this.storage.ref(filePath);
-      this.storage.upload(filePath,this.fileImage).snapshotChanges().pipe(
-        finalize(() =>{
-          fileRef.getDownloadURL().subscribe(url =>{
-            this.song.imageUrl = url;
-            console.log(url);
-          })
-        })
-      ).subscribe();
+    const randomString = Math.random().toString(36).substring(7);
+    const filePath = 'image/featured/' + randomString + new Date().getTime();
+    this.fileImage = event.target.files[0];
+    const fileRef = this.storage.ref(filePath);
+    this.storage.upload(filePath, this.fileImage).snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe(url => {
+          this.song.imageUrl = url;
+          console.log(url);
+        });
+      })
+    ).subscribe();
   }
 
   submit() {
@@ -68,11 +89,33 @@ export class CreateSongComponent implements OnInit {
     this.song.name = data.name;
     this.song.description = data.description;
     this.song.lyric = data.lyric;
-    this.songService.saveSong(this.song).subscribe(() => {
+    this.song.s_singers = [];
+    this.song.s_authors = [];
+    for (let i = 0; i < this.singers.length; i++) {
+      this.song.s_singers[i] = {};
+      this.song.s_singers[i].id = this.singers[i];
+    }
+    for (let i = 0; i < this.authors.length; i++) {
+      this.song.s_authors[i] = {};
+      this.song.s_authors[i].id = this.authors[i];
+    }
+    this.song.postTime = new Date();
+    this.songService.saveSong(this.song,this.id_user).subscribe(() => {
       console.log('Add song successful');
     });
     //Điều hướng sau khi post đi đâu tại đây
     // this.router.navigate("")
 
+  }
+
+  filterByArtist(artistName) {
+    return this.artists.filter(
+      artist => {
+        return artist.fullName.indexOf(artistName) != -1;
+      }
+    );
+  }
+  findArtist(event) {
+    this.artistsFilter = (event) ? this.filterByArtist(event) : this.artists;
   }
 }

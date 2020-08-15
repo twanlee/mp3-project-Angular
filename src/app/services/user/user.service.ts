@@ -17,10 +17,9 @@ export class UserService {
   getUserList(): Observable<any> {
     return this.http.get<IUser[]>(this.API_USER_URL + 'list');
   }
-  URL_GET_ALL_SONG = "http://localhost:8080/api/user/";
 
   getAllSongByUser(id: number): Observable<ISong[]> {
-    return this.http.get<ISong[]>(this.URL_GET_ALL_SONG+ id + "/songs")
+    return this.http.get<ISong[]>(this.API_USER_URL + id + "/songs")
   }
   getProfileByUserId(id: number): Observable<any> {
     return this.http.get<IProfile>(this.API_USER_URL + id + '/profile')

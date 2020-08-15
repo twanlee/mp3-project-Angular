@@ -3,6 +3,8 @@ import {PlaylistService} from '../../../services/playlist/playlist.service';
 import {IPlaylist} from '../../../interfaces/iplaylist';
 import {ActivatedRoute} from '@angular/router';
 import {ISong} from '../../../interfaces/isong';
+import {Track} from 'ngx-audio-player';
+import {ActiveService} from '../../../services/interactive/active.service';
 
 @Component({
   selector: 'app-playlist-detail',
@@ -12,20 +14,61 @@ import {ISong} from '../../../interfaces/isong';
 export class PlaylistDetailComponent implements OnInit {
   playlist: IPlaylist;
   songs: ISong[] = [];
+  msaapDisplayTitle = true;
+  msaapDisplayPlayList = true;
+  msaapPageSizeOptions = [5,10];
+  msaapPlaylist: Track[] = [
+    {
+      title: '',
+      link: ''
+    }
+  ];
   constructor(private playlistService: PlaylistService,
-              private activeRoute: ActivatedRoute) { }
+              private activeRoute: ActivatedRoute,
+              private activeService: ActiveService) { }
 
   ngOnInit(): void {
     let id = +this.activeRoute.snapshot.paramMap.get('id');
     this.playlistService.getPlayListById(id).subscribe(data => {
         this.playlist = data;
-        console.log(this.playlist)
     });
     this.playlistService.getSongFromPlaylist(id).subscribe(data => {
-      this.songs = data;
-      console.log(this.songs)
-    })
-
+        this.songs = data;
+        this.songs.map(data => {
+          this.convertSongToTrack(data);
+        });
+        console.log(this.msaapPlaylist);
+    });
   }
+  convertSongToTrack(song){
+      let track: Track = {
+        title: song.name,
+        link : song.fileUrl,
+      };
+      this.msaapPlaylist.push(track);
+  }
+  getPostTimeToString(postTime): string{
+    // @ts-ignore
+    let date = new Date(postTime);
+    let string = date.toDateString();
+    string = string.slice(4);
+    return string;
+  }
+  onEnded(event) {
+    console.log(event.value);
+  }
+  likeSong(songId: number) {
+    console.log("song id là : " + songId);
+    let userId = +localStorage.getItem("userId");
+    this.activeService.likeSong(songId, userId).subscribe(data => {
+      document.getElementById('like'+songId).innerHTML = 'Like ('+data.likes+')';
+    })
+  }
+  likePlaylist() {
+    let userId = +localStorage.getItem("userId");
+    this.activeService.likePlaylist(this.playlist.id, userId).subscribe(data => {
+      document.getElementById('playlistLike').innerHTML = 'Like ('+data.likes+')';
 
+    })
+  }
 }

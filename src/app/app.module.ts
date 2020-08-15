@@ -29,10 +29,24 @@ import {SongEditComponent} from './components/songs/song-edit/song-edit.componen
 import { SongDeleteComponent } from './components/songs/song-delete/song-delete.component';
 import { AllPlaylistComponent } from './components/playlists/all-playlist/all-playlist.component';
 import { PlaylistDetailComponent } from './components/playlists/playlist-detail/playlist-detail.component';
+import {NgxAudioPlayerModule} from 'ngx-audio-player';
+import { SearchSongFormComponent } from './components/songs/search-song-form/search-song-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 
 
+import { MaterialModule } from './material.module';
+import {MatInputModule} from "@angular/material/input";
+import {CreateArtistComponent} from "./components/artists/create-artist/create-artist.component";
+import {AddAuthorComponent} from './components/songs/create-song/add-author/add-author.component';
+import {AddSingerComponent} from './components/songs/create-song/add-singer/add-singer.component';
+export function getPostTimeToString(postTime):string {
+    // @ts-ignore
+    let date = new Date(postTime);
+    let string = date.toDateString();
+    string = string.slice(4);
+    return string;
+}
 
 @NgModule({
   declarations: [
@@ -57,7 +71,11 @@ import { UserProfileComponent } from './components/user/user-profile/user-profil
     SongEditComponent,
     AllPlaylistComponent,
     PlaylistDetailComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    SearchSongFormComponent,
+    CreateArtistComponent,
+    AddAuthorComponent,
+    AddSingerComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +89,9 @@ import { UserProfileComponent } from './components/user/user-profile/user-profil
     FormsModule,
     NgxPaginationModule,
     BrowserAnimationsModule,
+    MaterialModule,
+    MatInputModule,
+    NgxAudioPlayerModule
   ],
   providers: [authInterceptorProviders,{
     provide: APP_BASE_HREF, useValue: "/"

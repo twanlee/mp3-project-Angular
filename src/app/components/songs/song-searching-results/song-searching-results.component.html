@@ -1,27 +1,83 @@
-<div>
-  <input type="text" (change)="search($event)">
+<div style="margin-top: 150px"></div>
+
+<div class="col-12">
+  <div class="section-heading text-center">
+    <span style="color: black; font-size: 20px">Kết quả tìm kiếm của: {{keyword}}</span>
+    <div class="line"></div>
+  </div>
 </div>
-<div class="container">
-  <table class="table">
-    <thead class="thead-dark">
-    <tr>
-      <th scope="col">STT</th>
-      <th scope="col">Song Name</th>
-      <th scope="col">Singer</th>
-      <th scope="col">Author</th>
-      <th scope="col">Update</th>
-      <th scope="col">Handle</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let song of songList | paginate: {id:'song-list',itemsPerPage:1,currentPage:page}; let i = index">
-      <th scope="row">{{i+1}}</th>
-      <td>{{song.name}}</td>
-      <td>{{song.s_singers}}</td>
-      <td>{{song.s_authors}}</td>
-      <td><button class="btn btn-dark" [routerLink]="[song.id,'edit']">Edit</button></td>
-      <td><button class="btn btn-danger">Delete</button></td>
-    </tbody>
-  </table>
-  <pagination-controls (pageChange)="page = $event" id="song-list"></pagination-controls>
+<div class="col-12" *ngIf="songList.length==0">
+  <div class="section-heading text-center">
+    <span style="color: black; font-size: 20px">0 bài hát được tìm thấy</span><br>
+    <span style="color: black; font-size: 20px">Gợi ý cho bạn:</span>
+    <div></div>
+  </div>
 </div>
+
+<div class="container" *ngIf="songList.length>0">
+  <div class="row poca-portfolio">
+    <!-- Single gallery Item -->
+    <div *ngFor="let song of songList">
+      <div class="col-12 col-md-6 single_gallery_item entre wow fadeInUp" data-wow-delay="0.1s" style=" padding-left: 40px">
+        <!-- Welcome Music Area -->
+        <div class="poca-music-area style-2 d-flex align-items-center flex-wrap" style="width: 500px">
+          <div class="poca-music-content text-center">
+            <span class="music-published-date mb-2">{{convertTime(song.postTime)}}</span>
+            <h2><a  [routerLink]="'../../song/'+song.id+'/detail'" style="color: black; font-size: 20px">{{song.name}}</a></h2>
+            <div class="music-meta-data">
+              <p>By <a href="#" class="music-author"></a> | <a href="#" class="music-catagory">Nhạc Trẻ</a> | <a href="#" class="music-duration">Tên ca sĩ</a></p>
+            </div>
+            <!-- Music Player -->
+            <div class="poca-music-player">
+              <audio preload="auto" controls>
+                <source [src]="song.fileUrl">
+              </audio>
+            </div>
+            <!-- Likes, Share & Download -->
+            <div class="likes-share-download d-flex align-items-center justify-content-between">
+              <button (click)="likeSong(song.id)"><i class="fa fa-heart" aria-hidden="true"></i><p [id]="'like'+song.id">Like ({{song.review.likes}})</p></button>
+              <div>
+                <a href="#" class="mr-4"><i class="fa fa-share-alt" aria-hidden="true"></i> Views ({{song.review.views}})</a>
+                <a href="#"><i class="fa fa-download" aria-hidden="true"></i> Download (12)</a>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container" *ngIf="songList.length==0">
+  <div class="row poca-portfolio">
+    <!-- Single gallery Item -->
+    <div *ngFor="let song of topSixSongs">
+      <div class="col-12 col-md-6 single_gallery_item entre wow fadeInUp" data-wow-delay="0.1s" style=" padding-left: 40px">
+        <!-- Welcome Music Area -->
+        <div class="poca-music-area style-2 d-flex align-items-center flex-wrap" style="width: 500px">
+          <div class="poca-music-content text-center">
+            <span class="music-published-date mb-2">{{convertTime(song.postTime)}}</span>
+            <h2><a [routerLink]="'../../song/'+song.id+'/detail'" style="color: black; font-size: 20px">{{song.name}}</a></h2>
+            <div class="music-meta-data">
+              <p>By <a href="#" class="music-author"></a> | <a href="#" class="music-catagory">Nhạc Trẻ</a> | <a href="#" class="music-duration">Tên ca sĩ</a></p>
+            </div>
+            <!-- Music Player -->
+            <div class="poca-music-player">
+              <audio preload="auto" controls>
+                <source [src]="song.fileUrl">
+              </audio>
+            </div>
+            <!-- Likes, Share & Download -->
+            <div class="likes-share-download d-flex align-items-center justify-content-between">
+              <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> Like (29)</a>
+              <div>
+                <a href="#" class="mr-4"><i class="fa fa-share-alt" aria-hidden="true"></i> Share(04)</a>
+                <a href="#"><i class="fa fa-download" aria-hidden="true"></i> Download (12)</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -10,6 +10,7 @@ import {SongDetailComponent} from './components/songs/song-detail/song-detail.co
 import {ViewSongByUserComponent} from './components/songs/songs-get-by-user/view-song-by-user.component';
 import {SongSearchingResultsComponent} from './components/songs/song-searching-results/song-searching-results.component';
 import {SongEditComponent} from './components/songs/song-edit/song-edit.component';
+import {CreateArtistComponent} from './components/artists/create-artist/create-artist.component';
 import {AllPlaylistComponent} from './components/playlists/all-playlist/all-playlist.component';
 import {PlaylistDetailComponent} from './components/playlists/playlist-detail/playlist-detail.component';
 import {UserProfileComponent} from './components/user/user-profile/user-profile.component';
@@ -26,13 +27,15 @@ const routes: Routes = [
   {path: "user/:id/profile", component: UserProfileComponent},
   {path: 'search', component: SongSearchingResultsComponent},
   {path: 'song/:id/edit', component: SongEditComponent},
+  {path: ":id/profile/edit", component: EditProfileComponent},
+  {path: ':keyword/search', component: SongSearchingResultsComponent},
   {path: 'song/:id/edit', component: SongEditComponent},
   {path: '', component: HomePageComponent},
   {path: 'song/:id/detail', component: SongDetailComponent},
+  {path: 'artist/create', component: CreateArtistComponent},
   {path: 'playlist/all', component: AllPlaylistComponent},
   {path: 'playlist/:id', component: PlaylistDetailComponent},
   {path: 'playlist/all/playlist/:id', component: PlaylistDetailComponent}
-
 ];
 
 @NgModule({
