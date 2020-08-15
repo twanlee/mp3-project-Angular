@@ -36,11 +36,12 @@ export class EditProfileComponent implements OnInit {
     });
     this.editProfileForm = this.fb.group({
       id: ['', [Validators.required]],
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      birthday: ['', [Validators.required]],
-      phoneNumber: ['', [Validators.required, Validators.pattern(/^\+84\d{9,10}$/)]],
-      gender: ['', [Validators.required]]
+      firstName: [''],
+      lastName: [''],
+      birthday: [''],
+      phoneNumber: ['', [Validators.pattern(/^\+84\d{9,10}$/)]],
+      gender: [''],
+      avatarUrl: ['']
     });
     this.userService.getUserById(id).subscribe(data => {
       this.user = data;
@@ -54,14 +55,7 @@ export class EditProfileComponent implements OnInit {
   onSubmit() {
       if (this.editProfileForm.valid) {
         let newProfile = this.editProfileForm.value;
-        const profile: IProfile = {
-          id: newProfile.id,
-          firstName: newProfile.firstName,
-          lastName: newProfile.lastName,
-          birthday: newProfile.birthday,
-          phoneNumber: newProfile.phoneNumber,
-          gender: newProfile.gender
-        };
+        console.log(newProfile);
         this.userService.editProfileByUserId(this.user.id, newProfile).subscribe (
           data => {
             this.editProfileForm.reset('');
