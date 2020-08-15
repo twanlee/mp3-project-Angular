@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegisterComponent } from './components/register/register.component';
+import { RegisterComponent } from './components/user/register/register.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from "@angular/common/http";
 import {HeaderComponent} from './components/header/header.component';
@@ -14,10 +14,10 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
-import {LoginComponent} from './components/login/login.component';
+import {LoginComponent} from './components/user/login/login.component';
 import {ViewSongByUserComponent} from './components/songs/songs-get-by-user/view-song-by-user.component';
 import {SongSearchingResultsComponent} from './components/songs/song-searching-results/song-searching-results.component';
-import {EditProfileComponent} from './components/edit-profile/edit-profile.component';
+import {EditProfileComponent} from './components/user/edit-profile/edit-profile.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {authInterceptorProviders} from './helper/auth.interceptor';
 import {APP_BASE_HREF} from '@angular/common';
@@ -32,6 +32,9 @@ import { PlaylistDetailComponent } from './components/playlists/playlist-detail/
 import {NgxAudioPlayerModule} from 'ngx-audio-player';
 import { SearchSongFormComponent } from './components/songs/search-song-form/search-song-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
+
+
 import { MaterialModule } from './material.module';
 import {MatInputModule} from "@angular/material/input";
 import {CreateArtistComponent} from "./components/artists/create-artist/create-artist.component";
@@ -69,6 +72,7 @@ export function getPostTimeToString(postTime):string {
     SongEditComponent,
     AllPlaylistComponent,
     PlaylistDetailComponent,
+    UserProfileComponent,
     SearchSongFormComponent,
     CreateArtistComponent,
     AddAuthorComponent,
