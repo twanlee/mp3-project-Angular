@@ -36,6 +36,7 @@ import { AddAuthorComponent } from './components/songs/create-song/add-author/ad
 import { MaterialModule } from './material.module';
 import {MatInputModule} from "@angular/material/input";
 import {CreateArtistComponent} from "./components/artists/create-artist/create-artist.component";
+import { NewPlaylistComponent } from './components/playlists/new-playlist/new-playlist.component';
 export function getPostTimeToString(postTime):string {
     let date = new Date(postTime);
     let string = date.toDateString();
@@ -71,7 +72,8 @@ export function getPostTimeToString(postTime):string {
     AddAuthorComponent,
     PlaylistDetailComponent,
     SearchSongFormComponent,
-    CreateArtistComponent
+    CreateArtistComponent,
+    NewPlaylistComponent,
   ],
   imports: [
     BrowserModule,
