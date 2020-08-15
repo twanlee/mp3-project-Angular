@@ -36,9 +36,6 @@ export class CreateSongComponent implements OnInit {
 
   ngOnInit(): void {
     this.id_user = +localStorage.getItem('userId');
-    this.songService.sendUserID(this.id_user).subscribe(() => {
-      console.log('send user_id : OKKK!!');
-    });
     this.createSongForm = this.fb.group({
       name: [''],
       lyric: [''],
@@ -85,12 +82,14 @@ export class CreateSongComponent implements OnInit {
   }
 
   submit() {
+    console.log("sending song ...");
     let data = this.createSongForm.value;
     this.song.name = data.name;
     this.song.description = data.description;
     this.song.lyric = data.lyric;
     this.song.s_singers = [];
     this.song.s_authors = [];
+    console.log(this.song)
     for (let i = 0; i < this.singers.length; i++) {
       this.song.s_singers[i] = {};
       this.song.s_singers[i].id = this.singers[i];
@@ -100,7 +99,7 @@ export class CreateSongComponent implements OnInit {
       this.song.s_authors[i].id = this.authors[i];
     }
     this.song.postTime = new Date();
-    this.songService.saveSong(this.song).subscribe(() => {
+    this.songService.saveSong(this.song, this.id_user).subscribe(() => {
       console.log('Add song successful');
     });
     //Điều hướng sau khi post đi đâu tại đây
