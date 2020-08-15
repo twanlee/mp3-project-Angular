@@ -1,5 +1,4 @@
 import {IArtist} from './iartist';
-import {IReview} from './ireview';
 
 export interface ISong {
   id?: number;
@@ -8,10 +7,10 @@ export interface ISong {
   fileUrl?: string;
   imageUrl?: string;
   description?: string;
-  authors?: IArtist[];
-  singers?: IArtist[];
+  s_authors?: IArtist[];
+  s_singers?: IArtist[];
   postTime?: Date;
-  userCreate?: string; // chỉ cần bắt tên của User tạo ra bài hát
+  userCreate?: string;
   review?: IReview;
 }
 

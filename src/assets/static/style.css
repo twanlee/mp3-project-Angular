@@ -460,11 +460,17 @@ ul {
 .classynav ul li .dropdown li .dropdown li .dropdown li a,
 .classynav ul li .dropdown li .dropdown li a {
   border-bottom: none; }
-
+.top-input-area {
+  cursor: pointer;
+  color: white;
+  margin: 0 20px;
+  padding-right: 20px;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
 .top-search-area {
   margin: 0 30px;
-  padding-right: 30px;
-  border-right: 1px solid rgba(255, 255, 255, 0.2); }
+  padding-right: 10px;
+}
   @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .top-search-area {
       margin: 0 15px;

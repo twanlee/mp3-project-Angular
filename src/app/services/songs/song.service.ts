@@ -24,15 +24,31 @@ export class SongService {
     return this.http.post<ISong>(this.url_api + '/save', data);
   }
 
+  sendUserID(user_id: number): Observable<string> {
+    return this.http.post<string>(this.url_api + '/user_id', user_id);
+  }
+
   deleteSongById(id: number): Observable<any> {
     return this.http.delete<any>(this.url_api + '/' + id + '/delete');
   }
 
-  getSongByName(nameSong: string):Observable<ISong[]>{
-    return this.http.get<ISong[]>(this.url_api+"/"+nameSong+"/search");
+  getSongByName(nameSong: string): Observable<ISong[]> {
+    return this.http.get<ISong[]>(this.url_api + '/' + nameSong + '/search');
   }
 
-  getTop10Song(): Observable<ISong[]>{
-    return this.http.get<ISong[]>(this.url_api + "/topten")
+  getTop10Song(): Observable<ISong[]> {
+    return this.http.get<ISong[]>(this.url_api + '/topten');
+  }
+
+  getTop6Song(): Observable<ISong[]> {
+    return this.http.get<ISong[]>(this.url_api + '/topsix');
+  }
+
+  getAllSongsName(): Observable<string[]> {
+    return this.http.get<string[]>(this.url_api + '/name');
+  }
+
+  getAllSongByUser(id: number): Observable<ISong[]> {
+    return this.http.get<ISong[]>(this.url_api + '/' + id + '/songs');
   }
 }

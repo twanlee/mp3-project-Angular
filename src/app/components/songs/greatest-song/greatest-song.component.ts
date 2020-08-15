@@ -11,10 +11,9 @@ export class GreatestSongComponent implements OnInit {
     name: "em không sai chúng ta sai",
     fileUrl: "https://firebasestorage.googleapis.com/v0/b/meomp3-5e362.appspot.com/o/mp3%2Ffeatured%2F1i8hap1597203476592?alt=media&token=5facb0dc-1cb9-4c91-b2cf-6e781362f6f8",
     imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRCHgWzdp42iGryC5Wkt6iFK5JC_mL8CXcyUA&usqp=CAU",
-    singers: [{
+    s_singers: [{
       fullName: "erik"
     }],
-    userCreate: "danpq14",
     postTime: new Date()
   };
   postTime: string;

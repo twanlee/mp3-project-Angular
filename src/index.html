@@ -26,7 +26,6 @@
   <link rel="stylesheet" href="assets/static/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="assets/static/css/default-assets/audioplayer.css">
 </head>
 <body class="mat-typography">
   <app-root></app-root>
@@ -48,6 +47,18 @@
     document.addEventListener("DOMContentLoaded", function() {
       onlyPlayOneIn(document.body);
     });
+  </script>
+  <!-- Roll To Top -->
+  <script>
+    function rollToTop(){
+      // This prevents the page from scrolling down to where it was previously.
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+// This is needed if the user scrolls down during page load and you want to make sure the page is scrolled to the top once it's fully loaded. This has Cross-browser support.
+      window.scrollTo(0,0);
+    }
+    window.onload(rollToTop());
   </script>
   <!-- ******* All JS ******* -->
   <!-- jQuery js -->
