@@ -1,0 +1,82 @@
+<div class="container emp-profile" *ngIf="profile!=null && user!=null">
+  <div>
+    <div class="row">
+      <div class="col-md-4">
+        <form>
+          <div class="profile-img">
+            <img src="{{profile.avatarUrl}}" alt=""/>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-6">
+        <div class="profile-head">
+          <h2>
+            {{profile.firstName}} {{profile.lastName}}
+          </h2>
+          <h4 style="padding-bottom: 60px">
+            {{user.email}}
+          </h4>
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                 aria-selected="true">Information</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <input type="submit" class="profile-edit-btn" routerLink="/user/{{userId}}/profile/edit" value="Edit Profile"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-8">
+        <div class="tab-content profile-tab" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="row">
+              <div class="col-md-3">
+                <label>First Name</label>
+              </div>
+              <div class="col-md-9">
+                <p>{{profile.firstName}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <label>Last Name</label>
+              </div>
+              <div class="col-md-9">
+                <p>{{profile.lastName}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <label>Birthday</label>
+              </div>
+              <div class="col-md-9">
+                <p>{{profile.birthday | date}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <label>Phone</label>
+              </div>
+              <div class="col-md-9">
+                <p>{{profile.phoneNumber}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <label>Gender</label>
+              </div>
+              <div class="col-md-9">
+                <p>{{profile.gender}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

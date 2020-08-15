@@ -71,7 +71,7 @@ export class SongEditComponent implements OnInit {
        this.song.s_authors[i].id = this.authors[i];
      }
    }
-   this.songService.saveSong(this.song).subscribe(()=>{
+   this.songService.saveSong(this.song,+localStorage.getItem('userId')).subscribe(()=>{
      console.log("edit ok");
    });
    this.rt.navigate(["/user/songs"]);

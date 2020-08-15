@@ -1,11 +1,11 @@
 // @ts-ignore
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {RegisterService} from "../../services/register/register.service";
+import {RegisterService} from "../../../services/register/register.service";
 import {Router} from "@angular/router";
 // @ts-ignore
-import {IUser} from '../../interfaces/user/user';
-import {TokenStorageService} from '../../services/token-storage.service';
+import {IUser} from '../../../interfaces/user/user';
+import {TokenStorageService} from '../../../services/token-storage.service';
 
 
 function comparePassword(c: AbstractControl) {
