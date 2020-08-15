@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ISong} from '../../../interfaces/isong';
 import {IArtist} from '../../../interfaces/iartist';
 import {SongService} from '../../../services/songs/song.service';
+import {ActiveService} from '../../../services/interactive/active.service';
 
 @Component({
   selector: 'app-top10song',
@@ -18,7 +19,6 @@ export class Top10songComponent implements OnInit {
   //     singers: [{
   //       fullName: "erik"
   //     }],
-  //     userCreate: "danpq14",
   //     postTime: new Date()
   //   },
   //   {
@@ -28,7 +28,6 @@ export class Top10songComponent implements OnInit {
   //     singers: [{
   //       fullName: "Da Lab"
   //     }],
-  //     userCreate: "danpq14",
   //     postTime: new Date()
   //   },
   //   {
@@ -38,7 +37,6 @@ export class Top10songComponent implements OnInit {
   //     singers: [{
   //       fullName: "Lê Hiếu"
   //     }],
-  //     userCreate: "danpq14",
   //     postTime: new Date()
   //   },
   //   {
@@ -48,7 +46,6 @@ export class Top10songComponent implements OnInit {
   //     singers: [{
   //       fullName: "Black Pink"
   //     }],
-  //     userCreate: "danpq14",
   //     postTime: new Date()
   //   },
   //   {
@@ -58,7 +55,6 @@ export class Top10songComponent implements OnInit {
   //     singers: [{
   //       fullName: "Dân"
   //     }],
-  //     userCreate: "danpq14",
   //     postTime: new Date()
   //   },
   //   {
@@ -68,7 +64,6 @@ export class Top10songComponent implements OnInit {
   //     singers: [{
   //       fullName: "Various Artist"
   //     }],
-  //     userCreate: "danpq14",
   //     postTime: new Date()
   //   },
   //   {
@@ -78,7 +73,6 @@ export class Top10songComponent implements OnInit {
   //     singers: [{
   //       fullName: "Da Lab"
   //     }],
-  //     userCreate: "danpq14",
   //     postTime: new Date()
   //   },
   //   {
@@ -88,7 +82,6 @@ export class Top10songComponent implements OnInit {
   //     singers: [{
   //       fullName: "Da Lab"
   //     }],
-  //     userCreate: "danpq14",
   //     postTime: new Date()
   //   },
   //   {
@@ -98,7 +91,6 @@ export class Top10songComponent implements OnInit {
   //     singers: [{
   //       fullName: "Lê Bảo Bình"
   //     }],
-  //     userCreate: "danpq14",
   //     postTime: new Date()
   //   },
   //   {
@@ -108,17 +100,18 @@ export class Top10songComponent implements OnInit {
   //     singers: [{
   //       fullName: "Đạt G"
   //     }],
-  //     userCreate: "danpq14",
   //     postTime: new Date()
   //   }
   // ];
 
   songs: ISong[] = [];
-  constructor(private songService: SongService) { }
+  constructor(private songService: SongService,
+              private activeService: ActiveService) { }
 
   ngOnInit(): void {
     this.songService.getTop10Song().subscribe(data => {
       this.songs = data;
+      console.log(this.songs);
     })
   }
   getPostTimeToString(postTime): string{
@@ -127,6 +120,12 @@ export class Top10songComponent implements OnInit {
     let string = date.toDateString();
     string = string.slice(4);
     return string;
+  }
+  likeSong(songId: number) {
+      let userId = +localStorage.getItem("userId");
+      this.activeService.likeSong(songId, userId).subscribe(data => {
+          document.getElementById('like'+songId).innerHTML = 'Like ('+data.likes+')';
+      })
   }
   // getSinger(singers: IArtist[]): string {
   //     let s: any = singers.map(next => {

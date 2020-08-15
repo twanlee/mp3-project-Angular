@@ -1,4 +1,5 @@
 import {IArtist} from './iartist';
+import {IReview} from './ireview';
 
 export interface ISong {
   id?: number;
