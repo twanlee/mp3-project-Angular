@@ -35,6 +35,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import {MatInputModule} from "@angular/material/input";
 import {CreateArtistComponent} from "./components/artists/create-artist/create-artist.component";
+import {AddAuthorComponent} from './components/songs/create-song/add-author/add-author.component';
+import {AddSingerComponent} from './components/songs/create-song/add-singer/add-singer.component';
 export function getPostTimeToString(postTime):string {
     // @ts-ignore
     let date = new Date(postTime);
@@ -67,7 +69,9 @@ export function getPostTimeToString(postTime):string {
     AllPlaylistComponent,
     PlaylistDetailComponent,
     SearchSongFormComponent,
-    CreateArtistComponent
+    CreateArtistComponent,
+    AddAuthorComponent,
+    AddSingerComponent
   ],
   imports: [
     BrowserModule,
