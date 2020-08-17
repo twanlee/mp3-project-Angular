@@ -1,4 +1,3 @@
-<div>
 <div class="container">
   <div class="row poca-portfolio">
     <!-- Single gallery Item -->
@@ -7,8 +6,8 @@
         <!-- Welcome Music Area -->
         <div class="poca-music-area style-2 d-flex align-items-center flex-wrap" style="width: 500px">
           <div class="poca-music-content text-center">
-            <span class="music-published-date mb-2">{{convertTime(song.postTime)}}</span>
-            <h2><a  [routerLink]="'../../song/'+song.id+'/detail'" style="color: black; font-size: 20px">{{song.name}}</a></h2>
+            <span class="music-published-date mb-2">{{song.postTime | date}}</span>
+            <h2><a routerLink="song/{{song.id}}/detail" style="color: black; font-size: 20px">{{song.name}}</a></h2>
             <div class="music-meta-data">
               <p>By <a href="#" class="music-author"></a> | <a href="#" class="music-catagory">Nhạc Trẻ</a> | <a href="#" class="music-duration">Tên ca sĩ</a></p>
             </div>
@@ -22,8 +21,8 @@
             <div class="likes-share-download d-flex align-items-center justify-content-between">
               <button (click)="likeSong(song.id)"><i class="fa fa-heart" aria-hidden="true"></i><p [id]="'like'+song.id">Like ({{song.review.likes}})</p></button>
               <div>
-                <a [routerLink]="'../../song/'+song.id+'/edit'" class="mr-4"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
-                <a id = "delete" [routerLink]="'/song/'+song.id+'/delete'" style="cursor: pointer"><i class="fa fa-trash" aria-hidden="true"></i>Delete</a>
+                <a href="#" class="mr-4"><i class="fa fa-share-alt" aria-hidden="true"></i> Views ({{song.review.views}})</a>
+                <a href="#"><i class="fa fa-download" aria-hidden="true"></i> Download (12)</a>
               </div>
             </div>
           </div>
@@ -31,5 +30,4 @@
       </div>
     </div>
   </div>
-</div>
 </div>

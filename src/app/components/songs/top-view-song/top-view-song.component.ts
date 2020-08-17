@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import {ISong} from '../../../interfaces/isong';
 import {SongService} from '../../../services/songs/song.service';
 import {ActiveService} from '../../../services/interactive/active.service';
+import {ISong} from '../../../interfaces/isong';
 
 @Component({
-  selector: 'app-greatest-song',
-  templateUrl: './greatest-song.component.html',
-  styleUrls: ['./greatest-song.component.css']
+  selector: 'app-top-view-song',
+  templateUrl: './top-view-song.component.html',
+  styleUrls: ['./top-view-song.component.css']
 })
-export class GreatestSongComponent implements OnInit {
-  song: ISong;
+export class TopViewSongComponent implements OnInit {
+  songList: ISong[];
   constructor(private songService: SongService,
               private activeService: ActiveService) { }
 
   ngOnInit(): void {
-    this.songService.getTheBestSong().subscribe(data => {
-      this.song = data;
+    this.songService.getTop10ViewsSong().subscribe( data =>{
+      this.songList = data;
     })
   }
   likeSong(songId: number) {
@@ -24,5 +24,4 @@ export class GreatestSongComponent implements OnInit {
       document.getElementById('like'+songId).innerHTML = 'Like ('+data.likes+')';
     })
   }
-
 }

@@ -31,4 +31,10 @@ export class PlaylistService {
   createPlaylist(data: IPlaylist,user_id: number): Observable<IPlaylist>{
     return this.http.post<IPlaylist>(this.PLAYLIST_API + user_id+'/create',data)
   }
+  getTop10PlaylistByLikes(): Observable<IPlaylist[]> {
+    return this.http.get<IPlaylist[]>(this.PLAYLIST_API + 'top/ten/likes');
+  }
+  getTop10PlaylistByViews(): Observable<IPlaylist[]> {
+    return this.http.get<IPlaylist[]>(this.PLAYLIST_API + 'top/ten/views');
+  }
 }
