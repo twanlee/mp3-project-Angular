@@ -1,4 +1,4 @@
-<div style="margin-top: 150px"></div>
+<div style="margin-top: 150px;padding-bottom: 120px;" ></div>
 <div>
 <div class="container">
   <div class="row poca-portfolio">
@@ -21,7 +21,7 @@
             </div>
             <!-- Likes, Share & Download -->
             <div class="likes-share-download d-flex align-items-center justify-content-between">
-              <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> Like (29)</a>
+              <button (click)="likeSong(song.id)"><i class="fa fa-heart" aria-hidden="true"></i><p [id]="'like'+song.id">Like ({{song.review.likes}})</p></button>
               <div>
                 <a [routerLink]="'../../song/'+song.id+'/edit'" class="mr-4"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
                 <a id = "delete"(click)="delete(song.id)" style="cursor: pointer"><i class="fa fa-trash" aria-hidden="true"></i>Delete</a>

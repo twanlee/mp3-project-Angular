@@ -1,0 +1,12 @@
+<div style="padding-top: 200px;padding-left: 300px; padding-right: 500px">
+  <form (ngSubmit)="submit()">
+  <app-find-song-for-playlist (songName)="findSong($event)"></app-find-song-for-playlist>
+    <div class="form-group">
+      <label for="exampleFormControlSelect2">Chọn  bài hát</label>
+      <select multiple class="form-control" id="exampleFormControlSelect2"   [ngModelOptions]="{standalone: true}" [(ngModel)]="addedSongs" >
+        <option *ngFor="let song of songsFilter" value="{{song.id}}">{{song.name}}</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

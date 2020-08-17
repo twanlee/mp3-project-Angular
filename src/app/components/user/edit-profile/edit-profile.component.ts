@@ -40,7 +40,7 @@ export class EditProfileComponent implements OnInit {
       firstName: [''],
       lastName: [''],
       birthday: [''],
-      phoneNumber: ['', [Validators.pattern(/^\+84\d{9,10}$/)]],
+      phoneNumber: ['', [Validators.pattern(/^(0|\+84)(\s|\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\d)(\s|\.)?(\d{3})(\s|\.)?(\d{3})$/)]],
       gender: [''],
       avatarUrl: ['']
     });
