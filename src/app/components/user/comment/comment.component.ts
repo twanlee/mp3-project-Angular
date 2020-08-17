@@ -18,6 +18,7 @@ export class CommentComponent implements OnInit {
   newComment: IComment;
   user_id: number;
   song: ISong;
+  page: number = 1;
   constructor(private commentService: CommentService,
               private fb: FormBuilder,
               private activatedRoute: ActivatedRoute,

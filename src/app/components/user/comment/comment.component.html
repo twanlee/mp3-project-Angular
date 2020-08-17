@@ -1,11 +1,15 @@
-Comments Area
-<div class="comment_area mb-50 clearfix">
-  <h5 class="title">03 Comments</h5>
+
+<div class="comment_area mb-30 clearfix">
+  <h5 class="title">{{comments_song.length}} Comments</h5>
   <ol>
     <!-- Single Comment Area -->
     <li class="single_comment_area">
       <!-- Comment Content -->
-      <div class="comment-content d-flex" *ngFor="let comment of comments_song">
+      <div class="comment-content d-flex" *ngFor="let comment of comments_song |paginate:{
+      id: 'comment-list',
+      itemsPerPage: 4,
+      currentPage: page
+      }">
         <!-- Comment Author -->
         <div class="comment-author">
           <img src="{{comment.avatarUrl}}" alt="author">
@@ -13,8 +17,13 @@ Comments Area
         <!-- Comment Meta -->
         <div class="comment-meta">
           <p class="post-date">{{comment.commentTime | date}}</p>
-          <h5>{{comment.fullName}}</h5>
+          <h4>{{comment.fullName}}</h4>
           <p>{{comment.content}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="mx-auto">
+          <pagination-controls  id="comment-list" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
         </div>
       </div>
     </li>
@@ -23,14 +32,14 @@ Comments Area
 
  <!-- Leave A Reply -->
 <div class="contact-form">
-  <h5 class="mb-30">Leave A Comment</h5>
+  <h3 class="mb-30">Leave A Comment</h3>
   <form method="post" [formGroup]="commentForm" (ngSubmit)="addComment()">
     <div class="row">
       <div class="col-12">
-        <textarea formControlName="content" class="form-control mb-30" placeholder="Comment"></textarea>
+        <textarea formControlName="content" class="form-control mb-10" placeholder="Thêm bình luận..."></textarea>
       </div>
       <div class="col-12">
-        <button type="submit" class="btn poca-btn mt-30">Post Comment</button>
+        <button type="submit" class="btn btn-success mt-30">Đăng</button>
       </div>
     </div>
   </form>
