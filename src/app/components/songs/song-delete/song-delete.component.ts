@@ -22,8 +22,6 @@ export class SongDeleteComponent implements OnInit {
   summit(){
     this.songService.deleteSongById(this.song.id).subscribe( ()=>{
       this.route.navigate(['/user/music']);
-    }, error => {
-      this.route.navigate(['/user/music']);
     })
   }
 
