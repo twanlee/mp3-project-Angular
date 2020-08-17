@@ -67,6 +67,10 @@ export class SongEditComponent implements OnInit {
    this.song.name = data.name;
    this.song.lyric = data.lyric;
    this.song.description = data.description;
+   if(this.songUrl != '')
+     this.song.fileUrl = this.songUrl;
+    if(this.imageUrl != '')
+      this.song.imageUrl = this.imageUrl;
    if(this.singers.length > 0){
      for (let i = 0; i < this.singersSelected.length; i++) {
        this.song.s_singers[i] = {};
