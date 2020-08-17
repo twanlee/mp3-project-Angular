@@ -5,7 +5,7 @@
            class="form-control" placeholder="Tìm kiếm bài hát..." (ngModelChange)="filterByKeyword()">
       <button type="button" (click)="search()"><i class="fa fa-search" style="color: black" aria-hidden="true"></i></button>
       <mat-autocomplete  #auto="matAutocomplete">
-        <mat-option *ngFor="let option of filterResult " [value]="option">
+        <mat-option *ngFor="let option of finalResult " [value]="option">
           {{option}}
         </mat-option>
       </mat-autocomplete>
