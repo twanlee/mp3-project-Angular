@@ -33,14 +33,14 @@ import {NgxAudioPlayerModule} from 'ngx-audio-player';
 import { SearchSongFormComponent } from './components/songs/search-song-form/search-song-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
-
-
 import { MaterialModule } from './material.module';
 import {MatInputModule} from "@angular/material/input";
 import {CreateArtistComponent} from "./components/artists/create-artist/create-artist.component";
 import {AddAuthorComponent} from './components/songs/create-song/add-author/add-author.component';
 import {AddSingerComponent} from './components/songs/create-song/add-singer/add-singer.component';
 import {NewPlaylistComponent} from './components/playlists/new-playlist/new-playlist.component';
+import { AddSongComponent } from './components/playlists/add-song/add-song.component';
+import { FindSongForPlaylistComponent } from './components/playlists/add-song/find-song-for-playlist/find-song-for-playlist.component';
 
 export function getPostTimeToString(postTime):string {
     let date = new Date(postTime);
@@ -77,7 +77,9 @@ export function getPostTimeToString(postTime):string {
     CreateArtistComponent,
     AddAuthorComponent,
     AddSingerComponent,
-    NewPlaylistComponent
+    NewPlaylistComponent,
+    AddSongComponent,
+    FindSongForPlaylistComponent
   ],
   imports: [
     BrowserModule,

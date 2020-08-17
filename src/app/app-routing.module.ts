@@ -15,6 +15,7 @@ import {AllPlaylistComponent} from './components/playlists/all-playlist/all-play
 import {PlaylistDetailComponent} from './components/playlists/playlist-detail/playlist-detail.component';
 import {NewPlaylistComponent} from './components/playlists/new-playlist/new-playlist.component';
 import {UserProfileComponent} from './components/user/user-profile/user-profile.component';
+import {AddSongComponent} from './components/playlists/add-song/add-song.component';
 
 
 const routes: Routes = [
@@ -36,7 +37,8 @@ const routes: Routes = [
   {path: 'artist/create', component: CreateArtistComponent},
   {path: 'playlist/all', component: AllPlaylistComponent},
   {path: 'playlist/:id/detail', component: PlaylistDetailComponent},
-  {path: 'playlist/create', component: NewPlaylistComponent}
+  {path: 'playlist/create', component: NewPlaylistComponent},
+  {path: 'playlist/:id/song/add', component: AddSongComponent}
 ];
 
 @NgModule({
