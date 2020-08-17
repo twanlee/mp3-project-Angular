@@ -43,6 +43,7 @@ import {NewPlaylistComponent} from './components/playlists/new-playlist/new-play
 import { AddSongComponent } from './components/playlists/add-song/add-song.component';
 import { FindSongForPlaylistComponent } from './components/playlists/add-song/find-song-for-playlist/find-song-for-playlist.component';
 import {UserSongsAndPlaylistComponent} from './components/user/user-songs-and-playlist/user-songs-and-playlist.component';
+import {CommentComponent} from './components/user/comment/comment.component';
 export function getPostTimeToString(postTime):string {
     let date = new Date(postTime);
     let string = date.toDateString();
@@ -63,14 +64,12 @@ export function getPostTimeToString(postTime):string {
     FooterComponent,
     SongDetailComponent,
     HomePageComponent,
-    HomePageComponent,
     GreatestSongComponent,
     Top10songComponent,
     SongEditComponent,
     SongDeleteComponent,
     SongPlayerComponent,
     SongDescriptionComponent,
-    SongEditComponent,
     CreateArtistComponent,
     AllPlaylistComponent,
     PlaylistDetailComponent,
@@ -85,7 +84,7 @@ export function getPostTimeToString(postTime):string {
     FindSongForPlaylistComponent,
     UserPlaylistComponent,
     UserSongsAndPlaylistComponent,
-    NewPlaylistComponent
+    CommentComponent
   ],
   imports: [
     BrowserModule,

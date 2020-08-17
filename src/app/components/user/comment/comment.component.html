@@ -1,1 +1,37 @@
-<p>comment works!</p>
+Comments Area
+<div class="comment_area mb-50 clearfix">
+  <h5 class="title">03 Comments</h5>
+  <ol>
+    <!-- Single Comment Area -->
+    <li class="single_comment_area">
+      <!-- Comment Content -->
+      <div class="comment-content d-flex" *ngFor="let comment of comments_song">
+        <!-- Comment Author -->
+        <div class="comment-author">
+          <img src="{{comment.avatarUrl}}" alt="author">
+        </div>
+        <!-- Comment Meta -->
+        <div class="comment-meta">
+          <p class="post-date">{{comment.commentTime | date}}</p>
+          <h5>{{comment.fullName}}</h5>
+          <p>{{comment.content}}</p>
+        </div>
+      </div>
+    </li>
+  </ol>
+</div>
+
+ <!-- Leave A Reply -->
+<div class="contact-form">
+  <h5 class="mb-30">Leave A Comment</h5>
+  <form method="post" [formGroup]="commentForm" (ngSubmit)="addComment()">
+    <div class="row">
+      <div class="col-12">
+        <textarea formControlName="content" class="form-control mb-30" placeholder="Comment"></textarea>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn poca-btn mt-30">Post Comment</button>
+      </div>
+    </div>
+  </form>
+</div>
