@@ -32,9 +32,9 @@
                 </div>
                 <!-- Likes, Share & Download -->
                 <div class="likes-share-download d-flex align-items-center justify-content-between">
-                  <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> Like (29)</a>
+                  <button (click)="likeSong(song.id)"><i class="fa fa-heart" aria-hidden="true"></i><p [id]="'like'+song.id">Like ({{song.review.likes}})</p></button>
                   <div>
-                    <a href="#" class="mr-4"><i class="fa fa-share-alt" aria-hidden="true"></i> Share(04)</a>
+                    <a href="#" class="mr-4"><i class="fa fa-share-alt" aria-hidden="true"></i> Views ({{song.review.views}})</a>
                     <a href="#"><i class="fa fa-download" aria-hidden="true"></i> Download (12)</a>
                   </div>
                 </div>

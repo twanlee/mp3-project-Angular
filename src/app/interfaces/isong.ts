@@ -1,10 +1,9 @@
 import {IArtist} from './iartist';
-
+import {IReview} from './ireview';
 
 export interface ISong {
   id?: number;
   name?: string;
-  category?: string;
   lyric?: string;
   fileUrl?: string;
   imageUrl?: string;
@@ -13,5 +12,6 @@ export interface ISong {
   s_singers?: IArtist[];
   postTime?: Date;
   userCreate?: string;
+  review?: IReview;
 }
 
