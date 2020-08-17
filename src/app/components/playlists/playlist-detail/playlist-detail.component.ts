@@ -38,10 +38,11 @@ export class PlaylistDetailComponent implements OnInit {
     });
     this.playlistService.getSongFromPlaylist(id).subscribe(data => {
       this.songs = data;
-      this.songs.map(data => {
-        this.convertSongToTrack(data);
-      });
-      console.log(this.msaapPlaylist);
+      // this.songs.map(data => {
+      //   this.convertSongToTrack(data);
+      // });
+      console.log('songs is :');
+      console.log(this.songs);
     });
   }
 
@@ -81,10 +82,11 @@ export class PlaylistDetailComponent implements OnInit {
     });
   }
 
-  addToTrack(data) {
+  addToTrack(data: ISong) {
+    let isExisted: boolean = false;
     let song: any = {
       name: data.name,
-      artist: '',
+      artist: this.getArtist(data),
       url: data.fileUrl,
       cover: data.imageUrl
     };
@@ -92,7 +94,27 @@ export class PlaylistDetailComponent implements OnInit {
     if (trackList == null) {
       trackList = [];
     };
-    trackList.unshift(song);
+    trackList.map(next => {
+      if (next.name == song.name && next.artist == song.artist && next.url == song.url) {
+        isExisted = true;
+        console.log(isExisted)
+      }
+    });
+    if (!isExisted) {
+      trackList.unshift(song);
+    }
     this.storageService.setItem('library', JSON.stringify(trackList));
+  }
+
+  getArtist(song: ISong): string {
+    let artistName: string = '';
+    song.s_singers.map(singer => {
+      artistName += singer.fullName + " ,"
+    });
+    if (artistName == '') {
+      artistName = 'Various Artist'
+    }
+    console.log('artist : '+ artistName);
+    return artistName;
   }
 }

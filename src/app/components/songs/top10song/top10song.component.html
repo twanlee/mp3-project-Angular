@@ -1,4 +1,4 @@
-<div style="background-image: url(https://wallpapercave.com/wp/wp3085127.jpg); min-height: 2000px">
+<div style="background-image: url(https://wallpapercave.com/wp/wp3085127.jpg)">
   <section class="poca-latest-epiosodes section-padding-80">
     <div class="container">
       <div class="row">
@@ -35,7 +35,7 @@
                   <button (click)="likeSong(song.id)"><i class="fa fa-heart" aria-hidden="true"></i><p [id]="'like'+song.id">Like ({{song.review.likes}})</p></button>
                   <div>
                     <a href="#" class="mr-4"><i class="fa fa-share-alt" aria-hidden="true"></i> Views ({{song.review.views}})</a>
-                    <a href="#"><i class="fa fa-download" aria-hidden="true"></i> Download (12)</a>
+                    <a (click)="addToTrack(song)"><span class="glyphicon glyphicon-music"></span>Thêm vào danh sách phát</a>
                   </div>
                 </div>
               </div>

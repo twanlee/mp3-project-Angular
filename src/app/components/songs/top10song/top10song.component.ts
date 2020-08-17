@@ -3,6 +3,7 @@ import {ISong} from '../../../interfaces/isong';
 import {IArtist} from '../../../interfaces/iartist';
 import {SongService} from '../../../services/songs/song.service';
 import {ActiveService} from '../../../services/interactive/active.service';
+import {StorageService} from '../../../services/storage.service';
 
 @Component({
   selector: 'app-top10song',
@@ -11,102 +12,11 @@ import {ActiveService} from '../../../services/interactive/active.service';
 })
 export class Top10songComponent implements OnInit {
 
-  // songs: ISong[] = [
-  //   {
-  //     name: "em không sai chúng ta sai",
-  //     fileUrl: "https://firebasestorage.googleapis.com/v0/b/meomp3-5e362.appspot.com/o/mp3%2Ffeatured%2F5x1d6s1597142101591?alt=media&token=30ffde17-3abc-4f4e-80be-c0b93edbb455",
-  //     imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRCHgWzdp42iGryC5Wkt6iFK5JC_mL8CXcyUA&usqp=CAU",
-  //     singers: [{
-  //       fullName: "erik"
-  //     }],
-  //     postTime: new Date()
-  //   },
-  //   {
-  //     name: "Gác lại âu lo",
-  //     fileUrl: "https://firebasestorage.googleapis.com/v0/b/meomp3-5e362.appspot.com/o/mp3%2Ffeatured%2F5x1d6s1597142101591?alt=media&token=30ffde17-3abc-4f4e-80be-c0b93edbb455",
-  //     imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRCHgWzdp42iGryC5Wkt6iFK5JC_mL8CXcyUA&usqp=CAU",
-  //     singers: [{
-  //       fullName: "Da Lab"
-  //     }],
-  //     postTime: new Date()
-  //   },
-  //   {
-  //     name: "Ngày mai em đi",
-  //     fileUrl: "https://firebasestorage.googleapis.com/v0/b/meomp3-5e362.appspot.com/o/mp3%2Ffeatured%2F5x1d6s1597142101591?alt=media&token=30ffde17-3abc-4f4e-80be-c0b93edbb455",
-  //     imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRCHgWzdp42iGryC5Wkt6iFK5JC_mL8CXcyUA&usqp=CAU",
-  //     singers: [{
-  //       fullName: "Lê Hiếu"
-  //     }],
-  //     postTime: new Date()
-  //   },
-  //   {
-  //     name: "How you like that",
-  //     fileUrl: "https://firebasestorage.googleapis.com/v0/b/meomp3-5e362.appspot.com/o/mp3%2Ffeatured%2F5x1d6s1597142101591?alt=media&token=30ffde17-3abc-4f4e-80be-c0b93edbb455",
-  //     imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRCHgWzdp42iGryC5Wkt6iFK5JC_mL8CXcyUA&usqp=CAU",
-  //     singers: [{
-  //       fullName: "Black Pink"
-  //     }],
-  //     postTime: new Date()
-  //   },
-  //   {
-  //     name: "Em",
-  //     fileUrl: "https://firebasestorage.googleapis.com/v0/b/meomp3-5e362.appspot.com/o/mp3%2Ffeatured%2F5x1d6s1597142101591?alt=media&token=30ffde17-3abc-4f4e-80be-c0b93edbb455",
-  //     imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRCHgWzdp42iGryC5Wkt6iFK5JC_mL8CXcyUA&usqp=CAU",
-  //     singers: [{
-  //       fullName: "Dân"
-  //     }],
-  //     postTime: new Date()
-  //   },
-  //   {
-  //     name: "Bài hát số 6",
-  //     fileUrl: "https://firebasestorage.googleapis.com/v0/b/meomp3-5e362.appspot.com/o/mp3%2Ffeatured%2F5x1d6s1597142101591?alt=media&token=30ffde17-3abc-4f4e-80be-c0b93edbb455",
-  //     imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRCHgWzdp42iGryC5Wkt6iFK5JC_mL8CXcyUA&usqp=CAU",
-  //     singers: [{
-  //       fullName: "Various Artist"
-  //     }],
-  //     postTime: new Date()
-  //   },
-  //   {
-  //     name: "Thanh Xuân",
-  //     fileUrl: "https://firebasestorage.googleapis.com/v0/b/meomp3-5e362.appspot.com/o/mp3%2Ffeatured%2F5x1d6s1597142101591?alt=media&token=30ffde17-3abc-4f4e-80be-c0b93edbb455",
-  //     imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRCHgWzdp42iGryC5Wkt6iFK5JC_mL8CXcyUA&usqp=CAU",
-  //     singers: [{
-  //       fullName: "Da Lab"
-  //     }],
-  //     postTime: new Date()
-  //   },
-  //   {
-  //     name: "Nước mắt em lau bằng tình yêu mới",
-  //     fileUrl: "https://firebasestorage.googleapis.com/v0/b/meomp3-5e362.appspot.com/o/mp3%2Ffeatured%2F5x1d6s1597142101591?alt=media&token=30ffde17-3abc-4f4e-80be-c0b93edbb455",
-  //     imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRCHgWzdp42iGryC5Wkt6iFK5JC_mL8CXcyUA&usqp=CAU",
-  //     singers: [{
-  //       fullName: "Da Lab"
-  //     }],
-  //     postTime: new Date()
-  //   },
-  //   {
-  //     name: "Thích thì đến",
-  //     fileUrl: "https://firebasestorage.googleapis.com/v0/b/meomp3-5e362.appspot.com/o/mp3%2Ffeatured%2F5x1d6s1597142101591?alt=media&token=30ffde17-3abc-4f4e-80be-c0b93edbb455",
-  //     imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRCHgWzdp42iGryC5Wkt6iFK5JC_mL8CXcyUA&usqp=CAU",
-  //     singers: [{
-  //       fullName: "Lê Bảo Bình"
-  //     }],
-  //     postTime: new Date()
-  //   },
-  //   {
-  //     name: "Buồn của anh",
-  //     fileUrl: "https://firebasestorage.googleapis.com/v0/b/meomp3-5e362.appspot.com/o/mp3%2Ffeatured%2F5x1d6s1597142101591?alt=media&token=30ffde17-3abc-4f4e-80be-c0b93edbb455",
-  //     imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRCHgWzdp42iGryC5Wkt6iFK5JC_mL8CXcyUA&usqp=CAU",
-  //     singers: [{
-  //       fullName: "Đạt G"
-  //     }],
-  //     postTime: new Date()
-  //   }
-  // ];
 
   songs: ISong[] = [];
   constructor(private songService: SongService,
-              private activeService: ActiveService) { }
+              private activeService: ActiveService,
+              private storageService: StorageService) { }
 
   ngOnInit(): void {
     this.songService.getTop10Song().subscribe(data => {
@@ -127,11 +37,39 @@ export class Top10songComponent implements OnInit {
           document.getElementById('like'+songId).innerHTML = 'Like ('+data.likes+')';
       })
   }
-  // getSinger(singers: IArtist[]): string {
-  //     let s: any = singers.map(next => {
-  //       s += next.fullName + " ,"
-  //     });
-  //     console.log("singer is : " + s);
-  //     return s
-  // }
+  addToTrack(data: ISong) {
+    let isExisted: boolean = false;
+    let song: any = {
+      name: data.name,
+      artist: this.getArtist(data),
+      url: data.fileUrl,
+      cover: data.imageUrl
+    };
+    let trackList: any[] = JSON.parse(sessionStorage.getItem('library'));
+    if (trackList == null) {
+      trackList = [];
+    };
+    trackList.map(next => {
+      if (next.name == song.name && next.artist == song.artist && next.url == song.url) {
+        isExisted = true;
+        console.log(isExisted)
+      }
+    });
+    if (!isExisted) {
+      trackList.unshift(song);
+    }
+    this.storageService.setItem('library', JSON.stringify(trackList));
+  }
+
+  getArtist(song: ISong): string {
+      let artistName: string = '';
+      song.s_singers.map(singer => {
+          artistName += singer.fullName + " ,"
+      });
+      if (artistName == '') {
+        artistName = 'Various Artist'
+      }
+      console.log('artist : '+ artistName);
+      return artistName;
+  }
 }
