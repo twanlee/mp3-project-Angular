@@ -15,8 +15,9 @@ import {AllPlaylistComponent} from './components/playlists/all-playlist/all-play
 import {PlaylistDetailComponent} from './components/playlists/playlist-detail/playlist-detail.component';
 import {NewPlaylistComponent} from './components/playlists/new-playlist/new-playlist.component';
 import {UserProfileComponent} from './components/user/user-profile/user-profile.component';
-import {AddSongComponent} from './components/playlists/add-song/add-song.component';
 import {UserSongsAndPlaylistComponent} from './components/user/user-songs-and-playlist/user-songs-and-playlist.component';
+import {AddSongComponent} from './components/playlists/add-song/add-song.component';
+
 
 
 const routes: Routes = [
