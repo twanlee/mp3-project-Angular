@@ -1,0 +1,68 @@
+<div style="margin-top: 50px"></div>
+
+<section class="poca-latest-epiosodes section-padding-80">
+  <div class="container">
+    <div class="row">
+      <!-- Section Heading -->
+      <div class="col-12">
+        <div class="section-heading text-center">
+          <h1>Bảng xếp hạng Âm nhạc</h1>
+          <div class="line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Projects Menu -->
+  <div class="container">
+    <div class="poca-projects-menu mb-30 wow fadeInUp" data-wow-delay="0.3s">
+      <div class="text-center portfolio-menu">
+        <!--        <button class="btn active" data-filter="*">All</button>-->
+        <button class="btn"  data-filter=".entre" (click)="showTopViewSongs()">Bài hát Hot nhất &nbsp; &nbsp;|</button>
+        <button class="btn" data-filter=".media" (click)="showTopLikeSongs()">Bài hát được yêu thích nhất &nbsp; &nbsp;|</button>
+        <button class="btn" data-filter=".tech" (click)="showTopViewPlaylists()">Playlist Hot nhất &nbsp; &nbsp;|</button>
+        <button class="btn" data-filter=".tutor" (click)="showTopLikePlaylists()">Playlist được yêu thích nhất</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row poca-portfolio">
+
+      <!-- Single gallery Item -->
+      <div class=" single_gallery_item entre wow fadeInUp" data-wow-delay="0.2s" *ngIf="status==1">
+        <!-- Welcome Music Area -->
+        <div class="poca-music-area style-2 d-flex align-items-center flex-wrap">
+          <app-top-view-song></app-top-view-song>
+        </div>
+      </div>
+
+
+      <!-- Single gallery Item -->
+      <div class=" single_gallery_item media wow fadeInUp" data-wow-delay="0.2s" *ngIf="status==2">
+        <!-- Welcome Music Area -->
+        <div class="poca-music-area style-2 d-flex align-items-center flex-wrap">
+            <app-top-like-song></app-top-like-song>
+        </div>
+      </div>
+
+      <!-- Single gallery Item -->
+      <div class=" single_gallery_item tech wow fadeInUp" data-wow-delay="0.2s" *ngIf="status==3">
+        <!-- Welcome Music Area -->
+        <div class="poca-music-area style-2 d-flex align-items-center flex-wrap">
+          <app-top-view-playlist></app-top-view-playlist>
+        </div>
+      </div>
+
+      <!-- Single gallery Item -->
+      <div class=" single_gallery_item tutor wow fadeInUp" data-wow-delay="0.2s" *ngIf="status==4">
+        <!-- Welcome Music Area -->
+        <div class="poca-music-area style-2 d-flex align-items-center flex-wrap">
+          <app-top-like-playlist></app-top-like-playlist>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
