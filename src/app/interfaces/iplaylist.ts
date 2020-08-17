@@ -5,7 +5,7 @@ import {IReview} from './ireview';
 export interface IPlaylist {
   id?: number;
   title?: string;
-  pl_songs?:ISong[];
+  pl_songs?: ISong[];
   userCreate?: IUser;
   imgUrl?: string;
   review?: IReview;

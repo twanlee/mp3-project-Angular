@@ -38,8 +38,10 @@ import {CreateArtistComponent} from "./components/artists/create-artist/create-a
 import {AddAuthorComponent} from './components/songs/create-song/add-author/add-author.component';
 import {AddSingerComponent} from './components/songs/create-song/add-singer/add-singer.component';
 import { UserPlaylistComponent } from './components/playlists/user-playlist/user-playlist.component';
-import { UserSongsAndPlaylistComponent } from './components/user/user-songs-and-playlist/user-songs-and-playlist.component';
 import {NewPlaylistComponent} from './components/playlists/new-playlist/new-playlist.component';
+import { AddSongComponent } from './components/playlists/add-song/add-song.component';
+import { FindSongForPlaylistComponent } from './components/playlists/add-song/find-song-for-playlist/find-song-for-playlist.component';
+import {UserSongsAndPlaylistComponent} from './components/user/user-songs-and-playlist/user-songs-and-playlist.component';
 import {UserProfileComponent} from './components/user/user-profile/user-profile.component';
 import { TopLikeSongComponent } from './components/songs/top-like-song/top-like-song.component';
 import { TopViewSongComponent } from './components/songs/top-view-song/top-view-song.component';
@@ -47,7 +49,6 @@ import { TopLikePlaylistComponent } from './components/playlists/top-like-playli
 import { TopViewPlaylistComponent } from './components/playlists/top-view-playlist/top-view-playlist.component';
 import { TopTrendingComponent } from './components/tops/top-trending/top-trending.component';
 export function getPostTimeToString(postTime):string {
-    // @ts-ignore
     let date = new Date(postTime);
     let string = date.toDateString();
     string = string.slice(4);
@@ -80,12 +81,14 @@ export function getPostTimeToString(postTime):string {
     PlaylistDetailComponent,
     UserProfileComponent,
     SearchSongFormComponent,
-    CreateArtistComponent,
     AddAuthorComponent,
     SearchSongFormComponent,
     CreateArtistComponent,
     AddAuthorComponent,
     AddSingerComponent,
+    NewPlaylistComponent,
+    AddSongComponent,
+    FindSongForPlaylistComponent,
     UserPlaylistComponent,
     UserSongsAndPlaylistComponent,
     NewPlaylistComponent,

@@ -16,6 +16,7 @@ import {PlaylistDetailComponent} from './components/playlists/playlist-detail/pl
 import {NewPlaylistComponent} from './components/playlists/new-playlist/new-playlist.component';
 import {UserProfileComponent} from './components/user/user-profile/user-profile.component';
 import {UserSongsAndPlaylistComponent} from './components/user/user-songs-and-playlist/user-songs-and-playlist.component';
+import {AddSongComponent} from './components/playlists/add-song/add-song.component';
 import {TopLikeSongComponent} from './components/songs/top-like-song/top-like-song.component';
 import {TopViewSongComponent} from './components/songs/top-view-song/top-view-song.component';
 import {TopLikePlaylistComponent} from './components/playlists/top-like-playlist/top-like-playlist.component';
@@ -39,6 +40,9 @@ const routes: Routes = [
   {path: 'artist/create', component: CreateArtistComponent},
   {path: 'playlist/all', component: AllPlaylistComponent},
   {path: 'playlist/:id/detail', component: PlaylistDetailComponent},
+  {path: 'user/music', component: UserSongsAndPlaylistComponent},
+  {path: 'playlist/create', component: NewPlaylistComponent},
+  {path: 'playlist/:id/song/add', component: AddSongComponent},
   {path: 'user/music', component: UserSongsAndPlaylistComponent},
   {path: 'playlist/create', component: NewPlaylistComponent},
   {path: 'top', component: TopTrendingComponent},

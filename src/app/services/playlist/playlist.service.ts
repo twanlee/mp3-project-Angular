@@ -31,6 +31,9 @@ export class PlaylistService {
   createPlaylist(data: IPlaylist,user_id: number): Observable<IPlaylist>{
     return this.http.post<IPlaylist>(this.PLAYLIST_API + user_id+'/create',data)
   }
+  updateSongPlaylist(data: number[],id: number): Observable<IPlaylist>{
+    return  this.http.post<IPlaylist>(this.PLAYLIST_API+id+'/add/song',data);
+  }
   getTop10PlaylistByLikes(): Observable<IPlaylist[]> {
     return this.http.get<IPlaylist[]>(this.PLAYLIST_API + 'top/ten/likes');
   }
