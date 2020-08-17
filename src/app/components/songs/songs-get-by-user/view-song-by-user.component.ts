@@ -3,6 +3,7 @@ import {ISong} from '../../../interfaces/isong';
 import {SongService} from '../../../services/songs/song.service';
 import {UserService} from '../../../services/user/user.service';
 import {getPostTimeToString} from '../../../app.module';
+import {ActiveService} from '../../../services/interactive/active.service';
 
 
 @Component({
@@ -12,13 +13,10 @@ import {getPostTimeToString} from '../../../app.module';
 })
 export class ViewSongByUserComponent implements OnInit {
   userId: number;
-  page: number = 1;
-
-
   songList: ISong[];
 
   constructor(
-    private songService: SongService
+    private songService: SongService, private activeService: ActiveService
   ) {
   }
 
@@ -43,5 +41,11 @@ export class ViewSongByUserComponent implements OnInit {
 
   convertTime(postTime: Date) {
     getPostTimeToString(postTime);
+  }
+  likeSong(songId: number) {
+    let userId = +localStorage.getItem("userId");
+    this.activeService.likeSong(songId, userId).subscribe(data => {
+      document.getElementById('like'+songId).innerHTML = 'Like ('+data.likes+')';
+    })
   }
 }

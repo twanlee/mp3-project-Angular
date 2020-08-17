@@ -54,8 +54,8 @@
                 <div class="dropdown">
                   <i class="dropbtn">Hello! {{firstName}} {{lastName}}</i>
                   <div class="dropdown-content">
-                    <a routerLink="/user/{{userId}}/profile">Profile</a>
-                    <a routerLink="/user/songs">Nhạc cá nhân</a>
+                    <a href="/user/{{userId}}/profile">Profile</a>
+                    <a routerLink="/user/music">Nhạc cá nhân</a>
                     <a class="btn btn-danger" (click)="logOut()">Log Out</a>
                   </div>
                 </div>

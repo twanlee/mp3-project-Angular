@@ -3,8 +3,8 @@
 <div class="container">
   <div class="row poca-portfolio">
     <!-- Single gallery Item -->
-    <ng-container *ngFor="let song of songList">
-      <ng-container class="col-12 col-md-6 single_gallery_item entre wow fadeInUp" data-wow-delay="0.1s" style=" padding-left: 40px">
+    <div *ngFor="let song of songList">
+      <div class="col-12 col-md-6 single_gallery_item entre wow fadeInUp" data-wow-delay="0.1s" style=" padding-left: 40px">
         <!-- Welcome Music Area -->
         <div class="poca-music-area style-2 d-flex align-items-center flex-wrap" style="width: 500px">
           <div class="poca-music-content text-center">
@@ -21,7 +21,7 @@
             </div>
             <!-- Likes, Share & Download -->
             <div class="likes-share-download d-flex align-items-center justify-content-between">
-              <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> Like (29)</a>
+              <button (click)="likeSong(song.id)"><i class="fa fa-heart" aria-hidden="true"></i><p [id]="'like'+song.id">Like ({{song.review.likes}})</p></button>
               <div>
                 <a [routerLink]="'../../song/'+song.id+'/edit'" class="mr-4"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
                 <a id = "delete"(click)="delete(song.id)" style="cursor: pointer"><i class="fa fa-trash" aria-hidden="true"></i>Delete</a>
@@ -29,8 +29,8 @@
             </div>
           </div>
         </div>
-      </ng-container>
-    </ng-container>
+      </div>
+    </div>
   </div>
 </div>
 </div>

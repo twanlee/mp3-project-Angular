@@ -4,11 +4,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from '@angular/common/http';
 import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
-import {SongDetailComponent} from "./components/songs/song-detail/song-detail.component";
-import { HomePageComponent } from "./components/home-page/home-page.component";
+import {SongDetailComponent} from './components/songs/song-detail/song-detail.component';
+import {HomePageComponent} from './components/home-page/home-page.component';
 import {CreateSongComponent} from './components/songs/create-song/create-song.component';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireStorageModule} from '@angular/fire/storage';
@@ -38,10 +38,11 @@ import {MatInputModule} from "@angular/material/input";
 import {CreateArtistComponent} from "./components/artists/create-artist/create-artist.component";
 import {AddAuthorComponent} from './components/songs/create-song/add-author/add-author.component';
 import {AddSingerComponent} from './components/songs/create-song/add-singer/add-singer.component';
+import { UserPlaylistComponent } from './components/playlists/user-playlist/user-playlist.component';
+import { UserSongsAndPlaylistComponent } from './components/user-songs-and-playlist/user-songs-and-playlist.component';
 import {NewPlaylistComponent} from './components/playlists/new-playlist/new-playlist.component';
 import { AddSongComponent } from './components/playlists/add-song/add-song.component';
 import { FindSongForPlaylistComponent } from './components/playlists/add-song/find-song-for-playlist/find-song-for-playlist.component';
-
 export function getPostTimeToString(postTime):string {
     let date = new Date(postTime);
     let string = date.toDateString();
@@ -70,16 +71,21 @@ export function getPostTimeToString(postTime):string {
     SongPlayerComponent,
     SongDescriptionComponent,
     SongEditComponent,
+    CreateArtistComponent,
     AllPlaylistComponent,
     PlaylistDetailComponent,
     UserProfileComponent,
     SearchSongFormComponent,
-    CreateArtistComponent,
+    AddAuthorComponent,
+    SearchSongFormComponent,
     AddAuthorComponent,
     AddSingerComponent,
     NewPlaylistComponent,
     AddSongComponent,
-    FindSongForPlaylistComponent
+    FindSongForPlaylistComponent,
+    UserPlaylistComponent,
+    UserSongsAndPlaylistComponent,
+    NewPlaylistComponent
   ],
   imports: [
     BrowserModule,
