@@ -21,10 +21,12 @@ export class SongEditComponent implements OnInit {
   songUrl: string = '';
   imageUrl: string = '';
   user_id: number;
-  artists: IArtist[] = [];
-  artistsFilter = [];
-  singers: number[] = [];
-  authors: number[] = [];
+  singers: IArtist[] = [];
+  singersFilter = [];
+  authors: IArtist[] = [];
+  authorsFilter = [];
+  singersSelected: number[] = [];
+  authorsSelected: number[] = [];
 
   constructor(private songService: SongService,
               private fb: FormBuilder,
@@ -47,10 +49,16 @@ export class SongEditComponent implements OnInit {
       this.imageUrl = this.song.imageUrl;
     });
     this.artistService.getAll().subscribe(resp =>{
-      this.artists = resp;
+      this.singers = resp;
     });
     this.artistService.getAll().subscribe(resp =>{
-      this.artistsFilter = resp;
+      this.authors = resp;
+    });
+    this.artistService.getAll().subscribe(resp =>{
+      this.singersFilter = resp;
+    });
+    this.artistService.getAll().subscribe(resp =>{
+      this.authorsFilter = resp;
     });
   }
 
@@ -60,15 +68,15 @@ export class SongEditComponent implements OnInit {
    this.song.lyric = data.lyric;
    this.song.description = data.description;
    if(this.singers.length > 0){
-     for (let i = 0; i < this.singers.length; i++) {
+     for (let i = 0; i < this.singersSelected.length; i++) {
        this.song.s_singers[i] = {};
-       this.song.s_singers[i].id = this.singers[i];
+       this.song.s_singers[i].id = this.singersSelected[i];
      }
    }
    if( this.authors.length > 0){
-     for (let i = 0; i < this.authors.length; i++) {
+     for (let i = 0; i < this.authorsSelected.length; i++) {
        this.song.s_authors[i] = {};
-       this.song.s_authors[i].id = this.authors[i];
+       this.song.s_authors[i].id = this.authorsSelected[i];
      }
    }
    this.songService.saveSong(this.song,+localStorage.getItem('userId')).subscribe(()=>{
@@ -104,14 +112,17 @@ export class SongEditComponent implements OnInit {
       })
     ).subscribe();
   }
-  filterByArtist(artistName) {
-    return this.artists.filter(
+  filterByArtist(artistName,artists: IArtist[]) {
+    return artists.filter(
       artist => {
         return artist.fullName.indexOf(artistName) != -1;
       }
     );
   }
-  findArtist(event) {
-    this.artistsFilter = (event) ? this.filterByArtist(event) : this.artists;
+  findAuthors(event) {
+    this.authorsFilter = (event) ? this.filterByArtist(event,this.authors) : this.authors;
+  }
+  findSingers(event) {
+    this.singersFilter = (event) ? this.filterByArtist(event,this.singers) : this.singers;
   }
 }

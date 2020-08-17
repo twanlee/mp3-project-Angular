@@ -84,8 +84,7 @@ export function getPostTimeToString(postTime):string {
     AddSongComponent,
     FindSongForPlaylistComponent,
     UserPlaylistComponent,
-    UserSongsAndPlaylistComponent,
-    NewPlaylistComponent
+    UserSongsAndPlaylistComponent
   ],
   imports: [
     BrowserModule,
