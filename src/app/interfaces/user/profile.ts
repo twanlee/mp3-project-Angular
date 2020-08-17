@@ -1,9 +1,9 @@
-export interface Profile {
-  id?: number;
+export interface IProfile {
+  id?: number
+  avatarUrl?: string;
   firstName?: string;
   lastName?: string;
-  avatarUrl?: string;
-  phoneNumber?: string;
   birthday?: Date;
+  phoneNumber?: string;
   gender?: string;
 }

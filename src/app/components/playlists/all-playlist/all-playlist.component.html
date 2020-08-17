@@ -35,7 +35,7 @@
               <img [src]="pl.imgUrl" alt="">
             </div>
             <div class="poca-music-content text-center">
-              <h2><a [routerLink]="'/playlist/'+pl.id">{{pl.title}}</a></h2>
+              <h2><a [routerLink]="'/playlist/'+pl.id+'/detail'">{{pl.title}}</a></h2>
               <div class="music-meta-data">
                 <p>By <a href="#" class="music-author">Create by {{pl.userCreate}}</a> | <a href="#" class="music-catagory">Thể loại</a>
               </div>
@@ -45,7 +45,6 @@
               <div class="likes-share-download d-flex align-items-center justify-content-between">
                 <button (click)="likePlaylist(pl.id)"><i class="fa fa-heart" aria-hidden="true"></i><p [id]="'like'+pl.id">Like ({{pl.review.likes}})</p></button>
                 <div>
-                  <a href="#" class="mr-4"><i class="fa fa-share-alt" aria-hidden="true"></i> Views ({{pl.review.views}})</a>
                   <a href="#" class="mr-4"><i class="fa fa-share-alt" aria-hidden="true"></i> Share(66)</a>
                 </div>
               </div>
@@ -54,6 +53,6 @@
         </div>
     </div>
   </div>
-</section>
 
+</section>
 

@@ -90,7 +90,8 @@ export class SongEditComponent implements OnInit {
       })
     ).subscribe();
   }
-  updateImage(event){const randomString = Math.random().toString(36).substring(7);
+  updateImage(event){
+    const randomString = Math.random().toString(36).substring(7);
     const filePath = 'image/featured/' +randomString+new Date().getTime();
     this.fileImage = event.target.files[0];
     const fileRef = this.storage.ref(filePath);

@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import {IPlaylist} from '../../interfaces/iplaylist';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
@@ -18,7 +18,7 @@ export class PlaylistService {
   }
 
   getPlayListById(id: number): Observable<IPlaylist> {
-    return this.http.get<IPlaylist>(this.PLAYLIST_API + id);
+      return this.http.get<IPlaylist>(this.PLAYLIST_API + id+"/detail");
   }
 
   getSongFromPlaylist(id: number): Observable<ISong[]> {
@@ -27,5 +27,8 @@ export class PlaylistService {
 
   getPlaylistByUser(id: number): Observable<IPlaylist[]> {
     return this.http.get<IPlaylist[]>(this.PLAYLIST_API + id + '/view');
+  }
+  createPlaylist(data: IPlaylist,user_id: number): Observable<IPlaylist>{
+    return this.http.post<IPlaylist>(this.PLAYLIST_API + user_id+'/create',data)
   }
 }

@@ -2,22 +2,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegisterComponent } from './components/register/register.component';
+import { RegisterComponent } from './components/user/register/register.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from '@angular/common/http';
 import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
-import {SongDetailComponent} from "./components/songs/song-detail/song-detail.component";
-import { HomePageComponent } from "./components/home-page/home-page.component";
+import {SongDetailComponent} from './components/songs/song-detail/song-detail.component';
+import {HomePageComponent} from './components/home-page/home-page.component';
 import {CreateSongComponent} from './components/songs/create-song/create-song.component';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
-import {LoginComponent} from './components/login/login.component';
+import {LoginComponent} from './components/user/login/login.component';
 import {ViewSongByUserComponent} from './components/songs/songs-get-by-user/view-song-by-user.component';
 import {SongSearchingResultsComponent} from './components/songs/song-searching-results/song-searching-results.component';
-import {EditProfileComponent} from './components/edit-profile/edit-profile.component';
+import {EditProfileComponent} from './components/user/edit-profile/edit-profile.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {authInterceptorProviders} from './helper/auth.interceptor';
 import {APP_BASE_HREF} from '@angular/common';
@@ -39,6 +39,8 @@ import {AddAuthorComponent} from './components/songs/create-song/add-author/add-
 import {AddSingerComponent} from './components/songs/create-song/add-singer/add-singer.component';
 import { UserPlaylistComponent } from './components/playlists/user-playlist/user-playlist.component';
 import { UserSongsAndPlaylistComponent } from './components/user-songs-and-playlist/user-songs-and-playlist.component';
+import {NewPlaylistComponent} from './components/playlists/new-playlist/new-playlist.component';
+import {UserProfileComponent} from './components/user/user-profile/user-profile.component';
 export function getPostTimeToString(postTime):string {
     // @ts-ignore
     let date = new Date(postTime);
@@ -68,14 +70,20 @@ export function getPostTimeToString(postTime):string {
     SongPlayerComponent,
     SongDescriptionComponent,
     SongEditComponent,
+    CreateArtistComponent,
     AllPlaylistComponent,
     PlaylistDetailComponent,
+    UserProfileComponent,
+    SearchSongFormComponent,
+    CreateArtistComponent,
+    AddAuthorComponent,
     SearchSongFormComponent,
     CreateArtistComponent,
     AddAuthorComponent,
     AddSingerComponent,
     UserPlaylistComponent,
-    UserSongsAndPlaylistComponent
+    UserSongsAndPlaylistComponent,
+    NewPlaylistComponent
   ],
   imports: [
     BrowserModule,
@@ -91,11 +99,12 @@ export function getPostTimeToString(postTime):string {
     BrowserAnimationsModule,
     MaterialModule,
     MatInputModule,
-    NgxAudioPlayerModule
+    NgxAudioPlayerModule,
   ],
   providers: [authInterceptorProviders,{
     provide: APP_BASE_HREF, useValue: "/"
   }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
