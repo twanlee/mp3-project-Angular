@@ -21,10 +21,12 @@ export class CreateSongComponent implements OnInit {
   fileImage: File;
   song: ISong = {};
   id_user: number;
-  artists: IArtist[] = [];
-  artistsFilter = [];
-  singers: number[] = [];
-  authors: number[] = [];
+  singers: IArtist[] = [];
+  authors: IArtist[] = [];
+  singersFilter: IArtist[] = [];
+  authorsFilter: IArtist[] = [];
+  singersSelected: number[] = [];
+  authorsSelected: number[] = [];
   constructor(private storage: AngularFireStorage,
               private fb: FormBuilder,
               private songService: SongService,
@@ -36,9 +38,6 @@ export class CreateSongComponent implements OnInit {
 
   ngOnInit(): void {
     this.id_user = +localStorage.getItem('userId');
-    // this.songService.sendUserID(this.id_user).subscribe(() => {
-    //   console.log('send user_id : OKKK!!');
-    // });
     this.createSongForm = this.fb.group({
       name: [''],
       lyric: [''],
@@ -46,11 +45,17 @@ export class CreateSongComponent implements OnInit {
       singers: [''],
       description: ['']
     });
-    this.artistService.getAll().subscribe(resp => {
-      this.artists = resp;
+    this.artistService.getAll().subscribe(resp =>{
+      this.singers = resp;
     });
-    this.artistService.getAll().subscribe(resp => {
-      this.artistsFilter = resp;
+    this.artistService.getAll().subscribe(resp =>{
+      this.authors = resp;
+    });
+    this.artistService.getAll().subscribe(resp =>{
+      this.singersFilter = resp;
+    });
+    this.artistService.getAll().subscribe(resp =>{
+      this.authorsFilter = resp;
     });
   }
 
@@ -91,13 +96,13 @@ export class CreateSongComponent implements OnInit {
     this.song.lyric = data.lyric;
     this.song.s_singers = [];
     this.song.s_authors = [];
-    for (let i = 0; i < this.singers.length; i++) {
+    for (let i = 0; i < this.singersSelected.length; i++) {
       this.song.s_singers[i] = {};
-      this.song.s_singers[i].id = this.singers[i];
+      this.song.s_singers[i].id = this.singersSelected[i];
     }
-    for (let i = 0; i < this.authors.length; i++) {
+    for (let i = 0; i < this.authorsSelected.length; i++) {
       this.song.s_authors[i] = {};
-      this.song.s_authors[i].id = this.authors[i];
+      this.song.s_authors[i].id = this.authorsSelected[i];
     }
     this.song.postTime = new Date();
     this.songService.saveSong(this.song,this.id_user).subscribe(() => {
@@ -108,14 +113,17 @@ export class CreateSongComponent implements OnInit {
 
   }
 
-  filterByArtist(artistName) {
-    return this.artists.filter(
+  filterByArtist(artistName,artists: IArtist[]) {
+    return artists.filter(
       artist => {
         return artist.fullName.indexOf(artistName) != -1;
       }
     );
   }
-  findArtist(event) {
-    this.artistsFilter = (event) ? this.filterByArtist(event) : this.artists;
+  findAuthors(event) {
+    this.authorsFilter = (event) ? this.filterByArtist(event,this.authors) : this.authors;
+  }
+  findSingers(event) {
+    this.singersFilter = (event) ? this.filterByArtist(event,this.singers) : this.singers;
   }
 }

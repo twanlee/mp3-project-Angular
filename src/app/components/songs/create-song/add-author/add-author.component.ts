@@ -7,12 +7,12 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 })
 export class AddAuthorComponent implements OnInit {
 
-  @Output() singer: EventEmitter<any> = new EventEmitter();
+  @Output() authorNames: EventEmitter<any> = new EventEmitter();
   constructor() { }
   ngOnInit(): void {
   }
   getAuthor(event){
     let value = event.target.value;
-    this.singer.emit(value);
+    this.authorNames.emit(value);
   }
 }
