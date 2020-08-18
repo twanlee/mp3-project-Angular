@@ -31,13 +31,6 @@ export class ViewSongByUserComponent implements OnInit {
     });
   }
 
-  delete(id: number) {
-    if (confirm('Bạn chắc chưa?')) {
-      this.songService.deleteSongById(id).subscribe(() => {
-        this.getAllSongByUser(this.userId);
-      });
-    }
-  }
 
   convertTime(postTime: Date) {
     getPostTimeToString(postTime);
