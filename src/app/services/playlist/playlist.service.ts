@@ -22,7 +22,7 @@ export class PlaylistService {
   }
 
   getSongFromPlaylist(id: number): Observable<ISong[]> {
-    return this.http.get<ISong[]>(this.PLAYLIST_API + id + '/detail');
+    return this.http.get<ISong[]>(this.PLAYLIST_API + id + '/songs');
   }
 
   getPlaylistByUser(id: number): Observable<IPlaylist[]> {

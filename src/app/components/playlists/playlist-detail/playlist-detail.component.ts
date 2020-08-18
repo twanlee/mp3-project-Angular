@@ -38,6 +38,7 @@ export class PlaylistDetailComponent implements OnInit {
     });
     this.playlistService.getSongFromPlaylist(id).subscribe(data => {
       this.songs = data;
+      console.log(this.songs)
       this.songs.map(data => {
         this.convertSongToTrack(data);
       });
