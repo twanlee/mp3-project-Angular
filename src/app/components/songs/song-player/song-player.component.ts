@@ -32,6 +32,7 @@ export class SongPlayerComponent implements OnInit {
     this.songService.getSongById(this.songId).subscribe(data => {
         this.song = data;
         console.log("call 1 time");
+        console.log(this.song);
         this.postTime = this.getPostTimeToString(this.song.postTime);
         // this.review = data.review;
         // console.log(this.review);

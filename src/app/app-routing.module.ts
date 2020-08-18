@@ -36,7 +36,6 @@ const routes: Routes = [
   {path: 'playlist/all', component: AllPlaylistComponent},
   {path: 'playlist/:id/detail', component: PlaylistDetailComponent},
   {path: 'user/music', component: UserSongsAndPlaylistComponent, canActivate: [AuthGuard]},
-  {path: 'playlist/create', component: NewPlaylistComponent, canActivate: [AuthGuard]},
   {path: 'playlist/:id/song/add', component: AddSongComponent, canActivate: [AuthGuard]},
   {path: 'playlist/create', component: NewPlaylistComponent, canActivate: [AuthGuard]},
   {path: 'top', component: TopTrendingComponent},
