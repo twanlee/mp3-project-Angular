@@ -117,8 +117,16 @@ export class PlaylistDetailComponent implements OnInit {
   }
 
   removeSong(id: number, id2: number) {
+    this.playlistService.getPlayListById(id).subscribe(data => {
+      let playlist: IPlaylist = data;
+      let userId = localStorage.getItem('userId');
+      if(+playlist.userCreate.id != +userId){
+        this.router.navigate(['/']);
+      }
+    });
+
     if (confirm('Bạn chắc chưa?')) {
-      this.playlistService.deletePlaylist(id, id2).subscribe(() => {
+      this.playlistService.deleteSongPlaylist(id, id2).subscribe(() => {
         this.router.navigate(['/playlist', this.playlist.id, 'detail'])
       });
     }

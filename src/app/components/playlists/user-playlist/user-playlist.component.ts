@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {PlaylistService} from '../../../services/playlist/playlist.service';
 import {IPlaylist} from '../../../interfaces/iplaylist';
 import {ActiveService} from '../../../services/interactive/active.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-user-playlist',
@@ -14,7 +15,7 @@ export class UserPlaylistComponent implements OnInit {
   playlists: IPlaylist[] = [];
 
   constructor(
-    private playlistService: PlaylistService, private activeService: ActiveService
+    private playlistService: PlaylistService, private activeService: ActiveService, private router: Router
 
   ) { }
 
@@ -33,5 +34,13 @@ export class UserPlaylistComponent implements OnInit {
     this.activeService.likePlaylist(playlistId, userId).subscribe(data => {
       document.getElementById('like'+playlistId).innerHTML = 'Like ('+data.likes+')';
     })
+  }
+
+  deletePlaylist(id: number) {
+    if (confirm('Bạn chắc chưa?')){
+      this.playlistService.deletePlaylist(id).subscribe(() => {
+        this.router.navigate(['/user/music'])
+      });
+    }
   }
 }
