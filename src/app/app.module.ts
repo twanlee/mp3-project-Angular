@@ -49,12 +49,17 @@ import { TopViewSongComponent } from './components/songs/top-view-song/top-view-
 import { TopLikePlaylistComponent } from './components/playlists/top-like-playlist/top-like-playlist.component';
 import { TopViewPlaylistComponent } from './components/playlists/top-view-playlist/top-view-playlist.component';
 import { TopTrendingComponent } from './components/tops/top-trending/top-trending.component';
+import {ToastrModule, ToastrService} from 'ngx-toastr';
+import {ISong} from './interfaces/isong';
+import {StorageService} from './services/storage.service';
+import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
 export function getPostTimeToString(postTime):string {
     let date = new Date(postTime);
     let string = date.toDateString();
     string = string.slice(4);
     return string;
 }
+
 
 @NgModule({
   declarations: [
@@ -113,6 +118,8 @@ export function getPostTimeToString(postTime):string {
     MaterialModule,
     MatInputModule,
     NgxAudioPlayerModule,
+    ToastrModule.forRoot(),
+    CKEditorModule
   ],
   providers: [authInterceptorProviders,{
     provide: APP_BASE_HREF, useValue: "/"

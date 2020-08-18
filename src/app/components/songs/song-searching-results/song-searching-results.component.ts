@@ -4,6 +4,7 @@ import {ISong} from "../../../interfaces/isong";
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {getPostTimeToString} from "../../../app.module";
 import {ActiveService} from '../../../services/interactive/active.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-song-searching-results',
@@ -19,7 +20,9 @@ export class SongSearchingResultsComponent implements OnInit {
   constructor(
     private songService: SongService,
     private activatedRoute: ActivatedRoute,
-    private activeService: ActiveService
+    private activeService: ActiveService,
+    private toastService: ToastrService,
+    private route: Router
   ) { }
 
   ngOnInit(): void {
@@ -47,8 +50,17 @@ export class SongSearchingResultsComponent implements OnInit {
   }
   likeSong(songId: number) {
     let userId = +localStorage.getItem("userId");
-    this.activeService.likeSong(songId, userId).subscribe(data => {
-      document.getElementById('like'+songId).innerHTML = 'Like ('+data.likes+')';
-    })
+    console.log("userId :" + userId);
+    if (userId == null || userId == undefined || userId == 0) {
+      this.toastService.error("Chuyển hướng sang trang đăng nhập sau 2s", "Bạn chưa đăng nhập")
+      setTimeout(()=> {
+        this.route.navigateByUrl("/login")
+      }, 2000)
+    }
+    else {
+      this.activeService.likeSong(songId, userId).subscribe(data => {
+        document.getElementById('like'+songId).innerHTML = 'Like ('+data.likes+')';
+      })
+    }
   }
 }

@@ -5,6 +5,8 @@ import {IPlaylist} from '../../../interfaces/iplaylist';
 import {SongService} from '../../../services/songs/song.service';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
+import {ToastrService} from 'ngx-toastr';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-new-playlist',
@@ -19,7 +21,9 @@ export class NewPlaylistComponent implements OnInit {
   constructor(private playlistService: PlaylistService,
               private fb: FormBuilder,
               private songService: SongService,
-              private storage: AngularFireStorage
+              private storage: AngularFireStorage,
+              private toastService: ToastrService,
+              private router: Router
               ) { }
 
   ngOnInit(): void {
@@ -32,7 +36,15 @@ export class NewPlaylistComponent implements OnInit {
     let data = this.createPlaylistForm.value;
     this.playList.title = data.title;
     this.playlistService.createPlaylist(this.playList,this.id).subscribe(()=>{
-      console.log("New playlist OK !!!");
+      this.toastService.success("Quay lại trang chủ sau 3s", "Tạo playlist thành công");
+      setTimeout(()=>{
+        this.router.navigateByUrl("")
+      }, 3000)
+    }, error => {
+      this.toastService.error("Quay lại trang chủ sau 3s", "Tạo Playlist ko thành công");
+      setTimeout(()=>{
+        this.router.navigateByUrl("")
+      }, 3000)
     })
 
   }
