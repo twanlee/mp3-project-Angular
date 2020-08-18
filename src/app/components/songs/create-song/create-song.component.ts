@@ -9,6 +9,7 @@ import {UserService} from '../../../services/user/user.service';
 import {ArtistService} from '../../../services/artist/artist.service';
 import {IArtist} from '../../../interfaces/iartist';
 import {ToastrService} from 'ngx-toastr';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 
 @Component({
@@ -17,6 +18,10 @@ import {ToastrService} from 'ngx-toastr';
   styleUrls: ['./create-song.component.css']
 })
 export class CreateSongComponent implements OnInit {
+  public Editor = ClassicEditor;
+  ckconfig = {
+    toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
+  };
   createSongForm: FormGroup;
   fileSong: File;
   fileImage: File;

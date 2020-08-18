@@ -52,6 +52,7 @@ import { TopTrendingComponent } from './components/tops/top-trending/top-trendin
 import {ToastrModule, ToastrService} from 'ngx-toastr';
 import {ISong} from './interfaces/isong';
 import {StorageService} from './services/storage.service';
+import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
 export function getPostTimeToString(postTime):string {
     let date = new Date(postTime);
     let string = date.toDateString();
@@ -117,7 +118,8 @@ export function getPostTimeToString(postTime):string {
     MaterialModule,
     MatInputModule,
     NgxAudioPlayerModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    CKEditorModule
   ],
   providers: [authInterceptorProviders,{
     provide: APP_BASE_HREF, useValue: "/"
