@@ -32,15 +32,24 @@
 
  <!-- Leave A Reply -->
 <div class="contact-form">
-  <h3 class="mb-30">Leave A Comment</h3>
-  <form method="post" [formGroup]="commentForm" (ngSubmit)="addComment()">
-    <div class="row">
-      <div class="col-12">
-        <textarea formControlName="content" class="form-control mb-10" placeholder="Thêm bình luận..."></textarea>
+  <h2 class="mb-30" style="font-style: italic">Ngon thì chém một phát rồi đi</h2>
+  <div *ngIf="user_id > 0">
+    <form method="post" [formGroup]="commentForm" (ngSubmit)="addComment()">
+      <div class="row">
+        <div class="col-12">
+          <textarea formControlName="content" class="form-control mb-10" placeholder="Thêm bình luận..."></textarea>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-success mt-30">Chém </button>
+        </div>
       </div>
-      <div class="col-12">
-        <button type="submit" class="btn btn-success mt-30">Đăng</button>
-      </div>
+    </form>
+  </div>
+  <div *ngIf="user_id < 1" >
+        <h3 style="padding-left: 200px">Nhưng vui lòng đăng nhập trước rồi mới chém</h3>
+    <div style="padding-left: 300px">
+      <button class="btn btn-success mt-30" routerLink="/login">Đăng nhập</button>
     </div>
-  </form>
+
+  </div>
 </div>

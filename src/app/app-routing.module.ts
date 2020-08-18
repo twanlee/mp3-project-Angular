@@ -17,10 +17,6 @@ import {NewPlaylistComponent} from './components/playlists/new-playlist/new-play
 import {UserProfileComponent} from './components/user/user-profile/user-profile.component';
 import {UserSongsAndPlaylistComponent} from './components/user/user-songs-and-playlist/user-songs-and-playlist.component';
 import {AddSongComponent} from './components/playlists/add-song/add-song.component';
-import {TopLikeSongComponent} from './components/songs/top-like-song/top-like-song.component';
-import {TopViewSongComponent} from './components/songs/top-view-song/top-view-song.component';
-import {TopLikePlaylistComponent} from './components/playlists/top-like-playlist/top-like-playlist.component';
-import {TopViewPlaylistComponent} from './components/playlists/top-view-playlist/top-view-playlist.component';
 import {TopTrendingComponent} from './components/tops/top-trending/top-trending.component';
 import {SongDeleteComponent} from './components/songs/song-delete/song-delete.component';
 

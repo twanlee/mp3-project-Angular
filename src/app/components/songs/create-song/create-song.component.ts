@@ -10,6 +10,7 @@ import {ArtistService} from '../../../services/artist/artist.service';
 import {IArtist} from '../../../interfaces/iartist';
 
 
+
 @Component({
   selector: 'app-create-song',
   templateUrl: './create-song.component.html',
@@ -74,7 +75,7 @@ export class CreateSongComponent implements OnInit {
     ).subscribe();
   }
 
-  createImage(event) {
+  createImage(event){
     const randomString = Math.random().toString(36).substring(7);
     const filePath = 'image/featured/' + randomString + new Date().getTime();
     this.fileImage = event.target.files[0];
@@ -88,7 +89,6 @@ export class CreateSongComponent implements OnInit {
       })
     ).subscribe();
   }
-
   submit() {
     let data = this.createSongForm.value;
     this.song.name = data.name;
