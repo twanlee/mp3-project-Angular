@@ -4,6 +4,8 @@ import {IArtist} from '../../../interfaces/iartist';
 import {SongService} from '../../../services/songs/song.service';
 import {ActiveService} from '../../../services/interactive/active.service';
 import {StorageService} from '../../../services/storage.service';
+import {ToastrService} from 'ngx-toastr';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-top10song',
@@ -16,7 +18,9 @@ export class Top10songComponent implements OnInit {
   songs: ISong[] = [];
   constructor(private songService: SongService,
               private activeService: ActiveService,
-              private storageService: StorageService) { }
+              private storageService: StorageService,
+              private toastService: ToastrService,
+              private route: Router) { }
 
   ngOnInit(): void {
     this.songService.getTop10Song().subscribe(data => {
@@ -32,9 +36,18 @@ export class Top10songComponent implements OnInit {
   }
   likeSong(songId: number) {
       let userId = +localStorage.getItem("userId");
-      this.activeService.likeSong(songId, userId).subscribe(data => {
+      console.log("userId :" + userId);
+      if (userId == null || userId == undefined || userId == 0) {
+          this.toastService.error("Chuyển hướng sang trang đăng nhập sau 2s", "Bạn chưa đăng nhập")
+          setTimeout(()=> {
+            this.route.navigateByUrl("/login")
+          }, 2000)
+      }
+      else {
+        this.activeService.likeSong(songId, userId).subscribe(data => {
           document.getElementById('like'+songId).innerHTML = 'Like ('+data.likes+')';
-      })
+        })
+      }
   }
 
   // Thêm bài hát vào danh sách phát
@@ -72,6 +85,5 @@ export class Top10songComponent implements OnInit {
       }
       return artistName.substring(0, artistName.length-1);
   }
-
 
 }

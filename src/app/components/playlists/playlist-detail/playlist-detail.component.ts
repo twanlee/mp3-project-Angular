@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {PlaylistService} from '../../../services/playlist/playlist.service';
 import {IPlaylist} from '../../../interfaces/iplaylist';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ISong} from '../../../interfaces/isong';
 import {Track} from 'ngx-audio-player';
 import {ActiveService} from '../../../services/interactive/active.service';
 import {StorageService} from '../../../services/storage.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-playlist-detail',
@@ -28,7 +29,9 @@ export class PlaylistDetailComponent implements OnInit {
   constructor(private playlistService: PlaylistService,
               private activeRoute: ActivatedRoute,
               private activeService: ActiveService,
-              private storageService: StorageService) {
+              private storageService: StorageService,
+              private toastService: ToastrService,
+              private route: Router) {
   }
 
   ngOnInit(): void {
@@ -62,19 +65,35 @@ export class PlaylistDetailComponent implements OnInit {
   }
 
   likeSong(songId: number) {
-    console.log('song id là : ' + songId);
-    let userId = +localStorage.getItem('userId');
-    this.activeService.likeSong(songId, userId).subscribe(data => {
-      document.getElementById('like' + songId).innerHTML = 'Like (' + data.likes + ')';
-    });
+    let userId = +localStorage.getItem("userId");
+    console.log("userId :" + userId);
+    if (userId == null || userId == undefined || userId == 0) {
+      this.toastService.error("Chuyển hướng sang trang đăng nhập sau 2s", "Bạn chưa đăng nhập")
+      setTimeout(()=> {
+        this.route.navigateByUrl("/login")
+      }, 2000)
+    }
+    else {
+      this.activeService.likeSong(songId, userId).subscribe(data => {
+        document.getElementById('like'+songId).innerHTML = 'Like ('+data.likes+')';
+      })
+    }
   }
 
   likePlaylist() {
-    let userId = +localStorage.getItem('userId');
-    this.activeService.likePlaylist(this.playlist.id, userId).subscribe(data => {
-      document.getElementById('playlistLike').innerHTML = 'Like (' + data.likes + ')';
-
-    });
+    let userId = +localStorage.getItem("userId");
+    console.log("userId :" + userId);
+    if (userId == null || userId == undefined || userId == 0) {
+      this.toastService.error("Chuyển hướng sang trang đăng nhập sau 2s", "Bạn chưa đăng nhập")
+      setTimeout(()=> {
+        this.route.navigateByUrl("/login")
+      }, 2000)
+    }
+    else {
+      this.activeService.likePlaylist(this.playlist.id, userId).subscribe(data => {
+        document.getElementById('like'+this.playlist.id).innerHTML = 'Like ('+data.likes+')';
+      })
+    }
   }
 
   addToTrack(data: ISong) {
