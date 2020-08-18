@@ -21,6 +21,9 @@ export class FooterComponent implements OnInit {
       fixed: true,
       audio: []
     });
+    // if (library == null || library == undefined) {
+    //     library = JSON.parse(sessionStorage.getItem('library'));
+    // }
     this.storageService.watchStorage().subscribe(data => {
         library = JSON.parse(sessionStorage.getItem('library'));
         ap.list.add(library[0]);

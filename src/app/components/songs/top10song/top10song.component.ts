@@ -37,6 +37,8 @@ export class Top10songComponent implements OnInit {
           document.getElementById('like'+songId).innerHTML = 'Like ('+data.likes+')';
       })
   }
+
+  // Thêm bài hát vào danh sách phát
   addToTrack(data: ISong) {
     let isExisted: boolean = false;
     let song: any = {
@@ -69,7 +71,6 @@ export class Top10songComponent implements OnInit {
       if (artistName == '') {
         artistName = 'Various Artist'
       }
-      console.log('artist : '+ artistName);
-      return artistName;
+      return artistName.substring(0, artistName.length-1);
   }
 }
