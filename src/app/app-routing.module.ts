@@ -39,7 +39,7 @@ const routes: Routes = [
   {path: 'song/:id/detail', component: SongDetailComponent},
   {path: 'artist/create', component: CreateArtistComponent},
   {path: 'playlist/all', component: AllPlaylistComponent},
-  {path: 'playlist/:id/detail', component: PlaylistDetailComponent},
+  {path: 'playlist/:id/detail', component: PlaylistDetailComponent, runGuardsAndResolvers: 'always'},
   {path: 'user/music', component: UserSongsAndPlaylistComponent},
   {path: 'playlist/create', component: NewPlaylistComponent},
   {path: 'playlist/:id/song/add', component: AddSongComponent},
@@ -50,7 +50,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

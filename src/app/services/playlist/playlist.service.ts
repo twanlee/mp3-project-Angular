@@ -22,7 +22,7 @@ export class PlaylistService {
   }
 
   getSongFromPlaylist(id: number): Observable<ISong[]> {
-    return this.http.get<ISong[]>(this.PLAYLIST_API + id + '/detail');
+    return this.http.get<ISong[]>(this.PLAYLIST_API + id + '/songs');
   }
 
   getPlaylistByUser(id: number): Observable<IPlaylist[]> {
@@ -39,5 +39,8 @@ export class PlaylistService {
   }
   getTop10PlaylistByViews(): Observable<IPlaylist[]> {
     return this.http.get<IPlaylist[]>(this.PLAYLIST_API + 'top/ten/views');
+  }
+  deletePlaylist(playlistId: number, songId: number): Observable<any>{
+    return this.http.delete<any>(this.PLAYLIST_API + playlistId + "/song/" + songId + "/delete");
   }
 }

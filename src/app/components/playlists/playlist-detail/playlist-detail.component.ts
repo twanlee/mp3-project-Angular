@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PlaylistService} from '../../../services/playlist/playlist.service';
 import {IPlaylist} from '../../../interfaces/iplaylist';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {ISong} from '../../../interfaces/isong';
 import {Track} from 'ngx-audio-player';
 import {ActiveService} from '../../../services/interactive/active.service';
@@ -13,6 +13,7 @@ import {StorageService} from '../../../services/storage.service';
   styleUrls: ['./playlist-detail.component.css']
 })
 export class PlaylistDetailComponent implements OnInit {
+  navigationSubscription;
   playlist: IPlaylist;
   songs: ISong[] = [];
   msaapDisplayTitle = true;
@@ -28,16 +29,34 @@ export class PlaylistDetailComponent implements OnInit {
   constructor(private playlistService: PlaylistService,
               private activeRoute: ActivatedRoute,
               private activeService: ActiveService,
-              private storageService: StorageService) {
+              private storageService: StorageService,
+              private router: Router) {
+    this.navigationSubscription = this.router.events.subscribe((e: any) => {
+      if (e instanceof NavigationEnd) {
+        this.refetchData();
+      }
+    });
   }
 
-  ngOnInit(): void {
+  refetchData() {
     let id = +this.activeRoute.snapshot.paramMap.get('id');
     this.playlistService.getPlayListById(id).subscribe(data => {
       this.playlist = data;
     });
     this.playlistService.getSongFromPlaylist(id).subscribe(data => {
+      this.songs =data;
+    })
+  }
+
+  ngOnInit(): void {
+    let id = +this.activeRoute.snapshot.paramMap.get('id');
+    this.playlistService.getPlayListById(id).subscribe(data => {
+      console.log(data);
+      this.playlist = data;
+    });
+    this.playlistService.getSongFromPlaylist(id).subscribe(data => {
       this.songs = data;
+      console.log(this.songs);
       this.songs.map(data => {
         this.convertSongToTrack(data);
       });
@@ -91,8 +110,17 @@ export class PlaylistDetailComponent implements OnInit {
     let trackList: any[] = JSON.parse(sessionStorage.getItem('library'));
     if (trackList == null) {
       trackList = [];
-    };
+    }
+    ;
     trackList.unshift(song);
     this.storageService.setItem('library', JSON.stringify(trackList));
+  }
+
+  removeSong(id: number, id2: number) {
+    if (confirm('Bạn chắc chưa?')) {
+      this.playlistService.deletePlaylist(id, id2).subscribe(() => {
+        this.router.navigate(['/playlist', this.playlist.id, 'detail'])
+      });
+    }
   }
 }
