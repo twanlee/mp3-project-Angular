@@ -32,8 +32,21 @@ export class FooterComponent implements OnInit {
 
     this.storageService.watchStorage().subscribe(data => {
         library = JSON.parse(sessionStorage.getItem('library'));
-        ap.list.add(library[0]);
-        this.toastService.success("Thêm bài hát vào danh sách phát thành công")
+        let isExisted = false;
+        let song = library[0];
+        ap.list.audios.map(track => {
+            if (track.name == song.name && track.url == song.url) {
+              isExisted = true;
+            }
+        });
+
+        if (!isExisted) {
+            ap.list.add(library[0])
+            this.toastService.success("Bài hát đã được thêm vào danh sách phát")
+        }
+        else {
+            this.toastService.error("Bài hát đã có sẵn trong danh sách phát")
+        }
     });
 
   }
