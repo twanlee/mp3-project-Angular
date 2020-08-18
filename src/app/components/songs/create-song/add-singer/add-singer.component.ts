@@ -7,12 +7,12 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
   styleUrls: ['./add-singer.component.css']
 })
 export class AddSingerComponent implements OnInit {
-  @Output() singer: EventEmitter<any> = new EventEmitter();
+  @Output() singerNames: EventEmitter<any> = new EventEmitter();
   constructor() { }
   ngOnInit(): void {
     }
   getSinger(event){
     let value = event.target.value;
-    this.singer.emit(value);
+    this.singerNames.emit(value);
   }
 }

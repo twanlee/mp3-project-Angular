@@ -17,23 +17,24 @@ import {NewPlaylistComponent} from './components/playlists/new-playlist/new-play
 import {UserProfileComponent} from './components/user/user-profile/user-profile.component';
 import {UserSongsAndPlaylistComponent} from './components/user/user-songs-and-playlist/user-songs-and-playlist.component';
 import {AddSongComponent} from './components/playlists/add-song/add-song.component';
-
+import {TopLikeSongComponent} from './components/songs/top-like-song/top-like-song.component';
+import {TopViewSongComponent} from './components/songs/top-view-song/top-view-song.component';
+import {TopLikePlaylistComponent} from './components/playlists/top-like-playlist/top-like-playlist.component';
+import {TopViewPlaylistComponent} from './components/playlists/top-view-playlist/top-view-playlist.component';
+import {TopTrendingComponent} from './components/tops/top-trending/top-trending.component';
+import {SongDeleteComponent} from './components/songs/song-delete/song-delete.component';
 
 
 const routes: Routes = [
 
   {path: 'register', component: RegisterComponent},
   {path: 'song/create', component: CreateSongComponent},
-  {path: 'register', component: RegisterComponent},
   {path: 'user/songs', component: ViewSongByUserComponent},
   {path: "login", component: LoginComponent},
   {path: "user/:id/profile/edit", component: EditProfileComponent},
   {path: "user/:id/profile", component: UserProfileComponent},
-  {path: 'search', component: SongSearchingResultsComponent},
   {path: 'song/:id/edit', component: SongEditComponent},
-  {path: ":id/profile/edit", component: EditProfileComponent},
   {path: ':keyword/search', component: SongSearchingResultsComponent},
-  {path: 'song/:id/edit', component: SongEditComponent},
   {path: '', component: HomePageComponent},
   {path: 'song/:id/detail', component: SongDetailComponent},
   {path: 'artist/create', component: CreateArtistComponent},
@@ -41,8 +42,11 @@ const routes: Routes = [
   {path: 'playlist/:id/detail', component: PlaylistDetailComponent},
   {path: 'user/music', component: UserSongsAndPlaylistComponent},
   {path: 'playlist/create', component: NewPlaylistComponent},
+  {path: 'playlist/:id/song/add', component: AddSongComponent},
+  {path: 'user/music', component: UserSongsAndPlaylistComponent},
   {path: 'playlist/create', component: NewPlaylistComponent},
-  {path: 'playlist/:id/song/add', component: AddSongComponent}
+  {path: 'top', component: TopTrendingComponent},
+  {path: 'song/:id/delete', component: SongDeleteComponent}
 ];
 
 @NgModule({

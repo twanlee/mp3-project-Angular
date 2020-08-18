@@ -32,7 +32,6 @@ import { PlaylistDetailComponent } from './components/playlists/playlist-detail/
 import {NgxAudioPlayerModule} from 'ngx-audio-player';
 import { SearchSongFormComponent } from './components/songs/search-song-form/search-song-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { MaterialModule } from './material.module';
 import {MatInputModule} from "@angular/material/input";
 import {CreateArtistComponent} from "./components/artists/create-artist/create-artist.component";
@@ -44,6 +43,12 @@ import { AddSongComponent } from './components/playlists/add-song/add-song.compo
 import { FindSongForPlaylistComponent } from './components/playlists/add-song/find-song-for-playlist/find-song-for-playlist.component';
 import {UserSongsAndPlaylistComponent} from './components/user/user-songs-and-playlist/user-songs-and-playlist.component';
 import {CommentComponent} from './components/user/comment/comment.component';
+import {UserProfileComponent} from './components/user/user-profile/user-profile.component';
+import { TopLikeSongComponent } from './components/songs/top-like-song/top-like-song.component';
+import { TopViewSongComponent } from './components/songs/top-view-song/top-view-song.component';
+import { TopLikePlaylistComponent } from './components/playlists/top-like-playlist/top-like-playlist.component';
+import { TopViewPlaylistComponent } from './components/playlists/top-view-playlist/top-view-playlist.component';
+import { TopTrendingComponent } from './components/tops/top-trending/top-trending.component';
 export function getPostTimeToString(postTime):string {
     let date = new Date(postTime);
     let string = date.toDateString();
@@ -77,6 +82,7 @@ export function getPostTimeToString(postTime):string {
     SearchSongFormComponent,
     AddAuthorComponent,
     SearchSongFormComponent,
+    CreateArtistComponent,
     AddAuthorComponent,
     AddSingerComponent,
     NewPlaylistComponent,
@@ -84,7 +90,13 @@ export function getPostTimeToString(postTime):string {
     FindSongForPlaylistComponent,
     UserPlaylistComponent,
     UserSongsAndPlaylistComponent,
-    CommentComponent
+    CommentComponent,
+    NewPlaylistComponent,
+    TopLikeSongComponent,
+    TopViewSongComponent,
+    TopLikePlaylistComponent,
+    TopViewPlaylistComponent,
+    TopTrendingComponent
   ],
   imports: [
     BrowserModule,
@@ -107,4 +119,5 @@ export function getPostTimeToString(postTime):string {
   }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

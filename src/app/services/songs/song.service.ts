@@ -51,4 +51,13 @@ export class SongService {
   getAllSongByUser(id: number): Observable<ISong[]> {
     return this.http.get<ISong[]>(this.url_api + '/' + id + '/songs');
   }
+  getTop10LikesSong(): Observable<ISong[]> {
+    return this.http.get<ISong[]>(this.url_api + '/top/ten/likes');
+  }
+  getTop10ViewsSong(): Observable<ISong[]> {
+    return this.http.get<ISong[]>(this.url_api + '/top/ten/views');
+  }
+  getTheBestSong():Observable<ISong>{
+    return this.http.get<ISong>(this.url_api+ '/best');
+  }
 }
