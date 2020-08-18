@@ -22,7 +22,7 @@
                 <span class="music-published-date mb-2">{{getPostTimeToString(song.postTime)}}</span>
                 <h2><a routerLink="song/{{song.id}}/detail" style="color: black; font-size: 20px">{{song.name}}</a></h2>
                 <div class="music-meta-data">
-                  <p>By <a href="#" class="music-author"></a> | <a href="#" class="music-catagory">Nhạc Trẻ</a> | <a href="#" class="music-duration">Tên ca sĩ</a></p>
+                  <p>Đăng bởi {{song.userCreate}} <a href="#" class="music-author"></a> | <a href="#" class="music-catagory">Nhạc Trẻ</a> | <a href="#" class="music-duration">{{getArtist(song)}}</a></p>
                 </div>
                 <!-- Music Player -->
                 <div class="poca-music-player">

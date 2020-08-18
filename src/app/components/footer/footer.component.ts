@@ -1,5 +1,6 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {StorageService} from '../../services/storage.service';
+import {ToastrService} from 'ngx-toastr';
 
 declare var $: any;
 declare var APlayer: any;
@@ -10,7 +11,8 @@ declare var APlayer: any;
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-  constructor(private storageService: StorageService) {
+  constructor(private storageService: StorageService,
+              private toastService: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -21,13 +23,17 @@ export class FooterComponent implements OnInit {
       fixed: true,
       audio: []
     });
-    // if (library == null || library == undefined) {
-    //     library = JSON.parse(sessionStorage.getItem('library'));
-    // }
+    if (library == null || library == undefined) {
+        library = JSON.parse(sessionStorage.getItem('library'));
+        if  (library != null && library != undefined) {
+          library.map(next => ap.list.add(next))
+        }
+    }
+
     this.storageService.watchStorage().subscribe(data => {
         library = JSON.parse(sessionStorage.getItem('library'));
         ap.list.add(library[0]);
-        console.log(ap.audio);
+        this.toastService.success("Thêm bài hát vào danh sách phát thành công")
     });
 
   }

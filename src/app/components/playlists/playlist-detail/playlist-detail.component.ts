@@ -107,9 +107,9 @@ export class PlaylistDetailComponent implements OnInit {
       artistName += singer.fullName + " ,"
     });
     if (artistName == '') {
-      artistName = 'Various Artist'
+      artistName = 'Various Artist '
     }
     console.log('artist : '+ artistName);
-    return artistName;
+    return artistName.substring(0, artistName.length - 1);
   }
 }

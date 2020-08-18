@@ -21,7 +21,6 @@ export class Top10songComponent implements OnInit {
   ngOnInit(): void {
     this.songService.getTop10Song().subscribe(data => {
       this.songs = data;
-      console.log(this.songs);
     })
   }
   getPostTimeToString(postTime): string{
@@ -54,7 +53,6 @@ export class Top10songComponent implements OnInit {
     trackList.map(next => {
       if (next.name == song.name && next.artist == song.artist && next.url == song.url) {
         isExisted = true;
-        console.log(isExisted)
       }
     });
     if (!isExisted) {
@@ -63,14 +61,17 @@ export class Top10songComponent implements OnInit {
     this.storageService.setItem('library', JSON.stringify(trackList));
   }
 
+  // Lấy ra tên ca sĩ
   getArtist(song: ISong): string {
       let artistName: string = '';
       song.s_singers.map(singer => {
           artistName += singer.fullName + " ,"
       });
       if (artistName == '') {
-        artistName = 'Various Artist'
+        artistName = 'Various Artist '
       }
       return artistName.substring(0, artistName.length-1);
   }
+
+
 }

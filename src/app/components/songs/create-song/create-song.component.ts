@@ -8,6 +8,7 @@ import {ISong} from '../../../interfaces/isong';
 import {UserService} from '../../../services/user/user.service';
 import {ArtistService} from '../../../services/artist/artist.service';
 import {IArtist} from '../../../interfaces/iartist';
+import {ToastrService} from 'ngx-toastr';
 
 
 @Component({
@@ -32,7 +33,8 @@ export class CreateSongComponent implements OnInit {
               private songService: SongService,
               private router: Router,
               private userService: UserService,
-              private artistService: ArtistService) {
+              private artistService: ArtistService,
+              private toastService: ToastrService) {
   }
 
 
@@ -106,10 +108,17 @@ export class CreateSongComponent implements OnInit {
     }
     this.song.postTime = new Date();
     this.songService.saveSong(this.song,this.id_user).subscribe(() => {
-      console.log('Add song successful');
+        this.toastService.success("Quay lại trang chủ sau 3s","Tạo bài hát thành công" )
+        setTimeout(()=>{
+            this.router.navigateByUrl("")
+        }, 3000)
+    }, error => {
+      this.toastService.error("Quay lại trang chủ sau 3s", "Tạo bài hát ko thành công" )
+      setTimeout(()=>{
+        this.router.navigateByUrl("")
+      }, 3000)
     });
-    //Điều hướng sau khi post đi đâu tại đây
-    // this.router.navigate("")
+
 
   }
 
