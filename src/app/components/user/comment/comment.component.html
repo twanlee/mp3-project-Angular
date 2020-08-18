@@ -1,11 +1,11 @@
 
-<div class="comment_area mb-30 clearfix" *ngIf="comments_song!=null">
+<div class="comment_area mb-30 clearfix" *ngIf=" comments_song != null">
   <h5 class="title">{{comments_song.length}} Comments</h5>
   <ol>
     <!-- Single Comment Area -->
     <li class="single_comment_area">
       <!-- Comment Content -->
-      <div class="comment-content d-flex" *ngFor="let comment of comments_song |paginate:{
+      <div class="comment-content d-flex" *ngFor="let comment of comments_song | paginate:{
       id: 'comment-list',
       itemsPerPage: 4,
       currentPage: page
