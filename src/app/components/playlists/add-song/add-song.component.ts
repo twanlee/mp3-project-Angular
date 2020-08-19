@@ -35,7 +35,7 @@ export class AddSongComponent implements OnInit {
   filterBySong(songName) {
     return this.songs.filter(
       song => {
-        return song.name.indexOf(songName) != -1;
+        return song.name.toLowerCase().indexOf(songName.toLowerCase()) != -1;
       }
     );
   }

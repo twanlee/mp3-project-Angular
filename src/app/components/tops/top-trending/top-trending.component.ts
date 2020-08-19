@@ -7,20 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopTrendingComponent implements OnInit {
     status = 1;
+    songActive = true;
   constructor() { }
 
   ngOnInit(): void {
   }
   showTopViewSongs(){
     this.status = 1;
+    this.songActive = true;
   }
   showTopLikeSongs(){
     this.status = 2;
+    this.songActive = false;
   }
   showTopViewPlaylists(){
+    this.songActive = false;
     this.status = 3;
   }
   showTopLikePlaylists(){
+    this.songActive = false;
     this.status = 4;
   }
 }

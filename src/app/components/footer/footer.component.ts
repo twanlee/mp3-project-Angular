@@ -19,7 +19,7 @@ export class FooterComponent implements OnInit {
     let library: any;
     let ap = new APlayer({
       container: document.getElementById('aplayer'),
-      listFoled: true,
+      listFoled: false,
       fixed: true,
       audio: []
     });
@@ -41,7 +41,7 @@ export class FooterComponent implements OnInit {
         });
 
         if (!isExisted) {
-            ap.list.add(library[0])
+            ap.list.add(library[0]);
             this.toastService.success("Bài hát đã được thêm vào danh sách phát")
         }
         else {

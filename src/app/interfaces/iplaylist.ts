@@ -9,4 +9,5 @@ export interface IPlaylist {
   userCreate?: IUser;
   imgUrl?: string;
   review?: IReview;
+  userId?: number;
 }
