@@ -74,17 +74,21 @@ export class EditProfileComponent implements OnInit {
     const randomString = Math.random().toString(36).substring(7);
     const filePath = 'image/featured/' +randomString + new Date().getTime();
     this.fileImage = event.target.files[0];
-    const reader = new FileReader();
-    reader.onload = (e => this.imageSrc = e.target.result);
-    reader.readAsDataURL(event.target.files[0]);
-    const fileRef = this.storage.ref(filePath);
-    this.storage.upload(filePath,this.fileImage).snapshotChanges().pipe(
-      finalize(() =>{
-        fileRef.getDownloadURL().subscribe(url =>{
-          this.editProfileForm.value.avatarUrl = url;
-          console.log(url);
+    if(this.fileImage.type === 'image/jpeg'){
+      const reader = new FileReader();
+      reader.onload = (e => this.imageSrc = e.target.result);
+      reader.readAsDataURL(event.target.files[0]);
+      const fileRef = this.storage.ref(filePath);
+      this.storage.upload(filePath,this.fileImage).snapshotChanges().pipe(
+        finalize(() =>{
+          fileRef.getDownloadURL().subscribe(url =>{
+            this.editProfileForm.value.avatarUrl = url;
+            console.log(url);
+          })
         })
-      })
-    ).subscribe();
+      ).subscribe();
+    } else {
+      alert("Không phải định dạng file ảnh !!!")
+    }
   }
 }

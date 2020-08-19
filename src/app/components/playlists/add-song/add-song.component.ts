@@ -35,7 +35,7 @@ export class AddSongComponent implements OnInit {
   filterBySong(songName) {
     return this.songs.filter(
       song => {
-        return song.name.indexOf(songName) != -1;
+        return song.name.toLowerCase().indexOf(songName.toLowerCase()) != -1;
       }
     );
   }
@@ -43,7 +43,7 @@ export class AddSongComponent implements OnInit {
     this.songsFilter = (event) ? this.filterBySong(event) : this.songs;
   }
   submit(){
-    this.playListService.updateSongPlaylist(this.addedSongs,this.playlist.id).subscribe(()=>{
+    this.playListService.updateSongPlaylist(this.addedSongs,this.id).subscribe(()=>{
       console.log("add song ok !!!")
       })
   }

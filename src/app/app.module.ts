@@ -54,7 +54,7 @@ import {ISong} from './interfaces/isong';
 import {StorageService} from './services/storage.service';
 import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
 import { ChangePasswordComponent } from './components/user/change-password/change-password.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap/';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 export function getPostTimeToString(postTime):string {
     let date = new Date(postTime);
     let string = date.toDateString();

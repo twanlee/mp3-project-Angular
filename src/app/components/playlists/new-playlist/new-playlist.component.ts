@@ -36,9 +36,9 @@ export class NewPlaylistComponent implements OnInit {
     let data = this.createPlaylistForm.value;
     this.playList.title = data.title;
     this.playlistService.createPlaylist(this.playList,this.id).subscribe(()=>{
-      this.toastService.success("Quay lại trang chủ sau 3s", "Tạo playlist thành công");
+      this.toastService.success("Quay lại âm nhạc của bạn", "Tạo playlist thành công");
       setTimeout(()=>{
-        this.router.navigateByUrl("")
+        this.router.navigateByUrl("/user/music");
       }, 3000)
     }, error => {
       this.toastService.error("Quay lại trang chủ sau 3s", "Tạo Playlist ko thành công");
@@ -52,14 +52,18 @@ export class NewPlaylistComponent implements OnInit {
     const randomString = Math.random().toString(36).substring(7);
     const filePath = 'image/featured/' + randomString + new Date().getTime();
     this.fileImage = event.target.files[0];
-    const fileRef = this.storage.ref(filePath);
-    this.storage.upload(filePath, this.fileImage).snapshotChanges().pipe(
-      finalize(() => {
-        fileRef.getDownloadURL().subscribe(url => {
-          this.playList.imgUrl = url;
-          console.log(url);
-        });
-      })
-    ).subscribe();
+    if(this.fileImage.type === 'image/jpeg'){
+      const fileRef = this.storage.ref(filePath);
+      this.storage.upload(filePath, this.fileImage).snapshotChanges().pipe(
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe(url => {
+            this.playList.imgUrl = url;
+            console.log(url);
+          });
+        })
+      ).subscribe();
+    } else {
+      alert("Không phải định dạng file ảnh !!!")
+    }
   }
 }

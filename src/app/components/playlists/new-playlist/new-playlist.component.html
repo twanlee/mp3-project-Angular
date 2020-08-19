@@ -6,7 +6,14 @@
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput2">Tải ảnh đại diện cho danh sách bài hát :</label>
-    <input type="file" id="exampleFormControlInput2" class="form-control" (change)="uploadImage($event)" >
+    <table>
+      <tr>
+        <td>    <input type="file" id="exampleFormControlInput2" class="form-control" (change)="uploadImage($event)" ></td>
+        <td>
+          <i *ngIf="playList.imgUrl.length > 10" style="font-size: 20px" class="fa fa-check"></i>
+        </td>
+      </tr>
+    </table>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

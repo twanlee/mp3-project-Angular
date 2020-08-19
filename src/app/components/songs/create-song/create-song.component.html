@@ -46,11 +46,26 @@
       </div>
       <div class="form-group">
         <label for="exampleFormControlFile1">Tải file Mp3</label>
-        <input type="file" class="form-control-file" id="exampleFormControlFile1" (change)="createSong($event)">
+        <table>
+          <tr>
+            <td><input type="file" class="form-control-file" id="exampleFormControlFile1" (change)="createSong($event)"></td>
+            <td>
+                <i *ngIf="song.fileUrl.length > 10" style="font-size: 20px" class="fa fa-check"></i>
+            </td>
+          </tr>
+        </table>
+
       </div>
       <div class="form-group">
         <label for="exampleFormControlFile2">Tải ảnh đại diện ca khúc:</label>
-        <input type="file" class="form-control-file" id="exampleFormControlFile2" (change)="createImage($event)">
+        <table>
+          <tr>
+            <td><input type="file" class="form-control-file" id="exampleFormControlFile2" (change)="createImage($event)"></td>
+            <td>
+                <i *ngIf="song.imageUrl.length > 10" style="font-size: 20px" class="fa fa-check"></i>
+            </td>
+          </tr>
+        </table>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>

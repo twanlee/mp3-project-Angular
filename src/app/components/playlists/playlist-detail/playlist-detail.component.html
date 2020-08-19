@@ -72,7 +72,7 @@
                          style="color: black; font-size: 20px">{{song.name}}</a></h2>
                   <div class="music-meta-data">
                     <p>By <a href="#" class="music-author"></a> | <a href="#" class="music-catagory">Nhạc Trẻ</a> | <a
-                      href="#" class="music-duration">{{getArtist(song)}}</a></p>
+                      href="#" class="music-duration">Tên ca sĩ</a></p>
                   </div>
                   <!-- Music Player -->
                   <div class="poca-music-player">
@@ -87,7 +87,7 @@
                     <button (click)="removeSong(playlist.id,song.id)"><i class="fa fa-remove" aria-hidden="true"></i>Xóa
                     </button>
                     <div>
-                      <a class="mr-4"><i class="fa fa-eye" aria-hidden="true"></i> Lượt Xem ({{song.review.views}})</a>
+                      <a class="mr-4"><i class="fa fa-eye" aria-hidden="true"></i> Views ({{song.review.views}})</a>
                       <a (click)="addToTrack(song)" style="cursor: pointer"><span
                         class="glyphicon glyphicon-music"></span>Thêm vào danh sách phát</a>
                     </div>

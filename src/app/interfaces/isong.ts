@@ -1,5 +1,6 @@
 import {IArtist} from './iartist';
 import {IReview} from './ireview';
+import {IUser} from './user/user';
 
 export interface ISong {
   id?: number;
@@ -13,5 +14,6 @@ export interface ISong {
   postTime?: Date;
   userCreate?: string;
   review?: IReview;
+  user?: IUser;
 }
 
