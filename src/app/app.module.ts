@@ -53,6 +53,7 @@ import {ToastrModule, ToastrService} from 'ngx-toastr';
 import {ISong} from './interfaces/isong';
 import {StorageService} from './services/storage.service';
 import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
+import { ChangePasswordComponent } from './components/user/change-password/change-password.component';
 export function getPostTimeToString(postTime):string {
     let date = new Date(postTime);
     let string = date.toDateString();
@@ -101,7 +102,8 @@ export function getPostTimeToString(postTime):string {
     TopViewSongComponent,
     TopLikePlaylistComponent,
     TopViewPlaylistComponent,
-    TopTrendingComponent
+    TopTrendingComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,

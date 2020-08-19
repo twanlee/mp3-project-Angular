@@ -30,4 +30,7 @@ export class UserService {
   editProfileByUserId(id: number, profile: IProfile): Observable<IProfile> {
     return this.http.put<IProfile>(this.API_USER_URL + id + '/edit', profile)
   }
+  changePassword(id: number,password: string): Observable<any> {
+    return this.http.post<IUser>(this.API_USER_URL+id+'/password/update',password);
+  }
 }

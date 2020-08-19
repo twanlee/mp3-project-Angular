@@ -19,6 +19,7 @@ import {UserSongsAndPlaylistComponent} from './components/user/user-songs-and-pl
 import {AddSongComponent} from './components/playlists/add-song/add-song.component';
 import {TopTrendingComponent} from './components/tops/top-trending/top-trending.component';
 import {SongDeleteComponent} from './components/songs/song-delete/song-delete.component';
+import {ChangePasswordComponent} from './components/user/change-password/change-password.component';
 
 
 const routes: Routes = [
@@ -42,7 +43,8 @@ const routes: Routes = [
   {path: 'user/music', component: UserSongsAndPlaylistComponent},
   {path: 'playlist/create', component: NewPlaylistComponent},
   {path: 'top', component: TopTrendingComponent},
-  {path: 'song/:id/delete', component: SongDeleteComponent}
+  {path: 'song/:id/delete', component: SongDeleteComponent},
+  {path: 'password/update', component: ChangePasswordComponent}
 ];
 
 @NgModule({

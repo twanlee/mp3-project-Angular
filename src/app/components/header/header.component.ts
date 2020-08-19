@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
     this.showName = this.userId != null;
   }
   logOut() {
-    this.tokenStorage.singOut();
+    this.tokenStorage.signOut();
     window.location.reload();
   }
 }
