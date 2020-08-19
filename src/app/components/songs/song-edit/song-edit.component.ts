@@ -94,29 +94,38 @@ export class SongEditComponent implements OnInit {
     const randomString = Math.random().toString(36).substring(7);
     const filePath = 'mp3/featured/' +randomString+new Date().getTime();
     this.fileSong = event.target.files[0];
-    const fileRef = this.storage.ref(filePath);
-    this.storage.upload(filePath,this.fileSong).snapshotChanges().pipe(
-      finalize(() =>{
-        fileRef.getDownloadURL().subscribe(url =>{
-          this.songUrl = url;
-          console.log(url);
+    if(this.fileSong.type === 'audio/mpeg'){
+      const fileRef = this.storage.ref(filePath);
+      this.storage.upload(filePath,this.fileSong).snapshotChanges().pipe(
+        finalize(() =>{
+          fileRef.getDownloadURL().subscribe(url =>{
+            this.songUrl = url;
+            console.log(url);
+          })
         })
-      })
-    ).subscribe();
+      ).subscribe();
+    } else {
+      alert("Không phải định dạng mp3")
+    }
   }
   updateImage(event){
     const randomString = Math.random().toString(36).substring(7);
     const filePath = 'image/featured/' +randomString+new Date().getTime();
     this.fileImage = event.target.files[0];
-    const fileRef = this.storage.ref(filePath);
-    this.storage.upload(filePath,this.fileImage).snapshotChanges().pipe(
-      finalize(() =>{
-        fileRef.getDownloadURL().subscribe(url =>{
-          this.imageUrl = url;
-          console.log(url);
+    if(this.fileImage.type === 'image/jpeg'){
+      const fileRef = this.storage.ref(filePath);
+      this.storage.upload(filePath,this.fileImage).snapshotChanges().pipe(
+        finalize(() =>{
+          fileRef.getDownloadURL().subscribe(url =>{
+            this.imageUrl = url;
+            console.log(url);
+          })
         })
-      })
-    ).subscribe();
+      ).subscribe();
+    } else {
+      alert("Không phải định dạng hình ảnh")
+    }
+
   }
   filterByArtist(artistName,artists: IArtist[]) {
     return artists.filter(

@@ -30,15 +30,19 @@ export class CreateArtistComponent implements OnInit {
   upload(event){
     const randomString = Math.random().toString(36).substring(7);
     const filePath: string = 'image/featured/'+ randomString+ new Date().getTime();
-    const fileRef = this.storage.ref(filePath);
     this.file = event.target.files[0];
-    this.storage.upload(filePath,this.file).snapshotChanges().pipe(
-      finalize(()=>{
-        fileRef.getDownloadURL().subscribe(url =>{
-          this.url = url;
+    if(this.file.type === 'image/jpeg'){
+      const fileRef = this.storage.ref(filePath);
+      this.storage.upload(filePath,this.file).snapshotChanges().pipe(
+        finalize(()=>{
+          fileRef.getDownloadURL().subscribe(url =>{
+            this.url = url;
+          })
         })
-      })
-    ).subscribe();
+      ).subscribe();
+    } else {
+      alert("Không phải định dạng file ảnh")
+    }
   }
   submit(){
     this.artist = this.createArtistForm.value;

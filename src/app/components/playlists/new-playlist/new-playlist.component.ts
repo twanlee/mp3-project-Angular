@@ -52,14 +52,18 @@ export class NewPlaylistComponent implements OnInit {
     const randomString = Math.random().toString(36).substring(7);
     const filePath = 'image/featured/' + randomString + new Date().getTime();
     this.fileImage = event.target.files[0];
-    const fileRef = this.storage.ref(filePath);
-    this.storage.upload(filePath, this.fileImage).snapshotChanges().pipe(
-      finalize(() => {
-        fileRef.getDownloadURL().subscribe(url => {
-          this.playList.imgUrl = url;
-          console.log(url);
-        });
-      })
-    ).subscribe();
+    if(this.fileImage.type === 'image/jpeg'){
+      const fileRef = this.storage.ref(filePath);
+      this.storage.upload(filePath, this.fileImage).snapshotChanges().pipe(
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe(url => {
+            this.playList.imgUrl = url;
+            console.log(url);
+          });
+        })
+      ).subscribe();
+    } else {
+      alert("Không phải định dạng file ảnh !!!")
+    }
   }
 }

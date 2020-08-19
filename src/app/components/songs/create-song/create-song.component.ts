@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {SongService} from '../../../services/songs/song.service';
 import {Router} from '@angular/router';
 import {AngularFireStorage} from '@angular/fire/storage';
@@ -23,6 +23,7 @@ export class CreateSongComponent implements OnInit {
   ckconfig = {
     toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
   };
+  defaultImageUrl: string = 'https://firebasestorage.googleapis.com/v0/b/meomp3-5e362.appspot.com/o/image%2Ffeatured%2Flight-blue-gold-audio-headphones-flat-lay-two-color-background_103577-4744.jpg?alt=media&token=7566515e-d27c-4d12-a18a-4e118aa599ab';
   createSongForm: FormGroup;
   fileSong: File;
   fileImage: File;
@@ -73,30 +74,39 @@ export class CreateSongComponent implements OnInit {
     const randomString = Math.random().toString(36).substring(7);
     const filePath = 'mp3/featured/' + randomString + new Date().getTime();
     this.fileSong = event.target.files[0];
-    const fileRef = this.storage.ref(filePath);
-    this.storage.upload(filePath, this.fileSong).snapshotChanges().pipe(
-      finalize(() => {
-        fileRef.getDownloadURL().subscribe(url => {
-          this.song.fileUrl = url;
-          console.log(url);
-        });
-      })
-    ).subscribe();
+    if( this.fileSong.type === 'audio/mpeg'){
+      const fileRef = this.storage.ref(filePath);
+      this.storage.upload(filePath, this.fileSong).snapshotChanges().pipe(
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe(url => {
+            this.song.fileUrl = url;
+            console.log(url);
+          });
+        })
+      ).subscribe();
+    } else {
+      alert("Không đúng định dạng file mp3")
+    }
   }
 
   createImage(event){
     const randomString = Math.random().toString(36).substring(7);
     const filePath = 'image/featured/' + randomString + new Date().getTime();
     this.fileImage = event.target.files[0];
-    const fileRef = this.storage.ref(filePath);
-    this.storage.upload(filePath, this.fileImage).snapshotChanges().pipe(
-      finalize(() => {
-        fileRef.getDownloadURL().subscribe(url => {
-          this.song.imageUrl = url;
-          console.log(url);
-        });
-      })
-    ).subscribe();
+    console.log(this.fileImage.type)
+    if( this.fileImage.type === 'image/jpeg' ){
+      const fileRef = this.storage.ref(filePath);
+      this.storage.upload(filePath, this.fileImage).snapshotChanges().pipe(
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe(url => {
+            this.song.imageUrl = url;
+            console.log(url);
+          });
+        })
+      ).subscribe();
+    } else {
+      alert("Không phải định dạng ảnh")
+    }
   }
   submit() {
     let data = this.createSongForm.value;
@@ -105,6 +115,9 @@ export class CreateSongComponent implements OnInit {
     this.song.lyric = data.lyric;
     this.song.s_singers = [];
     this.song.s_authors = [];
+    if( this.song.imageUrl.length < 10){
+      this.song.imageUrl = this.defaultImageUrl;
+    }
     for (let i = 0; i < this.singersSelected.length; i++) {
       this.song.s_singers[i] = {};
       this.song.s_singers[i].id = this.singersSelected[i];

@@ -42,10 +42,12 @@
 <!--            </div>-->
             <app-search-song-form></app-search-song-form>
             <div class="top-input-area">
-              <i class="fa fa-music" style="font-size: 18px" aria-hidden="true" routerLink="/song/create"></i>
+              <i class="fa fa-music" style="font-size: 18px" aria-hidden="true" ngbPopover="Tạo bài hát"
+                 [openDelay]="300" [closeDelay]="500" triggers="mouseenter:mouseleave"   routerLink="/song/create"></i>
             </div>
             <div class="top-input-area">
-              <i class="fa fa-list-alt" style="font-size: 18px" aria-hidden="true" routerLink="/playlist/create"></i>
+              <i class="fa fa-list-alt" style="font-size: 18px" aria-hidden="true" ngbPopover="Tạo playlist"
+                 [openDelay]="300" [closeDelay]="500" triggers="mouseenter:mouseleave" routerLink="/playlist/create"></i>
             </div>
             <!-- Top Social Area -->
             <div class="top-social-area" *ngIf="!showName">
