@@ -50,6 +50,7 @@ export class CreateArtistComponent implements OnInit {
     this.as.saveArtist(this.artist).subscribe(()=>{
       console.log("Created Artist !!!")
     });
+    this.router.navigateByUrl("");
   }
 
 }
