@@ -48,8 +48,6 @@ export class SongEditComponent implements OnInit {
         lyric: [this.song.lyric],
         description: [this.song.description]
       });
-      this.songUrl = this.song.fileUrl;
-      this.imageUrl = this.song.imageUrl;
     });
     this.artistService.getAll().subscribe(resp =>{
       this.singers = resp;

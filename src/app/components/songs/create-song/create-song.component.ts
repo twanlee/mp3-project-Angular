@@ -65,6 +65,8 @@ export class CreateSongComponent implements OnInit {
     this.artistService.getAll().subscribe(resp =>{
       this.authorsFilter = resp;
     });
+    this.song.fileUrl = '';
+    this.song.imageUrl = '';
   }
 
   createSong(event) {
