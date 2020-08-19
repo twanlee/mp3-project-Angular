@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PlaylistService} from '../../../services/playlist/playlist.service';
 import {IPlaylist} from '../../../interfaces/iplaylist';
 import {SongService} from '../../../services/songs/song.service';
@@ -28,7 +28,7 @@ export class NewPlaylistComponent implements OnInit {
 
   ngOnInit(): void {
     this.createPlaylistForm = this.fb.group({
-        title: ['']
+        title: ['', [Validators.required]]
 
     });
   }
