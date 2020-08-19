@@ -48,7 +48,7 @@ export class CreateSongComponent implements OnInit {
   ngOnInit(): void {
     this.id_user = +localStorage.getItem('userId');
     this.createSongForm = this.fb.group({
-      name: [''],
+      name: ['', [Validators.required]],
       lyric: [''],
       authors: [''],
       singers: [''],
@@ -93,7 +93,7 @@ export class CreateSongComponent implements OnInit {
     const randomString = Math.random().toString(36).substring(7);
     const filePath = 'image/featured/' + randomString + new Date().getTime();
     this.fileImage = event.target.files[0];
-    console.log(this.fileImage.type)
+    console.log(this.fileImage.type);
     if( this.fileImage.type === 'image/jpeg' ){
       const fileRef = this.storage.ref(filePath);
       this.storage.upload(filePath, this.fileImage).snapshotChanges().pipe(
@@ -128,12 +128,12 @@ export class CreateSongComponent implements OnInit {
     }
     this.song.postTime = new Date();
     this.songService.saveSong(this.song,this.id_user).subscribe(() => {
-        this.toastService.success("Quay lại trang chủ sau 3s","Tạo bài hát thành công" )
+        this.toastService.success("Quay lại trang chủ sau 3s","Tạo bài hát thành công" );
         setTimeout(()=>{
             this.router.navigateByUrl("")
         }, 3000)
     }, error => {
-      this.toastService.error("Quay lại trang chủ sau 3s", "Tạo bài hát ko thành công" )
+      this.toastService.error("Quay lại trang chủ sau 3s", "Tạo bài hát ko thành công" );
       setTimeout(()=>{
         this.router.navigateByUrl("")
       }, 3000)

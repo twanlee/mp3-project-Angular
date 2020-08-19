@@ -24,6 +24,7 @@ export class AuthenticationService {
     }, httpOptions);
   }
   public get currentUserValue(): IUser {
+    console.log(this.currentUserSubject)
     return this.currentUserSubject.value;
   }
 

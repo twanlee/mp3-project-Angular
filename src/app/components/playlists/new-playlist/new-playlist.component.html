@@ -4,17 +4,20 @@
     <label for="exampleFormControlInput1">Chủ đề : </label>
     <input type="text" class="form-control" id="exampleFormControlInput1"  formControlName="title">
   </div>
+  <div class="alert alert-danger" role="alert" *ngIf="createPlaylistForm.get('title').invalid && createPlaylistForm.get('title').touched">
+    Vui lòng điền đủ thông tin
+  </div>
   <div class="form-group">
     <label for="exampleFormControlInput2">Tải ảnh đại diện cho danh sách bài hát :</label>
     <table>
       <tr>
         <td>    <input type="file" id="exampleFormControlInput2" class="form-control" (change)="uploadImage($event)" ></td>
         <td>
-          <i *ngIf="playList.imgUrl.length > 10" style="font-size: 20px" class="fa fa-check"></i>
+          <i *ngIf="playList.imgUrl.length > 10" style="font-size: 20px; color: green" class="fa fa-check"></i>
         </td>
       </tr>
     </table>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Tạo playlist</button>
 </form>
 </div>

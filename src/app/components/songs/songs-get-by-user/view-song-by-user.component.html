@@ -9,7 +9,7 @@
             <span class="music-published-date mb-2">{{convertTime(song.postTime)}}</span>
             <h2><a  [routerLink]="'../../song/'+song.id+'/detail'" style="color: black; font-size: 20px">{{song.name}}</a></h2>
             <div class="music-meta-data">
-              <p>By <a href="#" class="music-author"></a> | <a href="#" class="music-catagory">Nhạc Trẻ</a> | <a href="#" class="music-duration">Tên ca sĩ</a></p>
+              <p><a href="#" class="music-catagory">Nhạc Trẻ</a> | <a href="#" class="music-duration">Tên ca sĩ</a></p>
             </div>
             <!-- Music Player -->
             <div class="poca-music-player">
@@ -21,8 +21,8 @@
             <div class="likes-share-download d-flex align-items-center justify-content-between">
               <button (click)="likeSong(song.id)"><i class="fa fa-heart" aria-hidden="true"></i><p [id]="'like'+song.id">Like ({{song.review.likes}})</p></button>
               <div>
-                <a [routerLink]="'../../song/'+song.id+'/edit'" class="mr-4"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
-                <a id = "delete" [routerLink]="'/song/'+song.id+'/delete'" style="cursor: pointer"><i class="fa fa-trash" aria-hidden="true"></i>Delete</a>
+                <a [routerLink]="'../../song/'+song.id+'/edit'" class="mr-4"><i class="fa fa-edit" aria-hidden="true"></i> Sửa Bài Hát</a>
+                <a id = "delete" [routerLink]="'/song/'+song.id+'/delete'" style="cursor: pointer"><i class="fa fa-trash" aria-hidden="true"></i>Xóa Bài Hát</a>
               </div>
             </div>
           </div>
