@@ -47,4 +47,12 @@ export class UserPlaylistComponent implements OnInit {
       })
     }
   }
+
+  deletePlaylist(id: number) {
+    if (confirm('Bạn chắc chưa?')){
+      this.playlistService.deletePlaylist(id).subscribe(() => {
+          this.playlists = this.playlists.filter(playlist => playlist.id != id);
+      });
+    }
+  }
 }

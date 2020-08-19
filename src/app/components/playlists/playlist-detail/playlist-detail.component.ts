@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PlaylistService} from '../../../services/playlist/playlist.service';
 import {IPlaylist} from '../../../interfaces/iplaylist';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {ISong} from '../../../interfaces/isong';
 import {Track} from 'ngx-audio-player';
 import {ActiveService} from '../../../services/interactive/active.service';
@@ -14,6 +14,7 @@ import {ToastrService} from 'ngx-toastr';
   styleUrls: ['./playlist-detail.component.css']
 })
 export class PlaylistDetailComponent implements OnInit {
+  navigationSubscription;
   playlist: IPlaylist;
   songs: ISong[] = [];
   msaapDisplayTitle = true;
@@ -31,9 +32,22 @@ export class PlaylistDetailComponent implements OnInit {
               private activeService: ActiveService,
               private storageService: StorageService,
               private toastService: ToastrService,
-              private route: Router) {
+              private router: Router) {
+    this.navigationSubscription = this.router.events.subscribe((e: any) => {
+      if (e instanceof NavigationEnd) {
+        this.refetchData();
+      }
+    });
   }
-
+  refetchData() {
+    let id = +this.activeRoute.snapshot.paramMap.get('id');
+    this.playlistService.getPlayListById(id).subscribe(data => {
+      this.playlist = data;
+    });
+    this.playlistService.getSongFromPlaylist(id).subscribe(data => {
+      this.songs =data;
+    })
+  }
   ngOnInit(): void {
     let id = +this.activeRoute.snapshot.paramMap.get('id');
     this.playlistService.getPlayListById(id).subscribe(data => {
@@ -70,7 +84,7 @@ export class PlaylistDetailComponent implements OnInit {
     if (userId == null || userId == undefined || userId == 0) {
       this.toastService.error("Chuyển hướng sang trang đăng nhập sau 2s", "Bạn chưa đăng nhập")
       setTimeout(()=> {
-        this.route.navigateByUrl("/login")
+        this.router.navigateByUrl("/login")
       }, 2000)
     }
     else {
@@ -86,7 +100,7 @@ export class PlaylistDetailComponent implements OnInit {
     if (userId == null || userId == undefined || userId == 0) {
       this.toastService.error("Chuyển hướng sang trang đăng nhập sau 2s", "Bạn chưa đăng nhập")
       setTimeout(()=> {
-        this.route.navigateByUrl("/login")
+        this.router.navigateByUrl("/login")
       }, 2000)
     }
     else {
@@ -130,5 +144,21 @@ export class PlaylistDetailComponent implements OnInit {
     }
     console.log('artist : '+ artistName);
     return artistName.substring(0, artistName.length - 1);
+  }
+
+  removeSong(id: number, id2: number) {
+    this.playlistService.getPlayListById(id).subscribe(data => {
+      let playlist: IPlaylist = data;
+      let userId = localStorage.getItem('userId');
+      if(+playlist.userCreate.id != +userId){
+        this.router.navigate(['/']);
+      }
+    });
+
+    if (confirm('Bạn chắc chưa?')) {
+      this.playlistService.deleteSongPlaylist(id, id2).subscribe(() => {
+        this.router.navigate(['/playlist', this.playlist.id, 'detail'])
+      });
+    }
   }
 }

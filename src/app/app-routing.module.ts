@@ -4,7 +4,7 @@ import {RegisterComponent} from './components/user/register/register.component';
 import {CreateSongComponent} from './components/songs/create-song/create-song.component';
 import {LoginComponent} from './components/user/login/login.component';
 import {EditProfileComponent} from './components/user/edit-profile/edit-profile.component';
-import {HomePageComponent} from './components/home-page/home-page.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
 import {SongDetailComponent} from './components/songs/song-detail/song-detail.component';
 import {ViewSongByUserComponent} from './components/songs/songs-get-by-user/view-song-by-user.component';
 import {SongSearchingResultsComponent} from './components/songs/song-searching-results/song-searching-results.component';
@@ -40,13 +40,12 @@ const routes: Routes = [
   {path: 'song/:id/detail', component: SongDetailComponent},
   {path: 'artist/create', component: CreateArtistComponent, canActivate: [AuthGuard]},
   {path: 'playlist/all', component: AllPlaylistComponent},
-  {path: 'playlist/:id/detail', component: PlaylistDetailComponent},
+  {path: 'playlist/:id/detail', component: PlaylistDetailComponent, runGuardsAndResolvers: 'always'},
   {path: 'user/music', component: UserSongsAndPlaylistComponent, canActivate: [AuthGuard]},
   {path: 'playlist/:id/song/add', component: AddSongComponent, canActivate: [AuthGuard]},
   {path: 'playlist/create', component: NewPlaylistComponent, canActivate: [AuthGuard]},
   {path: 'top', component: TopTrendingComponent},
-  {path: 'song/:id/delete', component: SongDeleteComponent, canActivate: [AuthGuard]},
-  {path: 'password/update', component: ChangePasswordComponent, canActivate: [AuthGuard]}
+  {path: 'song/:id/delete', component: SongDeleteComponent}
 ];
 
 @NgModule({
