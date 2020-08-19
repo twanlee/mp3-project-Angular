@@ -54,17 +54,17 @@
             <!-- Top Social Area -->
             <div class="top-social-area" *ngIf="!showName">
               <input type="hidden" />
-              <i class="fa fa-user" style="color: white; cursor: pointer" routerLink="/login">Login</i>
+              <i class="fa fa-user" style="color: white; cursor: pointer" routerLink="/login">Đăng nhập</i>
             </div>
             <div *ngIf="showName">
               <div class="container">
                 <div class="dropdown">
                   <i class="dropbtn">Hello! {{firstName}} {{lastName}}</i>
                   <div class="dropdown-content">
-                    <a href="/user/{{userId}}/profile">Profile</a>
+                    <a href="/user/{{userId}}/profile">Hồ sơ cá nhân</a>
                     <a routerLink="/user/music">Nhạc Cá Nhân</a>
                     <a routerLink="/password/update">Đổi Mật Khẩu</a>
-                    <a class="btn btn-danger" (click)="logOut()"><i class="fa fa-power-off"></i> Log Out</a>
+                    <a class="btn btn-danger" (click)="logOut()"><i class="fa fa-power-off"></i> Đăng xuất</a>
                   </div>
                 </div>
               </div>
