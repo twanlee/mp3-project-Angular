@@ -67,7 +67,6 @@ export class PlaylistDetailComponent implements OnInit {
   }
 
   getPostTimeToString(postTime): string {
-    // @ts-ignore
     let date = new Date(postTime);
     let string = date.toDateString();
     string = string.slice(4);
