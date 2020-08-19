@@ -145,7 +145,7 @@ export class CreateSongComponent implements OnInit {
   filterByArtist(artistName,artists: IArtist[]) {
     return artists.filter(
       artist => {
-        return artist.fullName.indexOf(artistName) != -1;
+        return artist.fullName.toLowerCase().indexOf(artistName.toLowerCase()) != -1;
       }
     );
   }

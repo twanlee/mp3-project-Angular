@@ -26,7 +26,7 @@
         <app-add-author (authorNames)="findAuthors($event)"></app-add-author>
         <div class="form-group">
           <select class="form-control" id="exampleFormControlSelect3" [ngModelOptions]="{standalone: true}" [(ngModel)]="authorsSelected">
-            <option value="" selected>Chọn nhạc sỹ</option>
+<!--            <option value="" selected>Chọn nhạc sỹ</option>-->
             <option *ngFor="let author of authorsFilter" value="{{author.id}}">{{author.fullName}}</option>
           </select>
         </div>
@@ -37,7 +37,7 @@
         <app-add-singer (singerNames)="findSingers($event)"></app-add-singer>
         <div class="form-group">
             <select class="form-control" id="exampleFormControlSelect2" [ngModelOptions]="{standalone: true}" [(ngModel)]="singersSelected">
-              <option value="" selected>Chọn ca sỹ</option>
+<!--              <option value="" selected>Chọn ca sỹ</option>-->
               <option *ngFor="let singer of singersFilter" value="{{singer.id}}">{{singer.fullName}}</option>
             </select>
         </div>

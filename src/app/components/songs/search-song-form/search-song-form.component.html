@@ -1,8 +1,8 @@
 <div class="top-search-area">
   <form (ngSubmit)="search()">
     <mat-form-field class="example-full-width">
-    <input style="background-color: white; border-radius: 5px; border: 2px; color: black;height: 30px ;width: 270px" matInput [matAutocomplete]="auto" type="search" name="top-search-bar" [(ngModel)]="keyword"
-           class="form-control" placeholder="Tìm kiếm bài hát..." (ngModelChange)="filterByKeyword()">
+    <input style="background-color: white; border-radius: 5px; border: 2px; color: black;height: 30px ;width: 270px; text-align: center" matInput [matAutocomplete]="auto" type="search" name="top-search-bar" [(ngModel)]="keyword"
+           class="form-control" placeholder="" (ngModelChange)="filterByKeyword()">
       <button type="button" (click)="search()"><i class="fa fa-search" style="color: black" aria-hidden="true"></i></button>
       <mat-autocomplete  #auto="matAutocomplete">
         <mat-option *ngFor="let option of finalResult " [value]="option">
