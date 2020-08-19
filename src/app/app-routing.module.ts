@@ -45,7 +45,8 @@ const routes: Routes = [
   {path: 'playlist/:id/song/add', component: AddSongComponent, canActivate: [AuthGuard]},
   {path: 'playlist/create', component: NewPlaylistComponent, canActivate: [AuthGuard]},
   {path: 'top', component: TopTrendingComponent},
-  {path: 'song/:id/delete', component: SongDeleteComponent}
+  {path: 'song/:id/delete', component: SongDeleteComponent},
+  {path: 'password/update', component: ChangePasswordComponent}
 ];
 
 @NgModule({
