@@ -84,7 +84,7 @@ export class PlaylistDetailComponent implements OnInit {
     let userId = +localStorage.getItem("userId");
     console.log("userId :" + userId);
     if (userId == null || userId == undefined || userId == 0) {
-      this.toastService.error("Chuyển hướng sang trang đăng nhập sau 2s", "Bạn chưa đăng nhập")
+      this.toastService.error("Chuyển hướng sang trang đăng nhập sau 2s", "Bạn chưa đăng nhập");
       setTimeout(()=> {
         this.route.navigateByUrl("/login")
       }, 2000)
