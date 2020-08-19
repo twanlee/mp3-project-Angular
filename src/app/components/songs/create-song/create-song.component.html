@@ -5,7 +5,10 @@
         <label for="exampleInputSong1">Tên bài hát</label>
         <input type="text" class="form-control" id="exampleInputSong1" formControlName="name" >
       </div>
-      <div>
+      <div class="alert alert-danger" role="alert" *ngIf="createSongForm.get('name').invalid && createSongForm.get('name').touched">
+        Vui lòng điền đủ thông tin
+      </div>
+      <div class="form-group">
         <label for="exampleInputCategory1">Thể loại:</label>
         <input type="text" class="form-control" id="exampleInputCategory1" formControlName="category" >
       </div>
@@ -19,19 +22,22 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="exampleFormControlSelect2">Chọn nhạc sỹ :</label>
+        <label for="exampleFormControlSelect2">Chọn nhạc sỹ: <i style="font-size: 13px">(Nếu để trống thì sẽ mặc định là ẩn danh)</i></label>
         <app-add-author (authorNames)="findAuthors($event)"></app-add-author>
         <div class="form-group">
-          <select multiple class="form-control" id="exampleFormControlSelect3"   [ngModelOptions]="{standalone: true}" [(ngModel)]="authorsSelected" >
+          <select class="form-control" id="exampleFormControlSelect3" [ngModelOptions]="{standalone: true}" [(ngModel)]="authorsSelected">
+            <option value="" selected>Chọn nhạc sỹ</option>
             <option *ngFor="let author of authorsFilter" value="{{author.id}}">{{author.fullName}}</option>
           </select>
         </div>
       </div>
+
       <div class="form-group">
-        <label for="exampleFormControlSelect2">Chọn ca sỹ thể hiện bài hát :</label>
+        <label for="exampleFormControlSelect2">Chọn ca sỹ thể hiện bài hát: <i style="font-size: 13px">(Nếu để trống thì sẽ mặc định là ẩn danh)</i></label>
         <app-add-singer (singerNames)="findSingers($event)"></app-add-singer>
         <div class="form-group">
-            <select multiple class="form-control" id="exampleFormControlSelect2"   [ngModelOptions]="{standalone: true}" [(ngModel)]="singersSelected" >
+            <select class="form-control" id="exampleFormControlSelect2" [ngModelOptions]="{standalone: true}" [(ngModel)]="singersSelected">
+              <option value="" selected>Chọn ca sỹ</option>
               <option *ngFor="let singer of singersFilter" value="{{singer.id}}">{{singer.fullName}}</option>
             </select>
         </div>
@@ -50,7 +56,7 @@
           <tr>
             <td><input type="file" class="form-control-file" id="exampleFormControlFile1" (change)="createSong($event)"></td>
             <td>
-                <i *ngIf="song.fileUrl.length > 10" style="font-size: 20px" class="fa fa-check"></i>
+                <i *ngIf="song.fileUrl.length > 10" style="font-size: 20px; color: green" class="fa fa-check"></i>
             </td>
           </tr>
         </table>
@@ -62,7 +68,7 @@
           <tr>
             <td><input type="file" class="form-control-file" id="exampleFormControlFile2" (change)="createImage($event)"></td>
             <td>
-                <i *ngIf="song.imageUrl.length > 10" style="font-size: 20px" class="fa fa-check"></i>
+                <i *ngIf="song.imageUrl.length > 10" style="font-size: 20px; color: green" class="fa fa-check"></i>
             </td>
           </tr>
         </table>
