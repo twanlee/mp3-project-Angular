@@ -1,4 +1,5 @@
-<div class="breadcumb-area single-podcast-breadcumb bg-img bg-overlay" style="background-image: url(https://images4.alphacoders.com/216/216464.jpg);">
+<div class="breadcumb-area single-podcast-breadcumb bg-img bg-overlay"
+     style="background-image: url(https://images4.alphacoders.com/216/216464.jpg);">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-lg-8">
@@ -7,20 +8,27 @@
           <div class="poca-music-content text-center">
             <h2 class="text-white">{{playlist.title}}</h2>
             <div class="music-meta-data">
-              <p class="text-white">Đăng bởi <a href="#" class="music-author text-white">{{playlist.userCreate}}</a> | <a href="#" class="music-catagory  text-white">Nhạc trẻ</a> | <a href="#" class="music-duration  text-white">{{songs.length}} Bài hát</a></p>
+              <p class="text-white">Đăng bởi <a href="#" class="music-author text-white">{{playlist.userCreate}}</a> |
+                <a href="#" class="music-catagory  text-white">Nhạc trẻ</a> | <a href="#"
+                                                                                 class="music-duration  text-white">{{songs.length}}
+                  Bài hát</a></p>
             </div>
             <!-- Music Player -->
             <div class="poca-music-player style-2" style="background: white; border-radius: 10px">
-              <mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="false"
-                                         muted="muted" [displayPlaylist]="msaapDisplayPlayList" [pageSizeOptions]="msaapPageSizeOptions" (trackEnded)="onEnded($event)"
+              <mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle"
+                                         [autoPlay]="false"
+                                         muted="muted" [displayPlaylist]="msaapDisplayPlayList"
+                                         [pageSizeOptions]="msaapPageSizeOptions" (trackEnded)="onEnded($event)"
                                          [expanded]="true" [displayVolumeControls]="true"></mat-advanced-audio-player>
             </div>
             <!-- Likes, Share & Download -->
             <div class="likes-share-download d-flex align-items-center justify-content-between">
-              <button (click)="likePlaylist()"><i class="fa fa-heart" aria-hidden="true"></i><p id="playlistLike">Like ({{playlist.review.likes}})</p></button>
+              <button (click)="likePlaylist()"><i class="fa fa-heart" aria-hidden="true"></i>
+                <p id="playlistLike">Like ({{playlist.review.likes}})</p></button>
               <div>
-                <a href="#" class="mr-4"><i class="fa fa-share-alt" aria-hidden="true"></i> Views ({{playlist.review.views}})</a>
-<!--                <a href="#" (click)="addAlltoTrack()">Nghe toàn bộ Playlist</a>-->
+                <a href="#" class="mr-4"><i class="fa fa-share-alt" aria-hidden="true"></i> Views
+                  ({{playlist.review.views}})</a>
+                <!--                <a href="#" (click)="addAlltoTrack()">Nghe toàn bộ Playlist</a>-->
               </div>
             </div>
           </div>
@@ -36,37 +44,53 @@
         <!-- Section Heading -->
         <div class="col-12">
           <div class="section-heading text-center">
+            <button class="btn btn-primary" [routerLink]="'/playlist/'+playlist.id+'/song/add'">Thêm
+              bài hát vào Playlist
+            </button>
+          </div>
+        </div>
+        </div>
+        <div class="col-12">
+          <div class="section-heading text-center">
             <h2 style="color: black">Các Bài Hát Trong Playlist</h2>
-            <div class="line"></div>
+            <div class="line lead"></div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="container">
-      <div class="row poca-portfolio">
-        <!-- Single gallery Item -->
-        <div *ngFor="let song of songs">
-          <div class="col-4 col-md-6 single_gallery_item entre wow fadeInUp" data-wow-delay="0.1s" style=" padding-left: 40px">
-            <!-- Welcome Music Area -->
-            <div class="poca-music-area style-2 d-flex align-items-center flex-wrap" style="width: 500px;background-image: url(https://www.knoxalliance.store/wp-content/uploads/2017/05/light-color-background-images-for-website-top-hd-images-for-free-background-for-website-in-light-color-1-1024x640.jpg)">
-              <div class="poca-music-content text-center">
-                <span class="music-published-date mb-2">{{getPostTimeToString(song.postTime)}}</span>
-                <h2><a [routerLink]="'/song/'+song.id+'/detail'" style="color: black; font-size: 20px">{{song.name}}</a></h2>
-                <div class="music-meta-data">
-                  <p>By <a href="#" class="music-author"></a> | <a href="#" class="music-catagory">Nhạc Trẻ</a> | <a href="#" class="music-duration">Tên ca sĩ</a></p>
-                </div>
-                <!-- Music Player -->
-                <div class="poca-music-player">
-                  <audio preload="auto" controls>
-                    <source [src]="song.fileUrl">
-                  </audio>
-                </div>
-                <!-- Likes, Share & Download -->
-                <div class="likes-share-download d-flex align-items-center justify-content-between">
-                  <button (click)="likeSong(song.id)"><i class="fa fa-heart" aria-hidden="true"></i><p [id]="'like'+song.id">Like ({{song.review.likes}})</p></button>
-                  <div>
-                    <a href="#" class="mr-4"><i class="fa fa-share-alt" aria-hidden="true"></i> Views ({{song.review.views}})</a>
-                    <a (click)="addToTrack(song)"><span class="glyphicon glyphicon-music"></span>Thêm vào danh sách phát</a>
+      <div class="container">
+        <div class="row poca-portfolio">
+          <!-- Single gallery Item -->
+          <div *ngFor="let song of songs">
+            <div class="col-4 col-md-6 single_gallery_item entre wow fadeInUp" data-wow-delay="0.1s"
+                 style=" padding-left: 40px">
+              <!-- Welcome Music Area -->
+              <div class="poca-music-area style-2 d-flex align-items-center flex-wrap"
+                   style="width: 500px;background-image: url(https://www.knoxalliance.store/wp-content/uploads/2017/05/light-color-background-images-for-website-top-hd-images-for-free-background-for-website-in-light-color-1-1024x640.jpg)">
+                <div class="poca-music-content text-center">
+                  <span class="music-published-date mb-2">{{getPostTimeToString(song.postTime)}}</span>
+                  <h2><a [routerLink]="'/song/'+song.id+'/detail'"
+                         style="color: black; font-size: 20px">{{song.name}}</a></h2>
+                  <div class="music-meta-data">
+                    <p>By <a href="#" class="music-author"></a> | <a href="#" class="music-catagory">Nhạc Trẻ</a> | <a
+                      href="#" class="music-duration">{{getArtist(song)}}</a></p>
+                  </div>
+                  <!-- Music Player -->
+                  <div class="poca-music-player">
+                    <audio preload="auto" controls>
+                      <source [src]="song.fileUrl">
+                    </audio>
+                  </div>
+                  <!-- Likes, Share & Download -->
+                  <div class="likes-share-download d-flex align-items-center justify-content-between">
+                    <button (click)="likeSong(song.id)"><i class="fa fa-heart" aria-hidden="true"></i>
+                      <p [id]="'like'+song.id">Like ({{song.review.likes}})</p></button>
+                    <button (click)="removeSong(playlist.id,song.id)"><i class="fa fa-remove" aria-hidden="true"></i>Xóa
+                    </button>
+                    <div>
+                      <a class="mr-4"><i class="fa fa-eye" aria-hidden="true"></i> Lượt Xem ({{song.review.views}})</a>
+                      <a (click)="addToTrack(song)" style="cursor: pointer"><span
+                        class="glyphicon glyphicon-music"></span>Thêm vào danh sách phát</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -74,10 +98,9 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="container">
-      <div class="row">
+      <div class="container">
+        <div class="row">
+        </div>
       </div>
-    </div>
   </section>
 </div>
