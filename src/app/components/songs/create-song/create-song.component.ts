@@ -8,6 +8,9 @@ import {ISong} from '../../../interfaces/isong';
 import {UserService} from '../../../services/user/user.service';
 import {ArtistService} from '../../../services/artist/artist.service';
 import {IArtist} from '../../../interfaces/iartist';
+import {ToastrService} from 'ngx-toastr';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
 
 
 @Component({
@@ -16,6 +19,10 @@ import {IArtist} from '../../../interfaces/iartist';
   styleUrls: ['./create-song.component.css']
 })
 export class CreateSongComponent implements OnInit {
+  public Editor = ClassicEditor;
+  ckconfig = {
+    toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
+  };
   createSongForm: FormGroup;
   fileSong: File;
   fileImage: File;
@@ -32,7 +39,8 @@ export class CreateSongComponent implements OnInit {
               private songService: SongService,
               private router: Router,
               private userService: UserService,
-              private artistService: ArtistService) {
+              private artistService: ArtistService,
+              private toastService: ToastrService) {
   }
 
 
@@ -74,7 +82,7 @@ export class CreateSongComponent implements OnInit {
     ).subscribe();
   }
 
-  createImage(event) {
+  createImage(event){
     const randomString = Math.random().toString(36).substring(7);
     const filePath = 'image/featured/' + randomString + new Date().getTime();
     this.fileImage = event.target.files[0];
@@ -88,7 +96,6 @@ export class CreateSongComponent implements OnInit {
       })
     ).subscribe();
   }
-
   submit() {
     let data = this.createSongForm.value;
     this.song.name = data.name;
@@ -106,10 +113,17 @@ export class CreateSongComponent implements OnInit {
     }
     this.song.postTime = new Date();
     this.songService.saveSong(this.song,this.id_user).subscribe(() => {
-      console.log('Add song successful');
+        this.toastService.success("Quay lại trang chủ sau 3s","Tạo bài hát thành công" )
+        setTimeout(()=>{
+            this.router.navigateByUrl("")
+        }, 3000)
+    }, error => {
+      this.toastService.error("Quay lại trang chủ sau 3s", "Tạo bài hát ko thành công" )
+      setTimeout(()=>{
+        this.router.navigateByUrl("")
+      }, 3000)
     });
-    //Điều hướng sau khi post đi đâu tại đây
-    // this.router.navigate("")
+
 
   }
 

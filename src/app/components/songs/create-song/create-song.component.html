@@ -1,5 +1,5 @@
 <div  style="text-align: left">
-  <div style="width: 700px; padding-top: 100px; padding-left: 200px; display: inline-block;font-size: 16px">
+  <div style="width: 900px; padding-top: 170px; padding-left: 350px; display: inline-block;font-size: 16px">
     <form (ngSubmit)="submit()" [formGroup]="createSongForm" >
       <div class="form-group">
         <label for="exampleInputSong1">Tên bài hát</label>
@@ -11,10 +11,11 @@
       </div>
       <div class="form-group">
         <div>
-          <label for="exampleInputLyric1">Lời ca khúc:</label>
+          <label>Lời ca khúc:</label>
         </div>
+        <br>
         <div>
-          <textarea class="form-control" id="exampleInputLyric1" cols="30" rows="10" formControlName="lyric"></textarea>
+          <ckeditor [editor]="Editor" [config]="ckconfig" formControlName="lyric"  data="<p>...</p>"></ckeditor>
         </div>
       </div>
       <div class="form-group">
@@ -37,10 +38,10 @@
       </div>
       <div class="form-group">
         <div>
-          <label for="exampleInputDescription1">Mô tả :</label>
+          <label>Mô tả :</label>
         </div>
         <div>
-          <textarea class="form-control" id="exampleInputDescription1" cols="30" rows="10" formControlName="description"></textarea>
+          <ckeditor [editor]="Editor" [config]="ckconfig" formControlName="description"  data="<p>Hello, world!</p>"></ckeditor>
         </div>
       </div>
       <div class="form-group">

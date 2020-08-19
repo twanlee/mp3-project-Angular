@@ -7,13 +7,17 @@ import {finalize} from 'rxjs/operators';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {IArtist} from '../../../interfaces/iartist';
 import {ArtistService} from '../../../services/artist/artist.service';
-
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 @Component({
   selector: 'app-song-edit',
   templateUrl: './song-edit.component.html',
   styleUrls: ['./song-edit.component.css']
 })
 export class SongEditComponent implements OnInit {
+  public Editor = ClassicEditor;
+  ckconfig = {
+    toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
+  };
   editSongForm: FormGroup;
   song: ISong;
   fileSong: File;
@@ -27,7 +31,6 @@ export class SongEditComponent implements OnInit {
   authorsFilter = [];
   singersSelected: number[] = [];
   authorsSelected: number[] = [];
-
   constructor(private songService: SongService,
               private fb: FormBuilder,
               private rt: Router,
@@ -66,6 +69,7 @@ export class SongEditComponent implements OnInit {
    let data = this.editSongForm.value;
    this.song.name = data.name;
    this.song.lyric = data.lyric;
+   console.log(data.lyrics);
    this.song.description = data.description;
    if(this.songUrl != '')
      this.song.fileUrl = this.songUrl;

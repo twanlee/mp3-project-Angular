@@ -42,18 +42,25 @@ import {NewPlaylistComponent} from './components/playlists/new-playlist/new-play
 import { AddSongComponent } from './components/playlists/add-song/add-song.component';
 import { FindSongForPlaylistComponent } from './components/playlists/add-song/find-song-for-playlist/find-song-for-playlist.component';
 import {UserSongsAndPlaylistComponent} from './components/user/user-songs-and-playlist/user-songs-and-playlist.component';
+import {CommentComponent} from './components/user/comment/comment.component';
 import {UserProfileComponent} from './components/user/user-profile/user-profile.component';
 import { TopLikeSongComponent } from './components/songs/top-like-song/top-like-song.component';
 import { TopViewSongComponent } from './components/songs/top-view-song/top-view-song.component';
 import { TopLikePlaylistComponent } from './components/playlists/top-like-playlist/top-like-playlist.component';
 import { TopViewPlaylistComponent } from './components/playlists/top-view-playlist/top-view-playlist.component';
 import { TopTrendingComponent } from './components/tops/top-trending/top-trending.component';
+import {ToastrModule, ToastrService} from 'ngx-toastr';
+import {ISong} from './interfaces/isong';
+import {StorageService} from './services/storage.service';
+import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
+import { ChangePasswordComponent } from './components/user/change-password/change-password.component';
 export function getPostTimeToString(postTime):string {
     let date = new Date(postTime);
     let string = date.toDateString();
     string = string.slice(4);
     return string;
 }
+
 
 @NgModule({
   declarations: [
@@ -68,14 +75,12 @@ export function getPostTimeToString(postTime):string {
     FooterComponent,
     SongDetailComponent,
     HomePageComponent,
-    HomePageComponent,
     GreatestSongComponent,
     Top10songComponent,
     SongEditComponent,
     SongDeleteComponent,
     SongPlayerComponent,
     SongDescriptionComponent,
-    SongEditComponent,
     CreateArtistComponent,
     AllPlaylistComponent,
     PlaylistDetailComponent,
@@ -91,12 +96,14 @@ export function getPostTimeToString(postTime):string {
     FindSongForPlaylistComponent,
     UserPlaylistComponent,
     UserSongsAndPlaylistComponent,
+    CommentComponent,
     NewPlaylistComponent,
     TopLikeSongComponent,
     TopViewSongComponent,
     TopLikePlaylistComponent,
     TopViewPlaylistComponent,
-    TopTrendingComponent
+    TopTrendingComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -113,6 +120,8 @@ export function getPostTimeToString(postTime):string {
     MaterialModule,
     MatInputModule,
     NgxAudioPlayerModule,
+    ToastrModule.forRoot(),
+    CKEditorModule
   ],
   providers: [authInterceptorProviders,{
     provide: APP_BASE_HREF, useValue: "/"

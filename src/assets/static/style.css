@@ -1043,10 +1043,10 @@ ul {
   border-top: 1px solid #ebebeb;
   border-bottom: 1px solid #ebebeb;
   padding-top: 30px;
-  padding-bottom: 30px; }
+  padding-bottom: 5px; }
   .comment_area .title {
     margin-bottom: 30px;
-    font-size: 30px; }
+    font-size: 24px; }
     @media only screen and (max-width: 767px) {
       .comment_area .title {
         font-size: 20px; } }

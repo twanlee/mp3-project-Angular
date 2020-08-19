@@ -5,6 +5,7 @@ import {SongService} from '../services/songs/song.service';
 import {ISong} from '../interfaces/isong';
 import {IPlaylist} from '../interfaces/iplaylist';
 import {PlaylistService} from '../services/playlist/playlist.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,8 @@ export class AuthGuard implements CanActivate {
   constructor(private router: Router,
               private authenticationService: AuthenticationService,
               private songService: SongService,
-              private playlistService: PlaylistService) {
+              private playlistService: PlaylistService,
+              private toastService: ToastrService) {
   }
 
   checkPermission(target: string, str: string[]): boolean {
@@ -45,6 +47,7 @@ export class AuthGuard implements CanActivate {
       }
       if (this.checkPermission(this.profile, str) && this.checkPermission(this.edit, str)) {
         if ((+route.paramMap.get('id')) != currentUser.id) {
+          this.toastService.error("Bạn không có quyền chỉnh sửa profile này!");
           this.router.navigate(['/']);
           return false;
         }
@@ -57,6 +60,7 @@ export class AuthGuard implements CanActivate {
           let userId = currentSong.user.id;
 
           if (userId != currentUser.id) {
+            this.toastService.error('Bạn không có quyền chỉnh sửa bài hát này!');
             this.router.navigate(['/']);
             return false;
           }
@@ -70,6 +74,7 @@ export class AuthGuard implements CanActivate {
           let userId = currentPlaylist.userId;
 
           if (userId != currentUser.id) {
+            this.toastService.error("Bạn không có quyền chỉnh sửa playlist này!");
             this.router.navigate(['/']);
             return false;
           }
@@ -79,7 +84,7 @@ export class AuthGuard implements CanActivate {
       // authorised so return true
       return true;
     }
-
+    this.toastService.error('Tính năng này yêu cầu đăng nhập!');
     // not logged in so redirect to login page with the return url
     this.router.navigate(['/login'], {queryParams: {returnUrl: state.url}});
     return false;
