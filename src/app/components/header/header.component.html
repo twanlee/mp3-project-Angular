@@ -40,8 +40,8 @@
 <!--            </div>-->
             <app-search-song-form></app-search-song-form>
             <div class="top-input-area">
-              <i class="fa fa-user" style="font-size: 18px" aria-hidden="true" ngbPopover="Tạo ca / nhạc sỹ mới"
-                 [openDelay]="300" [closeDelay]="500" triggers="mouseenter:mouseleave"   routerLink="/artist/create"></i>
+              <i class="fa fa-angellist" style="font-size: 18px" aria-hidden="true" ngbPopover="Tạo ca / nhạc sỹ mới"
+                 [openDelay]="300" [closeDelay]="500" triggers="mouseenter:mouseleave"   routerLink="/artist/create" ></i>
             </div>
             <div class="top-input-area">
               <i class="fa fa-music" style="font-size: 18px" aria-hidden="true" ngbPopover="Tạo bài hát"
@@ -64,7 +64,7 @@
                     <a [routerLink]="'/user/' +userId+ '/profile'">Profile</a>
                     <a routerLink="/user/music">Nhạc cá nhân</a>
                     <a routerLink="/password/update">Đổi mật khẩu</a>
-                    <a class="btn btn-danger" (click)="logOut()">Log Out</a>
+                    <a class="btn btn-danger" (click)="logOut()"><i class="fa fa-power-off"></i> Log Out</a>
                   </div>
                 </div>
               </div>
