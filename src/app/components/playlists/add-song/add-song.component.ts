@@ -3,7 +3,7 @@ import {ISong} from '../../../interfaces/isong';
 import {SongService} from '../../../services/songs/song.service';
 import {IPlaylist} from '../../../interfaces/iplaylist';
 import {PlaylistService} from '../../../services/playlist/playlist.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-song',
@@ -17,7 +17,8 @@ export class AddSongComponent implements OnInit {
   playlist: IPlaylist = {};
   constructor(private songService: SongService,
               private playListService: PlaylistService,
-              private ac: ActivatedRoute) { };
+              private ac: ActivatedRoute,
+              private router: Router) { };
   id: number = + this.ac.snapshot.paramMap.get('id');
   userId: number = +localStorage.getItem('userId');
   ngOnInit(): void {
@@ -46,6 +47,7 @@ export class AddSongComponent implements OnInit {
     this.playListService.updateSongPlaylist(this.addedSongs,this.id).subscribe(()=>{
       console.log("add song ok !!!")
       })
+    this.router.navigateByUrl('/user/music')
   }
 
 }
