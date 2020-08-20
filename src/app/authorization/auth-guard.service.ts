@@ -52,13 +52,12 @@ export class AuthGuard implements CanActivate {
           return false;
         }
       }
-      if (this.checkPermission(this.song, str) && this.checkPermission(this.edit, str) || this.checkPermission(this.delete, str)) {
+      if (this.checkPermission(this.edit, str)) {
         let songId = + route.paramMap.get("id");
         let currentSong: ISong;
         this.songService.getSongById(songId).subscribe(data => {
           currentSong=data;
           let userId = currentSong.user.id;
-
           if (userId != currentUser.id) {
             this.toastService.error('Bạn không có quyền chỉnh sửa bài hát này!');
             this.router.navigate(['/']);
@@ -66,13 +65,14 @@ export class AuthGuard implements CanActivate {
           }
         });
       }
-      if(this.checkPermission(this.playlist, str) && this.checkPermission(this.add,str)){
+      if(this.checkPermission(this.song, str) && this.checkPermission(this.add,str)){
         let playlistId = +route.paramMap.get('id');
         let currentPlaylist: IPlaylist;
         this.playlistService.getPlayListById(playlistId).subscribe(data =>{
           currentPlaylist = data;
           let userId = currentPlaylist.userId;
-
+          console.log(userId)
+          console.log(currentUser.id)
           if (userId != currentUser.id) {
             this.toastService.error("Bạn không có quyền chỉnh sửa playlist này!");
             this.router.navigate(['/']);

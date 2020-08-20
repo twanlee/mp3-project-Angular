@@ -14,7 +14,6 @@ const routes: Routes = [
   { path: ':id/edit', component: SongEditComponent, canActivate: [AuthGuard] },
   { path: ':keyword/search', component: SongSearchingResultsComponent },
   { path: ':id/detail', component: SongDetailComponent },
-  { path: ':id/delete', component: SongDeleteComponent },
   { path: 'create', component: CreateSongComponent, canActivate: [AuthGuard]},
 
 ];

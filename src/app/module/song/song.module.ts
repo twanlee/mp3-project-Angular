@@ -46,21 +46,22 @@ import {NgxPaginationModule} from 'ngx-pagination';
     SongDescriptionComponent,
     CommentComponent
   ],
-  imports: [
-    CommonModule,
-    SongRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireStorageModule,
-    AngularFireDatabaseModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    FormsModule,
-    NgxPaginationModule,
-    MaterialModule,
-    MatInputModule,
-    ToastrModule.forRoot(),
-    CKEditorModule,
-    NgbModule
-  ]
+    imports: [
+        CommonModule,
+        SongRoutingModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireStorageModule,
+        AngularFireDatabaseModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        FormsModule,
+        // BrowserAnimationsModule,
+        MaterialModule,
+        MatInputModule,
+        ToastrModule.forRoot(),
+        CKEditorModule,
+        NgbModule,
+        NgxPaginationModule
+    ]
 })
 export class SongModule { }

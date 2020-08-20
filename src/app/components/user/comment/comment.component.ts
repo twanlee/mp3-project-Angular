@@ -37,6 +37,10 @@ export class CommentComponent implements OnInit {
       this.song = resp;
     });
     this.getAllCommentFromSong(id);
+   this.commentService.getAllCommentBySongId(id).subscribe(resp =>{
+     this.comments_song = resp;
+   })
+
   }
 
   getAllCommentFromSong(songId: number) {

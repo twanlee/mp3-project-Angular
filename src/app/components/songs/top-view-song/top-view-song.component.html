@@ -7,7 +7,7 @@
         <div class="poca-music-area style-2 d-flex align-items-center flex-wrap" style="width: 500px">
           <div class="poca-music-content text-center">
             <span class="music-published-date mb-2">{{song.postTime | date}}</span>
-            <h2><a routerLink="song/{{song.id}}/detail" style="color: black; font-size: 20px">{{song.name}}</a></h2>
+            <h2><a [routerLink]="'/song/'+song.id+'/detail'" style="color: black; font-size: 20px">{{song.name}}</a></h2>
             <div class="music-meta-data">
               <p><a href="#" class="music-catagory">Nhạc Trẻ</a> | <a href="#" class="music-duration">{{getArtist(song)}}</a></p>
             </div>

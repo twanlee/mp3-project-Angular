@@ -50,7 +50,7 @@ export class PlaylistDetailComponent implements OnInit {
   }
   ngOnInit(): void {
     let id = +this.activeRoute.snapshot.paramMap.get('id');
-    this.playlistService.getPlayListById(id).subscribe(data => {
+    this.playlistService.getPlayListDetailById(id).subscribe(data => {
       this.playlist = data;
     });
     this.playlistService.getSongFromPlaylist(id).subscribe(data => {

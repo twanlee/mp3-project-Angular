@@ -13,16 +13,16 @@
           </div>
           <div class="poca-music-content">
             <span class="music-published-date">{{song.postTime | date}}</span>
-            <h2 id="songName">{{song.name | uppercase}}</h2>
+            <a [routerLink]="'/song/'+song.id+'/detail'" style="text-decoration: none" id="songName"><h2>{{song.name | uppercase}}</h2></a>
             <div class="music-meta-data">
               <p><a href="#" class="music-catagory">Nhạc Trẻ</a> | <a href="#" class="music-duration">{{getArtist(song)}}</a></p>
             </div>
             <!-- Music Player -->
-            <div class="poca-music-player">
-              <audio id="myAudio" preload="auto" controls>
-                <source id="songUrl" [src]="song.fileUrl">
-              </audio>
-            </div>
+<!--            <div class="poca-music-player">-->
+<!--              <audio id="myAudio" preload="auto" controls>-->
+<!--                <source id="songUrl" [src]="song.fileUrl">-->
+<!--              </audio>-->
+<!--            </div>-->
 
             <!-- Likes, Share & Download -->
             <div class="likes-share-download d-flex align-items-center justify-content-between">
