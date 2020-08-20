@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {IReview} from '../../../interfaces/ireview';
 import {ActiveService} from '../../../services/interactive/active.service';
 import {ToastrService} from 'ngx-toastr';
+import {StorageService} from '../../../services/storage.service';
 
 @Component({
   selector: 'app-song-player',
@@ -28,7 +29,8 @@ export class SongPlayerComponent implements OnInit {
               private activeRoute: ActivatedRoute,
               private activeService: ActiveService,
               private toastService: ToastrService,
-              private route: Router) { }
+              private route: Router,
+              private storageService: StorageService) { }
 
   ngOnInit(): void {
     this.songId = +this.activeRoute.snapshot.paramMap.get("id");
@@ -60,5 +62,41 @@ export class SongPlayerComponent implements OnInit {
         this.review = data;
       });
     }
+  }
+
+  // Thêm bài hát vào danh sách phát
+  addToTrack(data: ISong) {
+    let isExisted: boolean = false;
+    let song: any = {
+      name: data.name,
+      artist: this.getArtist(data),
+      url: data.fileUrl,
+      cover: data.imageUrl
+    };
+    let trackList: any[] = JSON.parse(sessionStorage.getItem('library'));
+    if (trackList == null) {
+      trackList = [];
+    };
+    trackList.map(next => {
+      if (next.name == song.name && next.artist == song.artist && next.url == song.url) {
+        isExisted = true;
+      }
+    });
+    if (!isExisted) {
+      trackList.unshift(song);
+    }
+    this.storageService.setItem('library', JSON.stringify(trackList));
+  }
+
+  // Lấy ra tên ca sĩ
+  getArtist(song: ISong): string {
+    let artistName: string = '';
+    song.s_singers.map(singer => {
+      artistName += singer.fullName + " ,"
+    });
+    if (artistName == '') {
+      artistName = 'Various Artist '
+    }
+    return artistName.substring(0, artistName.length-1);
   }
 }

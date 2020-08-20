@@ -27,6 +27,7 @@ import {AddAuthorComponent} from '../../components/songs/create-song/add-author/
 import {SongPlayerComponent} from '../../components/songs/song-player/song-player.component';
 import {SongDescriptionComponent} from '../../components/songs/song-description/song-description.component';
 import {CommentComponent} from '../../components/user/comment/comment.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -54,7 +55,7 @@ import {CommentComponent} from '../../components/user/comment/comment.component'
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    // BrowserAnimationsModule,
+    NgxPaginationModule,
     MaterialModule,
     MatInputModule,
     ToastrModule.forRoot(),
