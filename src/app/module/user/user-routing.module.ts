@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: ":id/profile", component: UserProfileComponent, canActivate: [AuthGuard]},
   {path: ":id/profile/edit", component: EditProfileComponent, canActivate: [AuthGuard]},
   {path: 'music', component: UserSongsAndPlaylistComponent, canActivate: [AuthGuard]},
-  {path: 'password/update', component: ChangePasswordComponent},
+  {path: 'password/update', component: ChangePasswordComponent, canActivate: [AuthGuard]},
 
 ];
 

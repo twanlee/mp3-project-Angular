@@ -7,7 +7,7 @@
         <h2 class="title">Đăng ký thành viên</h2>
         <form method="post" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
           <div class="input-group">
-            <input class="input--style-3" type="email" formControlName="email" placeholder="info@example.com">
+            <input class="input--style-3" type="email" formControlName="email" placeholder="email@vidu.com">
           </div>
           <div class="alert alert-danger" role="alert" style="top: -15px" *ngIf="registerForm.get('email').invalid && registerForm.get('email').touched">
             Email chưa hợp lệ
@@ -40,7 +40,7 @@
             Mật khẩu chưa trùng khớp!
           </div>
           <div class="p-t-10">
-            <button class="btn btn--pill btn--green" type="submit">Submit</button>
+            <button class="btn btn--pill btn--green" type="submit">Tạo tài khoản</button>
           </div>
         </form>
       </div>
