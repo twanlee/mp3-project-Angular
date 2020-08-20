@@ -8,6 +8,7 @@ import {AngularFireStorage} from '@angular/fire/storage';
 import {IArtist} from '../../../interfaces/iartist';
 import {ArtistService} from '../../../services/artist/artist.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import {ToastrService} from 'ngx-toastr';
 @Component({
   selector: 'app-song-edit',
   templateUrl: './song-edit.component.html',
@@ -29,14 +30,15 @@ export class SongEditComponent implements OnInit {
   singersFilter = [];
   authors: IArtist[] = [];
   authorsFilter = [];
-  singersSelected: number[] = [];
-  authorsSelected: number[] = [];
+  singersSelected: string[] = [];
+  authorsSelected: string[] = [];
   constructor(private songService: SongService,
               private fb: FormBuilder,
               private rt: Router,
               private ac: ActivatedRoute,
               private storage: AngularFireStorage,
-              private artistService: ArtistService
+              private artistService: ArtistService,
+              private toastService: ToastrService
               ) { }
   id: number = +this.ac.snapshot.paramMap.get('id');
   ngOnInit(): void {
@@ -76,17 +78,18 @@ export class SongEditComponent implements OnInit {
    if(this.singers.length > 0){
      for (let i = 0; i < this.singersSelected.length; i++) {
        this.song.s_singers[i] = {};
-       this.song.s_singers[i].id = this.singersSelected[i];
+       this.song.s_singers[i].id = +this.singersSelected[i];
      }
    }
    if( this.authors.length > 0){
      for (let i = 0; i < this.authorsSelected.length; i++) {
        this.song.s_authors[i] = {};
-       this.song.s_authors[i].id = this.authorsSelected[i];
+       this.song.s_authors[i].id = +this.authorsSelected[i];
      }
    }
    this.songService.saveSong(this.song,+localStorage.getItem('userId')).subscribe(()=>{
-     console.log("edit ok");
+      this.toastService.success("Chỉnh sửa bài hát thành công");
+      this.rt.navigate(['/user/music']);
    });
    this.rt.navigate(["/user/songs"]);
   }

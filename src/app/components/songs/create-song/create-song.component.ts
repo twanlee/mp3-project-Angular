@@ -10,6 +10,7 @@ import {ArtistService} from '../../../services/artist/artist.service';
 import {IArtist} from '../../../interfaces/iartist';
 import {ToastrService} from 'ngx-toastr';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import {formatNumber} from '@angular/common';
 
 
 
@@ -33,8 +34,8 @@ export class CreateSongComponent implements OnInit {
   authors: IArtist[] = [];
   singersFilter: IArtist[] = [];
   authorsFilter: IArtist[] = [];
-  singersSelected: number[] = [];
-  authorsSelected: number[] = [];
+  singersSelected: string[] = [];
+  authorsSelected: string[] = [];
   constructor(private storage: AngularFireStorage,
               private fb: FormBuilder,
               private songService: SongService,
@@ -120,11 +121,11 @@ export class CreateSongComponent implements OnInit {
     }
     for (let i = 0; i < this.singersSelected.length; i++) {
       this.song.s_singers[i] = {};
-      this.song.s_singers[i].id = this.singersSelected[i];
+      this.song.s_singers[i].id = +this.singersSelected[i];
     }
     for (let i = 0; i < this.authorsSelected.length; i++) {
       this.song.s_authors[i] = {};
-      this.song.s_authors[i].id = this.authorsSelected[i];
+      this.song.s_authors[i].id = +this.authorsSelected[i];
     }
     this.song.postTime = new Date();
     this.songService.saveSong(this.song,this.id_user).subscribe(() => {

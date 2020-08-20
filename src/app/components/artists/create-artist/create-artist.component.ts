@@ -5,6 +5,7 @@ import {ArtistService} from '../../../services/artist/artist.service';
 import {Router} from '@angular/router';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-artist',
@@ -19,7 +20,8 @@ export class CreateArtistComponent implements OnInit {
   constructor(private as: ArtistService,
               private fb: FormBuilder,
               private router: Router,
-              private storage: AngularFireStorage){ }
+              private storage: AngularFireStorage,
+              private toastService: ToastrService){ }
 
   ngOnInit(): void {
     this.createArtistForm = this.fb.group({
@@ -48,7 +50,7 @@ export class CreateArtistComponent implements OnInit {
     this.artist = this.createArtistForm.value;
     this.artist.avatarUrl = this.url;
     this.as.saveArtist(this.artist).subscribe(()=>{
-      console.log("Created Artist !!!")
+      this.toastService.success("Tạo nghệ sĩ thành công!")
     });
     this.router.navigateByUrl("");
   }

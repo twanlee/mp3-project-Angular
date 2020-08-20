@@ -14,5 +14,6 @@ export class AddAuthorComponent implements OnInit {
   getAuthor(event){
     let value = event.target.value;
     this.authorNames.emit(value);
+    console.log(this.authorNames)
   }
 }

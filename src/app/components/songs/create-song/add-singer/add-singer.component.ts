@@ -14,5 +14,6 @@ export class AddSingerComponent implements OnInit {
   getSinger(event){
     let value = event.target.value;
     this.singerNames.emit(value);
+    console.log(this.singerNames)
   }
 }

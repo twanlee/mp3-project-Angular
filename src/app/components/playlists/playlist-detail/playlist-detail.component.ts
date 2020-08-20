@@ -14,6 +14,7 @@ import {ToastrService} from 'ngx-toastr';
   styleUrls: ['./playlist-detail.component.css']
 })
 export class PlaylistDetailComponent implements OnInit {
+  isShowButton: boolean = false;
   navigationSubscription;
   playlist: IPlaylist;
   songs: ISong[] = [];
@@ -49,9 +50,15 @@ export class PlaylistDetailComponent implements OnInit {
     })
   }
   ngOnInit(): void {
+    let userCreate: number;
     let id = +this.activeRoute.snapshot.paramMap.get('id');
     this.playlistService.getPlayListDetailById(id).subscribe(data => {
       this.playlist = data;
+      userCreate = data.userId;
+      let userId = +localStorage.getItem("userId");
+      if (userId == userCreate) {
+        this.isShowButton = true;
+      }
     });
     this.playlistService.getSongFromPlaylist(id).subscribe(data => {
         this.songs = data;

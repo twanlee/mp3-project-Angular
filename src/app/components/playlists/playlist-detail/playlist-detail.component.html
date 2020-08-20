@@ -42,7 +42,7 @@
     <div class="container">
       <div class="row">
         <!-- Section Heading -->
-        <div class="col-12">
+        <div class="col-12" *ngIf="isShowButton">
           <div class="section-heading text-center">
             <button class="btn btn-primary" [routerLink]="'/playlist/'+playlist.id+'/song/add'">Thêm
               bài hát vào Playlist
