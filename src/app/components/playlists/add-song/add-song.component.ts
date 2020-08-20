@@ -4,6 +4,7 @@ import {SongService} from '../../../services/songs/song.service';
 import {IPlaylist} from '../../../interfaces/iplaylist';
 import {PlaylistService} from '../../../services/playlist/playlist.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-song',
@@ -18,7 +19,8 @@ export class AddSongComponent implements OnInit {
   constructor(private songService: SongService,
               private playListService: PlaylistService,
               private ac: ActivatedRoute,
-              private router: Router) { };
+              private router: Router,
+              private toastService: ToastrService) { };
   id: number = + this.ac.snapshot.paramMap.get('id');
   userId: number = +localStorage.getItem('userId');
   ngOnInit(): void {
@@ -45,7 +47,9 @@ export class AddSongComponent implements OnInit {
   }
   submit(){
     this.playListService.updateSongPlaylist(this.addedSongs,this.id).subscribe(()=>{
-      console.log("add song ok !!!")
+          let size = this.addedSongs.length;
+          let msg = "Thêm thành công "+ size + " bài hát vào Playlist";
+          this.toastService.success(msg)
       })
     this.router.navigateByUrl('/user/music')
   }

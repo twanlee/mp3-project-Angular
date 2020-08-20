@@ -39,12 +39,12 @@ export class NewPlaylistComponent implements OnInit {
       this.toastService.success("Quay lại âm nhạc của bạn", "Tạo playlist thành công");
       setTimeout(()=>{
         this.router.navigateByUrl("/user/music");
-      }, 3000)
+      }, 100)
     }, error => {
-      this.toastService.error("Quay lại trang chủ sau 3s", "Tạo Playlist ko thành công");
+      this.toastService.error("Quay lại trang chủ sau 2s", "Tạo Playlist ko thành công");
       setTimeout(()=>{
         this.router.navigateByUrl("")
-      }, 3000)
+      }, 100)
     })
 
   }
