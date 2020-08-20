@@ -27,6 +27,7 @@ import {AddAuthorComponent} from '../../components/songs/create-song/add-author/
 import {SongPlayerComponent} from '../../components/songs/song-player/song-player.component';
 import {SongDescriptionComponent} from '../../components/songs/song-description/song-description.component';
 import {CommentComponent} from '../../components/user/comment/comment.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -45,21 +46,22 @@ import {CommentComponent} from '../../components/user/comment/comment.component'
     SongDescriptionComponent,
     CommentComponent
   ],
-  imports: [
-    CommonModule,
-    SongRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireStorageModule,
-    AngularFireDatabaseModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    FormsModule,
-    // BrowserAnimationsModule,
-    MaterialModule,
-    MatInputModule,
-    ToastrModule.forRoot(),
-    CKEditorModule,
-    NgbModule
-  ]
+    imports: [
+        CommonModule,
+        SongRoutingModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireStorageModule,
+        AngularFireDatabaseModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        FormsModule,
+        // BrowserAnimationsModule,
+        MaterialModule,
+        MatInputModule,
+        ToastrModule.forRoot(),
+        CKEditorModule,
+        NgbModule,
+        NgxPaginationModule
+    ]
 })
 export class SongModule { }
