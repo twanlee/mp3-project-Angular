@@ -28,7 +28,7 @@ export class SearchSongFormComponent implements OnInit {
   }
 
   search() {
-    this.route.navigate([this.keyword, 'search']);
+    this.route.navigate(['song' ,this.keyword, 'search']);
   }
 
   filterByKeyword() {
