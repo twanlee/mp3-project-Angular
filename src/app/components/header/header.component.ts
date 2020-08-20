@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   firstName: string;
   lastName: string;
   isLoggedIn = false;
-  userId: any;
+  userId: number = -1;
   constructor(private tokenStorage: TokenStorageService) {
   }
 
@@ -26,9 +26,9 @@ export class HeaderComponent implements OnInit {
       this.isLoggedIn = true;
       this.firstName = localStorage.getItem("firstName");
       this.lastName = localStorage.getItem("lastName");
-      this.userId = localStorage.getItem("userId");
+      this.userId = +localStorage.getItem("userId");
+      this.showName = this.userId > 0;
     }
-    this.showName = this.userId != null;
   }
   logOut() {
     this.tokenStorage.signOut();

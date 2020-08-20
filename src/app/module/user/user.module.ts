@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { UserRoutingModule } from './user-routing.module';
 import {UserProfileComponent} from '../../components/user/user-profile/user-profile.component';
 import {EditProfileComponent} from '../../components/user/edit-profile/edit-profile.component';
@@ -12,9 +11,7 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import {AppRoutingModule} from '../../app-routing.module';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from '../../material.module';
 import {MatInputModule} from '@angular/material/input';
 import {NgxAudioPlayerModule} from 'ngx-audio-player';

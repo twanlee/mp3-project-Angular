@@ -36,9 +36,8 @@ export class ChangePasswordComponent implements OnInit {
       if( data.password === data.re_password) {
         this.userService.changePassword(this.id,data.password).subscribe(() => {
           alert("Thay đổi mật khẩu thành công");
-          window.localStorage.clear();
           this.tokenStorage.signOut();
-          this.router.navigateByUrl('login');
+          this.router.navigateByUrl('/login');
         });
       }else {
         alert("Thay đổi mật khẩu không thành công !!!")

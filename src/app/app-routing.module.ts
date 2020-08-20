@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'playlist', loadChildren: () => import('./module/playlist/playlist.module').then(m => m.PlaylistModule) },
   { path: 'top', loadChildren: () => import('./module/top/top.module').then(m => m.TopModule) },
   { path: 'register', loadChildren: () => import('./module/authentication/authentication.module').then(m => m.AuthenticationModule) },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent ,pathMatch: 'full'},
   { path: 'artist', loadChildren: () => import('./module/artist/artist.module').then(m => m.ArtistModule) },
 
 ];
