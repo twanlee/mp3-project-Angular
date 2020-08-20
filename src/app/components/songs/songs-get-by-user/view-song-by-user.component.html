@@ -22,7 +22,7 @@
               <button (click)="likeSong(song.id)"><i class="fa fa-heart" aria-hidden="true"></i><p [id]="'like'+song.id">Like ({{song.review.likes}})</p></button>
               <div>
                 <a [routerLink]="'../../song/'+song.id+'/edit'" class="mr-4"><i class="fa fa-edit" aria-hidden="true"></i> Sửa Bài Hát</a>
-                <a id = "delete" [routerLink]="'/song/'+song.id+'/delete'" style="cursor: pointer"><i class="fa fa-trash" aria-hidden="true"></i>Xóa Bài Hát</a>
+                <a id = "delete" (click)="deleteSong(song.id)" style="cursor: pointer"><i class="fa fa-trash" aria-hidden="true"></i>Xóa Bài Hát</a>
               </div>
             </div>
           </div>

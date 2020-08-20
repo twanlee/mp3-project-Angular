@@ -5,7 +5,7 @@ import {AuthGuard} from '../../authorization/auth-guard.service';
 
 
 const routes: Routes = [
-  {path: 'artist/create', component: CreateArtistComponent, canActivate: [AuthGuard]},
+  {path: 'create', component: CreateArtistComponent, canActivate: [AuthGuard]},
 
 ];
 

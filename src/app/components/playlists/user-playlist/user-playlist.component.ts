@@ -53,6 +53,7 @@ export class UserPlaylistComponent implements OnInit {
       this.playlistService.deletePlaylist(id).subscribe(() => {
           this.playlists = this.playlists.filter(playlist => playlist.id != id);
       });
+      this.toastService.success("Xóa Thành Công Playlist")
     }
   }
 }

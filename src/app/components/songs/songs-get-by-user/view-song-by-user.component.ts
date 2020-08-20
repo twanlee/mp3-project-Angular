@@ -33,6 +33,7 @@ export class ViewSongByUserComponent implements OnInit {
   getAllSongByUser(id) {
     this.songService.getAllSongByUser(id).subscribe((data) => {
       this.songList = data;
+      console.log(this.songList)
     });
   }
 
@@ -53,5 +54,16 @@ export class ViewSongByUserComponent implements OnInit {
         document.getElementById('like' + songId).innerHTML = 'Like (' + data.likes + ')';
       })
     }
+  }
+
+  deleteSong(id: number) {
+
+      if (confirm("Bạn có chắc chắn muốn xóa ?")) {
+        this.songService.deleteSongById(id).subscribe(() => {
+          this.getAllSongByUser(this.userId);
+          console.log(this.songList)
+        });
+        this.toastService.success("Xóa Thành Công")
+      }
   }
 }
