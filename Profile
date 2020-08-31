@@ -1,0 +1,1 @@
+web: node src/mp3-project-Angular.js
