@@ -27,7 +27,6 @@
     "@ckeditor/ckeditor5-build-classic": "^21.0.0",
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
     "bootstrap": "^4.5.2",
-//    "express": "latest",
     "firebase": "^7.17.2",
     "jquery": "^3.5.1",
     "ngx-audio-player": "^10.0.0",
