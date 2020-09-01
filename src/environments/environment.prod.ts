@@ -8,5 +8,7 @@ export const environment = {
     messagingSenderId: '692199090966',
     appId: '1:692199090966:web:2ad927a2f6fcb3047c7e37',
     measurementId: 'G-NLYFC0QCGJ'
-  }
+  },
+  API_URL: 'https://meo-music.herokuapp.com/api/',
+  AUTHEN_URL: 'https://meo-music.herokuapp.com/',
 };
