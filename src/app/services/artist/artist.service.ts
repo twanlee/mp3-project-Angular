@@ -1,14 +1,18 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {IArtist} from '../../interfaces/iartist';
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArtistService {
-  url_api = 'http://localhost:8080/api/artist';
-  constructor(private http: HttpClient) { }
+  url_api = environment.API_URL + 'artist';
+
+  constructor(private http: HttpClient) {
+  }
+
   getAll(): Observable<IArtist[]> {
     return this.http.get<IArtist[]>(this.url_api + '/list');
   }

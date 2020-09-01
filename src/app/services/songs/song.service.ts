@@ -2,12 +2,13 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ISong} from '../../interfaces/isong';
 import {Observable} from 'rxjs';
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SongService {
-  url_api = 'http://localhost:8080/api/song';
+  url_api = environment.API_URL + '/song';
 
   constructor(private http: HttpClient) {
   }
@@ -20,8 +21,8 @@ export class SongService {
     return this.http.get<ISong>(this.url_api + '/' + id + '/detail');
   }
 
-  saveSong(data: ISong,user_id: number): Observable<ISong> {
-    return this.http.post<ISong>(this.url_api+'/'+user_id + '/save', data);
+  saveSong(data: ISong, user_id: number): Observable<ISong> {
+    return this.http.post<ISong>(this.url_api + '/' + user_id + '/save', data);
   }
 
   sendUserID(user_id: number): Observable<string> {
@@ -51,13 +52,16 @@ export class SongService {
   getAllSongByUser(id: number): Observable<ISong[]> {
     return this.http.get<ISong[]>(this.url_api + '/' + id + '/songs');
   }
+
   getTop10LikesSong(): Observable<ISong[]> {
     return this.http.get<ISong[]>(this.url_api + '/top/ten/likes');
   }
+
   getTop10ViewsSong(): Observable<ISong[]> {
     return this.http.get<ISong[]>(this.url_api + '/top/ten/views');
   }
-  getTheBestSong():Observable<ISong>{
-    return this.http.get<ISong>(this.url_api+ '/best');
+
+  getTheBestSong(): Observable<ISong> {
+    return this.http.get<ISong>(this.url_api + '/best');
   }
 }

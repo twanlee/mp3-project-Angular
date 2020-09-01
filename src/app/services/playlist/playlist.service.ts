@@ -3,12 +3,13 @@ import {IPlaylist} from '../../interfaces/iplaylist';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {ISong} from '../../interfaces/isong';
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlaylistService {
-  PLAYLIST_API = 'http://localhost:8080/api/playlist/';
+  PLAYLIST_API = environment.API_URL + 'playlist/';
 
   constructor(private http: HttpClient) {
   }
